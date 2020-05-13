@@ -2,14 +2,16 @@
 <mat-toolbar color="primary" class="header">
     <mat-toolbar-row>
         <span class="nav-tool-items">      
-            <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
+            <mat-icon (click)="sidenav.toggle()" class="hamburger" matTooltip="Show/Hide links">menu</mat-icon>
          </span>
         <span>My Cart</span>
-        <a mat-stroked-button routerLinkActive="active" routerLink="/home">
-            Home</a>
-        <a mat-button routerLinkActive="active" routerLink="/products">
-            Products
-        </a>
+        <div *ngIf="opened">
+            <a mat-stroked-button routerLinkActive="active" routerLink="/home">
+                Home</a>
+            <a mat-button routerLinkActive="active" routerLink="/products">
+                Products
+            </a>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
 <!-- <mat-toolbar color="primary" class="header">
