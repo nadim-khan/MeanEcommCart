@@ -8,6 +8,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 
 export class AppComponent implements OnInit {
+  [x: string]: any;
   opened = true;
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
