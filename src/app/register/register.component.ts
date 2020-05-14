@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl, AbstractControl, ValidationErrors} from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,20 +10,51 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
  hide = true;
+ rehide = true;
   constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) { }
-  registrationData = this.fb.group({
-    username: ['', Validators.required],
-    email: ['', Validators.required, Validators.email],
-    pass: ['', Validators.required]
+  registrationData = new FormGroup({
+    username: new FormControl('', [Validators.required, Validators.minLength(3), this.cannotContainSpace]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+    repeatPassword: new FormControl('', [Validators.required, this.passwordMatch]),
   });
+
+  get f() {
+    return this.registrationData.controls;
+  }
+
+  cannotContainSpace(control: FormControl) {
+    if ((control.value as string).indexOf(' ') >= 0) {
+      return {
+        cannotContainSpace: true
+       };
+  }
+    return null;
+  }
+
+  passwordMatch(control: FormControl) {
+    const password = control.root.get('password');
+    return password && control.value !== password.value ? {
+      passwordMatch : true
+    } : null;
+  }
+
   register() {
-  const regCreds = this.registrationData.getRawValue();
+    if (!this.registrationData.valid) {
+      return;
+    }
+    const regCreds = this.registrationData.getRawValue();
   // console.log('registrationData data', this.registrationData.value);
-  this.authService.regUser = regCreds;
-  this.authService.register().subscribe(s => {
+    this.authService.regUser = regCreds;
+    this.authService.register().subscribe(s => {
     console.log('regi s =>', s);
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   });
+    this.registrationData.reset();
+  }
+
+  clearForm() {
+    this.registrationData.reset();
   }
 
   ngOnInit(): void {

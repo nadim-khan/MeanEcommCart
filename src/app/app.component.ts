@@ -15,13 +15,17 @@ export class AppComponent implements OnInit, OnDestroy {
   [x: string]: any;
   opened = true;
   user: User;
+  username;
+  email;
   userSubscription: Subscription;
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
   constructor(private authService: AuthService, private router: Router) {
     this.authService.User.subscribe(userData => {
       this.user = userData;
-      console.log('Profile', this.user);
+      this.username = this.user.username;
+      this.email = this.user.email;
+      console.log('Profile', this.user.username, this.user.email);
     });
   }
   ngOnDestroy(): void {
@@ -31,21 +35,21 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     if (window.innerWidth < 768) {
-     // this.sidenav.fixedTopGap = 55;
-      this.opened = false;
+     this.sidenav.fixedTopGap = 55;
+     this.opened = false;
     } else {
-     // this.sidenav.fixedTopGap = 55;
-      this.opened = true;
+     this.sidenav.fixedTopGap = 55;
+     this.opened = true;
     }
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     if (event.target.innerWidth < 768) {
-      // this.sidenav.fixedTopGap = 55;
+      this.sidenav.fixedTopGap = 55;
       this.opened = false;
     } else {
-      // this.sidenav.fixedTopGap = 55;
+      this.sidenav.fixedTopGap = 55;
       this.opened = true;
     }
   }

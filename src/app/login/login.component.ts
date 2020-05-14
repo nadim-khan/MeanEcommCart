@@ -18,13 +18,13 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required]
   });
   login() {
-  const logCreds = this.loginData.getRawValue();
-  //console.log('Login data', logCreds);
-  this.authService.loginUser = logCreds;
-  this.authService.login().subscribe(s => {
-    console.log('login s =>', s);
-    this.router.navigate(['']);
-  });
+    const logCreds = this.loginData.getRawValue();
+    // console.log('Login data', logCreds);
+    this.authService.loginUser = logCreds;
+    this.authService.login().subscribe(s => {
+      console.log('login s =>', s);
+      this.router.navigate(['']);
+    });
   }
 
   ngOnInit(): void {

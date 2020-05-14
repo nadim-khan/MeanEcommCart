@@ -1,27 +1,20 @@
 <!-- Toolbar -->
-
-<header class="header">
+<header class="header mat-elevation-z3">
 
     <mat-toolbar color="primary">
         <mat-toolbar-row>
             <span class="nav-tool-items">      
             <mat-icon (click)="sidenav.toggle()" class="hamburger" matTooltip="Show/Hide links">menu</mat-icon>
          </span>
-            <span mat-button routerLinkActive="active" routerLink="/" class="logo"></span>
+            <span routerLink="/" class="logo" matTooltip="Home"></span>
             <span>My Cart</span>
-            <div *ngIf="opened">
+            <!-- <div *ngIf="opened">
                 <a mat-button routerLinkActive="active" routerLink="/home">
                 Home</a>
                 <a mat-button routerLinkActive="active" routerLink="/products">
                 Products
             </a>
-                <a mat-button routerLinkActive="active" routerLink="/login">
-                Login
-            </a>
-                <a mat-button routerLinkActive="active" routerLink="/register">
-                Register
-            </a>
-            </div>
+            </div> -->
             <div class="profile">
                 <a mat-button *ngIf="!user" routerLinkActive="active" routerLink="/login">
                     Login
@@ -29,13 +22,15 @@
                 <a mat-button *ngIf="!user" routerLinkActive="active" routerLink="/register">
                     Register
                 </a>
-                <a mat-button *ngIf="user" [matMenuTriggerFor]="profileMenu">
-                    <mat-icon>account_circle</mat-icon>
+                <a mat-button *ngIf="user" [matMenuTriggerFor]="profileMenu" matTooltip="User Details">
+                    <mat-icon>account_circle</mat-icon> {{username}}
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </a>
                 <mat-menu #profileMenu="matMenu" xPosition="before">
-                    <span mat-menu-item>Name :</span>
-                    <span mat-menu-item><button mat-button color="warn" (click)="logout()">Logout</button></span>
+                    <div mat-menu-item>
+                        {{email}}
+                    </div>
+                    <button mat-menu-item class="logout" (click)="logout()">Logout</button>
                 </mat-menu>
             </div>
         </mat-toolbar-row>

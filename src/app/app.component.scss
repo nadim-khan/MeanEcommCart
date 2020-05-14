@@ -8,11 +8,14 @@
         margin: 5px;
     }
     .logo {
-        background-image: url('../assets/logo.jpg');
+        background-image: url('../assets/nadsonDjLogo.jpg');
         height: 50px;
-        width: 50px;
+        width: 55px;
         background-size: contain;
         background-repeat: no-repeat;
+        &:hover {
+            transform: scale(1.2);
+        }
     }
     .mat-icon {
         vertical-align: middle;
@@ -22,4 +25,10 @@
         position: absolute;
         right: 0;
     }
+}
+
+.logout {
+    text-align: center;
+    width: 100%;
+    color: red;
 }

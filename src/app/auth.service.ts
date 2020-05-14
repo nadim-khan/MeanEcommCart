@@ -5,20 +5,25 @@ import { User } from './user.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   loginUser;
   regUser;
   private user$ = new Subject<User>();
+
   constructor() { }
+
   login() {
     console.log('authService login data', this.loginUser);
     return of(this.loginUser);
   }
+
   logout() {
     // remove user from Subject
     this.setUser(null);
     console.log('User has been logged out');
   }
+
   register() {
     // make api call to stor user in db
     // update the user Subject
@@ -26,11 +31,14 @@ export class AuthService {
     console.log('authService register Data', this.regUser);
     return of(this.regUser);
   }
+
   get User() {
     console.log(this.user$);
     return this.user$.asObservable();
   }
+
   setUser(user) {
     this.user$.next(user);
   }
+
 }
