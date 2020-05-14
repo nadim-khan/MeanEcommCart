@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   [x: string]: any;
   opened = true;
+  otherTheme = false;
   user: User;
   username;
   email;
@@ -66,5 +67,8 @@ export class AppComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout();
     this.router.navigate(['']);
+  }
+  changeTheme(){
+    this.otherTheme = !this.otherTheme;
   }
 }
