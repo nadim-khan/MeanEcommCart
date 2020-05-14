@@ -17,10 +17,10 @@
             </div> -->
             <div class="profile">
                 <a mat-button *ngIf="!user" routerLinkActive="active" routerLink="/login">
-                    Login
+                    <mat-icon>person</mat-icon> Login
                 </a>
                 <a mat-button *ngIf="!user" routerLinkActive="active" routerLink="/register">
-                    Register
+                    <mat-icon>person_add</mat-icon> Register
                 </a>
                 <a mat-button *ngIf="user" [matMenuTriggerFor]="profileMenu" matTooltip="User Details">
                     <mat-icon>account_circle</mat-icon> {{username}}
@@ -59,12 +59,6 @@
             </a>
             <a mat-list-item routerLinkActive="active" routerLink="/products">
                 <mat-icon>view_comfy</mat-icon> Products
-            </a>
-            <a mat-list-item routerLinkActive="active" routerLink="/login">
-                <mat-icon>person</mat-icon> Login
-            </a>
-            <a mat-list-item routerLinkActive="active" routerLink="/register">
-                <mat-icon>person_add</mat-icon> Register
             </a>
         </mat-nav-list>
     </mat-sidenav>

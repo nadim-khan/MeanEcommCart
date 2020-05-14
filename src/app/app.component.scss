@@ -1,7 +1,10 @@
 .header {
     .active {
-        background: #69f0ae;
-        color: rgba(0, 0, 0, .87);
+        -webkit-box-shadow: 0px 0px 14px -7px rgba(0, 0, 0, 1);
+        -moz-box-shadow: 0px 0px 14px -7px rgba(0, 0, 0, 1);
+        box-shadow: 0px 0px 14px -7px rgba(0, 0, 0, 1);
+        background-color: #da427f;
+        color: rgba(255, 255, 255, 0.87);
     }
     a,
     span {
