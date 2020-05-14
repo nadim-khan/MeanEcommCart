@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   });
   register() {
   const regCreds = this.registrationData.getRawValue();
-  //console.log('registrationData data', this.registrationData.value);
+  // console.log('registrationData data', this.registrationData.value);
   this.authService.regUser = regCreds;
   this.authService.register().subscribe(s => {
     console.log('regi s =>', s);

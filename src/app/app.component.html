@@ -1,25 +1,27 @@
 <!-- Toolbar -->
-<mat-toolbar color="primary" class="header">
-    <mat-toolbar-row>
-        <span class="nav-tool-items">      
+<header class="header">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span class="nav-tool-items">      
             <mat-icon (click)="sidenav.toggle()" class="hamburger" matTooltip="Show/Hide links">menu</mat-icon>
          </span>
-        <span>My Cart</span>
-        <div *ngIf="opened">
-            <a mat-button routerLinkActive="active" routerLink="/home">
+            <span>My Cart</span>
+            <div *ngIf="opened">
+                <a mat-button routerLinkActive="active" routerLink="/home">
                 Home</a>
-            <a mat-button routerLinkActive="active" routerLink="/products">
+                <a mat-button routerLinkActive="active" routerLink="/products">
                 Products
             </a>
-            <a mat-button routerLinkActive="active" routerLink="/login">
+                <a mat-button routerLinkActive="active" routerLink="/login">
                 Login
             </a>
-            <a mat-button routerLinkActive="active" routerLink="/register">
+                <a mat-button routerLinkActive="active" routerLink="/register">
                 Register
             </a>
-        </div>
-    </mat-toolbar-row>
-</mat-toolbar>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</header>
 <!-- <mat-toolbar color="primary" class="header">
     <div>My Cart</div>
     <a mat-button routerLinkActive="active" routerLink="/home">
