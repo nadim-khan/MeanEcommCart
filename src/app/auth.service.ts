@@ -26,7 +26,8 @@ export class AuthService {
     console.log('authService register Data', this.regUser);
     return of(this.regUser);
   }
-  getUser() {
+  get User() {
+    console.log(this.user$);
     return this.user$.asObservable();
   }
   setUser(user) {

@@ -3,7 +3,8 @@
         background: #69f0ae;
         color: rgba(0, 0, 0, .87);
     }
-    a {
+    a,
+    span {
         margin: 5px;
     }
     .logo {
@@ -12,5 +13,13 @@
         width: 50px;
         background-size: contain;
         background-repeat: no-repeat;
+    }
+    .mat-icon {
+        vertical-align: middle;
+        margin: 0 5px;
+    }
+    .profile {
+        position: absolute;
+        right: 0;
     }
 }
