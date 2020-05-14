@@ -1,7 +1,7 @@
 <mat-card class="example-card">
     <mat-card-header>
         <mat-card-title>Register</mat-card-title>
-        <mat-card-subtitle>Already have an account <a mat-button color="primary">Login</a> </mat-card-subtitle>
+        <mat-card-subtitle>Already have an account ?<a mat-button color="primary">Login</a> </mat-card-subtitle>
     </mat-card-header>
     <form [formGroup]="registrationData" (ngSubmit)="register()">
         <mat-card-content>
@@ -9,7 +9,7 @@
                 <mat-form-field appearance="standard">
                     <mat-label>Username</mat-label>
                     <input matInput placeholder="Placeholder" formControlName="username" required>
-                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-icon matSuffix>account_circle</mat-icon>
                     <mat-hint>Hint</mat-hint>
                 </mat-form-field>
             </p>
@@ -17,7 +17,7 @@
                 <mat-form-field appearance="standard">
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Placeholder" formControlName="email" required>
-                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-icon matSuffix>alternate_email</mat-icon>
                     <mat-hint>Hint</mat-hint>
                 </mat-form-field>
             </p>
@@ -25,15 +25,15 @@
                 <mat-form-field appearance="standard">
                     <mat-label>Enter your password</mat-label>
                     <input matInput [type]="hide ? 'password' : 'text'" formControlName="pass" required>
-                    <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <a mat-icon-button matTooltip="Show/Hide Password" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </a>
                 </mat-form-field>
             </p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button type="submit" color="primary">Login</button>
-            <button mat-button>Cancel</button>
+            <button mat-button type="submit" color="primary"><mat-icon>check_circle_outline</mat-icon> Login</button>
+            <button mat-button><mat-icon>highlight_off</mat-icon> Cancel</button>
         </mat-card-actions>
     </form>
 </mat-card>

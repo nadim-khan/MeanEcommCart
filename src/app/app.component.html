@@ -6,7 +6,7 @@
          </span>
         <span>My Cart</span>
         <div *ngIf="opened">
-            <a mat-stroked-button routerLinkActive="active" routerLink="/home">
+            <a mat-button routerLinkActive="active" routerLink="/home">
                 Home</a>
             <a mat-button routerLinkActive="active" routerLink="/products">
                 Products
@@ -42,13 +42,13 @@
                 <mat-icon>home</mat-icon> Home
             </a>
             <a mat-list-item routerLinkActive="active" routerLink="/products">
-                <mat-icon>format_list_bulleted</mat-icon> Products
+                <mat-icon>view_comfy</mat-icon> Products
             </a>
             <a mat-list-item routerLinkActive="active" routerLink="/login">
-                <mat-icon>format_list_bulleted</mat-icon> Login
+                <mat-icon>person</mat-icon> Login
             </a>
             <a mat-list-item routerLinkActive="active" routerLink="/register">
-                <mat-icon>format_list_bulleted</mat-icon> Register
+                <mat-icon>person_add</mat-icon> Register
             </a>
         </mat-nav-list>
     </mat-sidenav>
