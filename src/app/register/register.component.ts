@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
   }
 
   cannotContainSpace(control: FormControl) {
-    if ((control.value as string).indexOf(' ') >= 0) {
+    if ((control.value).indexOf(' ') >= 0) {
       return {
         cannotContainSpace: true
        };
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     const regCreds = this.registrationData.getRawValue();
   // console.log('registrationData data', this.registrationData.value);
     this.authService.regUser = regCreds;
-    this.authService.register().subscribe(s => {
+    this.authService.register(regCreds).subscribe(s => {
     console.log('regi s =>', s);
     this.router.navigate(['']);
   });

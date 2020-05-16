@@ -68,7 +68,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.router.navigate(['']);
   }
-  changeTheme(){
+  changeTheme() {
     this.otherTheme = !this.otherTheme;
   }
 }

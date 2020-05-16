@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subject, of } from 'rxjs';
+import { Subject, of, throwError } from 'rxjs';
+import { switchMap, catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+
 import { User } from './user.model';
 
 @Injectable({
@@ -9,12 +12,15 @@ import { User } from './user.model';
 export class AuthService {
   loginUser;
   regUser;
+  // URL definition (api- path, auth-feature(user,finace,etc..), register - action)
+  private apiUrl = '/api/auth';
   private user$ = new Subject<User>();
 
-  constructor() { }
+  constructor( private http: HttpClient) { }
 
-  login() {
-    console.log('authService login data', this.loginUser);
+  login(email: string, password: string) {
+    const loginCredentials = {email, password };
+    console.log('authService login data', loginCredentials);
     return of(this.loginUser);
   }
 
@@ -24,16 +30,27 @@ export class AuthService {
     console.log('User has been logged out');
   }
 
-  register() {
-    // make api call to stor user in db
-    // update the user Subject
-    this.user$.next(this.regUser);
-    console.log('authService register Data', this.regUser);
-    return of(this.regUser);
+  register(user: any) {
+    // // make api call to stor user in db
+    // // update the user Subject
+    // this.setUser(user);
+    // console.log('authService register Data', user);
+    // return of(user);
+    return this.http.post(`${this.apiUrl}/register`, user)
+    .pipe(
+      switchMap(savedUser => {
+        this.setUser(savedUser);
+        console.log('User Registered successfully : ', user);
+        return of(savedUser);
+      }),
+      catchError(e => {
+        console.log('Server error occured : ', e);
+        return throwError('Registration error occured , Please contact admin !');
+      })
+      );
   }
 
   get User() {
-    console.log(this.user$);
     return this.user$.asObservable();
   }
 

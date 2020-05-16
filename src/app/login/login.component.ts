@@ -11,23 +11,16 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   hide = true;
+  email: string | null = null;
+  password: string | null = null;
 
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) { }
-  loginData = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required]
-  });
-  login() {
-    const logCreds = this.loginData.getRawValue();
-    // console.log('Login data', logCreds);
-    this.authService.loginUser = logCreds;
-    this.authService.login().subscribe(s => {
-      console.log('login s =>', s);
-      this.router.navigate(['']);
-    });
-  }
-
+  constructor(private router: Router, private authService: AuthService) { }
   ngOnInit(): void {
   }
-
+  login(): void {
+    // tslint:disable-next-line: no-non-null-assertion
+    this.authService.login(this.email!, this.password!).subscribe(() => {
+      this.router.navigateByUrl('/');
+    });
+  }
 }
