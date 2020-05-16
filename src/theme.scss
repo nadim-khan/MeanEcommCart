@@ -6,7 +6,7 @@
 // @include angular-material-theme($custom-theme);
 //alternative theme
 $alt-primary:mat-palette($mat-indigo);
-$alt-accent:mat-palette($mat-pink, 200);
+$alt-accent:mat-palette($mat-blue, 200);
 $alt-theme:mat-dark-theme($alt-primary, $alt-accent);
 .alternative {
     @include angular-material-theme($alt-theme);
