@@ -1,11 +1,25 @@
 @import '~@angular/material/theming';
 @include mat-core();
-// $custom-primary: mat-palette($mat-deep-purple, 600);
-// $custom-accent: mat-palette($mat-pink, 600);
-// $custom-theme:mat-dark-theme($custom-primary, $custom-accent);
-// @include angular-material-theme($custom-theme);
+// // $custom-primary: mat-palette($mat-deep-purple, 600);
+// // $custom-accent: mat-palette($mat-pink, 600);
+// // $custom-theme:mat-dark-theme($custom-primary, $custom-accent);
+// // @include angular-material-theme($custom-theme);
 //alternative theme
-$alt-primary:mat-palette($mat-indigo);
+$custom-primary: mat-palette($mat-indigo, 600);
+$custom-accent: mat-palette($mat-pink, A200, A100, A400);
+$custom-warn:mat-palette($mat-red);
+$custom-theme:mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+$custom-theme-dark:mat-dark-theme($custom-primary, $custom-accent, $custom-warn);
+@include angular-material-theme($custom-theme-dark);
+.theme-dark {
+    @include angular-material-theme($custom-theme-dark);
+}
+
+.theme-light {
+    @include angular-material-theme($custom-theme);
+}
+
+$alt-primary:mat-palette($mat-pink);
 $alt-accent:mat-palette($mat-blue, 200);
 $alt-theme:mat-dark-theme($alt-primary, $alt-accent);
 .alternative {

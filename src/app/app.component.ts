@@ -1,9 +1,10 @@
-import { Component, ViewChild, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, HostListener, OnInit, OnDestroy, HostBinding } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { User } from './user';
 import { Subscription } from 'rxjs';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +15,31 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   [x: string]: any;
   opened = true;
-  otherTheme = false;
+  isDark = false;
   user: User;
   username;
   email;
   error;
+  hide = true;
   userSubscription: Subscription;
+  @HostBinding('class')
+  get themeMode() {
+    return this.isDark ? 'theme-dark' : 'theme-light';
+  }
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
   constructor(private authService: AuthService, private router: Router) {
-    
     this.authService.User.subscribe(userData => {
       this.user = userData;
       this.username = this.user.username;
       this.email = this.user.email;
     });
   }
+
+  onModeSwitch(isDarkMode) {
+    this.isDark = !this.isDark;
+  }
+
   ngOnDestroy(): void {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
