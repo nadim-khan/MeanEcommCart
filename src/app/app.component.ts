@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
   constructor(private authService: AuthService, private router: Router) {
+    
     this.authService.User.subscribe(userData => {
       this.user = userData;
       this.username = this.user.username;

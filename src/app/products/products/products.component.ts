@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductDataService } from '../product-data.service';
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -8,6 +9,7 @@ import { ProductDataService } from '../product-data.service';
 })
 export class ProductsComponent implements OnInit {
   products;
+  value = 'Clear me';
   constructor(private productDataService: ProductDataService) { }
 
   ngOnInit(): void {

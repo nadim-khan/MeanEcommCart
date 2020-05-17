@@ -1,3 +1,26 @@
-<div *ngFor="let product of products">
-    <img src="{{product.imgUrl}}">
-</div>
+<mat-form-field appearance="outline">
+    <mat-label>Search Author, Book, ISBN, Publisher etc..{{value}}</mat-label>
+    <input matInput type="text" [(ngModel)]="value">
+    <mat-icon matSuffix *ngIf="!value">search</mat-icon>
+    <button mat-button *ngIf="value" matTooltip="Clear Search" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
+
+<mat-grid-list cols="5" rowHeight="500">
+    <mat-grid-tile *ngFor="let product of products">
+        <mat-card>
+            <img mat-card-image src="{{product.thumbnailUrl}}">
+            <mat-card-content>
+                <p>
+                    {{product.title}}
+                </p>
+                <p>{{product.title}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
