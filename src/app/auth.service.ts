@@ -3,7 +3,7 @@ import { Subject, of, throwError } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
-import { User } from './user.model';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'

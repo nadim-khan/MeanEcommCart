@@ -2,7 +2,7 @@ import { Component, ViewChild, HostListener, OnInit, OnDestroy } from '@angular/
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { User } from './user.model';
+import { User } from './user';
 import { Subscription } from 'rxjs';
 
 @Component({
