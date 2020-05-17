@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
   user: User;
   username;
   email;
+  error;
   userSubscription: Subscription;
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
@@ -26,7 +27,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.user = userData;
       this.username = this.user.username;
       this.email = this.user.email;
-      console.log('Profile', this.user.username, this.user.email);
     });
   }
   ngOnDestroy(): void {

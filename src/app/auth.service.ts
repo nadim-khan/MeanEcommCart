@@ -20,8 +20,18 @@ export class AuthService {
 
   login(email: string, password: string) {
     const loginCredentials = {email, password };
-    console.log('authService login data', loginCredentials);
-    return of(this.loginUser);
+    return this.http.post<User>(`${this.apiUrl}/login`, loginCredentials)
+    .pipe(
+      switchMap(foundUser => {
+        this.setUser(foundUser);
+        console.log('User Logged In  : ', foundUser);
+        return of(foundUser);
+      }),
+      catchError(e => {
+        console.log('Server error occured : ', e);
+        return throwError('Login error occured , Please try again !');
+      })
+    );
   }
 
   logout() {

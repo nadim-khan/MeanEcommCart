@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
   // console.log('registrationData data', this.registrationData.value);
     this.authService.regUser = regCreds;
     this.authService.register(regCreds).subscribe(s => {
-    console.log('regi s =>', s);
     this.router.navigate(['']);
   });
     this.registrationData.reset();
