@@ -6,6 +6,7 @@ const config = require('./config');
 const mongoUri = config.mongo.uri;
 
 mongoose.connect(mongoUri, { keepAlive: 1, useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
 
 const db = mongoose.connection;
 
