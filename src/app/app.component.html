@@ -16,6 +16,27 @@
             </a>
             </div> -->
             <div class="profile">
+                <mat-menu #themeMenu="matMenu">
+
+                    <mat-radio-group (change)="themeOptions($event)">
+                        <p>
+                            <mat-radio-button value="dark">Dark</mat-radio-button>
+                        </p>
+                        <p>
+                            <mat-radio-button value="blue">Blue</mat-radio-button>
+                        </p>
+                        <p>
+                            <mat-radio-button value="green">Green</mat-radio-button>
+                        </p>
+                        <p>
+                            <mat-radio-button value="orange">Orange</mat-radio-button>
+                        </p>
+                    </mat-radio-group>
+                </mat-menu>
+
+                <button mat-icon-button [matMenuTriggerFor]="themeMenu" matTooltip="Select a theme">
+                    <mat-icon>format_color_fill</mat-icon>
+                  </button>
                 <a mat-button *ngIf="!user && opened" color="accent" routerLink="/login">
                     <mat-icon>person</mat-icon> Login
                 </a>
@@ -32,6 +53,7 @@
                     <mat-icon>account_circle</mat-icon> {{username}}
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </a>
+
                 <mat-menu #profileMenu="matMenu" xPosition="before">
                     <div mat-menu-item>
                         {{email}}

@@ -21,10 +21,15 @@ export class AppComponent implements OnInit, OnDestroy {
   email;
   error;
   hide = true;
+  mode = 'orange';
   userSubscription: Subscription;
   @HostBinding('class')
   get themeMode() {
     return this.isDark ? 'theme-dark' : 'theme-light';
+  }
+  @HostBinding('class')
+  get theme() {
+    return this.mode;
   }
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
@@ -40,6 +45,25 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isDark = !this.isDark;
   }
 
+  themeOptions(option) {
+    console.log(option.value);
+    switch (option.value) {
+      case 'dark' :
+        this.mode = 'dark';
+        break;
+      case 'blue' :
+        this.mode = 'blue';
+        break;
+        case 'green' :
+        this.mode = 'green';
+        break;
+        case 'orange' :
+        this.mode = 'orange';
+        break;
+        default:
+          this.mode = 'orange';
+    }
+  }
   ngOnDestroy(): void {
     if (this.userSubscription) {
       this.userSubscription.unsubscribe();
