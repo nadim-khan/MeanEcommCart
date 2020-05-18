@@ -5,6 +5,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
+const passport = require('../middleware/passport');
 
 const routes = require('../routes');
 
@@ -37,6 +38,9 @@ app.use(helmet());
 //Use cors
 app.use(cors());
 
+
+//authenticate or intercept
+app.use(passport.initialize());
 //api router
 
 app.use('/api/', routes);

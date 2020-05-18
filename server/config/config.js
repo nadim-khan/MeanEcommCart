@@ -9,5 +9,6 @@ module.exports = {
         uri: envVars.MONGO_HOST,
         port: envVars.MONGO_PORT,
         isDebug: envVars.MONGOOSE_DEBUG
-    }
+    },
+    jwtsecret: envVars.JWT_SECRET
 };
