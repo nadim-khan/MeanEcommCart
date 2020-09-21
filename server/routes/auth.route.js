@@ -10,6 +10,7 @@ const router = express.Router();
 //localhost:4050/api/auth/register call
 router.post('/register', asyncHandler(insert), login);
 router.post('/login', asyncHandler(getUserByEmailIdAndPassword), login);
+router.get('/getAllUsers', asyncHandler(getAllUsers));
 
 async function insert(req, res, next) {
     const user = req.body;
@@ -28,8 +29,13 @@ async function getUserByEmailIdAndPassword(req, res, next) {
         user.email,
         user.password
     );
-
     req.user = savedUser;
+    next();
+}
+
+async function getAllUsers() {
+    const usersList = await userController.getAllUsers();
+    res.json(usersList);
     next();
 }
 

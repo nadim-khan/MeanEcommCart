@@ -1,20 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
-
-
-/* You can add global styles to this file, and also import other style files */
-
 html,
 body {
-    margin: 0;
     height: 100%;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    font-family: Poppins;
+    font-size: 14px;
 }
 
 .header {
     justify-content: space-between;
+    height: 10%;
 }
 
 .active {
@@ -27,7 +24,7 @@ body {
 }
 
 .mat-sidenav-container {
-    height: 100%;
+    height: 90%;
     display: flex;
     flex: 1 1 auto;
 }
@@ -53,6 +50,21 @@ body {
 .mat-sidenav,
 .mat-sidenav-content {
     padding: 15px;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 16px;
+    position: relative;
+    height: inherit;
+    font-size: 12px;
+}
+
+mat-list-base[dense] .mat-list-item {
+    font-size: 12px;
 }
 
 .mat-list-item.active {
@@ -171,6 +183,10 @@ body .push-right {
     width: 75%;
     z-index: 1000;
     position: fixed;
+}
+
+.mat-card-actions {
+    text-align: center;
 }
 
 @media (max-width: 767px) {

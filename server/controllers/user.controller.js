@@ -31,6 +31,11 @@ async function getUserById(id) {
     }
 }
 
+async function getAllUsers() {
+    let user = await User.find();
+    return user;
+}
+
 function isUserValid(user, password, hashedPassword) {
     return user && bcrypt.compareSync(password, hashedPassword);
 }

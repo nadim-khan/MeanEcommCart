@@ -44,6 +44,8 @@ app.use(passport.initialize());
 //api router
 
 app.use('/api/', routes);
+app.use('/fees/', routes);
+
 
 //if not api path then serve index.html
 app.get('*', (req, res) => {

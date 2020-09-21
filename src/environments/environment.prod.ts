@@ -1,3 +1,7 @@
+console.log = () => {};
 export const environment = {
-  production: true
+  production: true,
+  authApi: '/api/auth',
+  feeStructureApi: '/api/fees',
+  broadcastApi: '/api/broadcast',
 };

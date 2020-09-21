@@ -1,0 +1,30 @@
+<h1>Login</h1>
+<h3>User has to <a (click)="register()" mat-button color="primary">register</a> first!</h3>
+
+<p>
+    <mat-form-field appearance="standard">
+        <mat-label>Username</mat-label>
+        <input matInput matTooltip="Username or Email" placeholder="Placeholder" [(ngModel)]="email" name="email"
+            required>
+        <mat-icon matSuffix>account_circle</mat-icon>
+        <mat-hint>Username or Email</mat-hint>
+    </mat-form-field>
+</p>
+<p>
+    <mat-form-field appearance="standard">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" required>
+        <a mat-icon-button matTooltip="Show/Hide Password" matSuffix (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </a>
+    </mat-form-field>
+</p>
+
+
+<button mat-button type="submit" color="primary" (click)="login()">
+    <mat-icon>check_circle_outline</mat-icon> Login
+</button>
+<button mat-button (click)="onNoClick()">
+    <mat-icon>highlight_off</mat-icon> Cancel
+</button>
