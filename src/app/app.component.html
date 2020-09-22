@@ -1,27 +1,28 @@
 <header class="header mat-elevation-z3" [class.alternative]="otherTheme">
-    <div class="Broadcast-alert" [class.bg-red]="true">
-        <span>Important msg</span>
+    <div *ngIf="broadcatMsgData" class="Broadcast-alert" [ngClass]="getAlertClass(broadcatMsgData.type)">
+        <span>{{broadcatMsgData.message}}</span>
     </div>
     <mat-toolbar color="primary">
         <mat-toolbar-row>
             <mat-icon *ngIf="isBiggerScreen()" (click)="sidenav.toggle()" class="hamburger" matTooltip="Show/Hide links">menu</mat-icon>
-            <span routerLink="/" class="logo" matTooltip="Home"></span>
-            <span >Gymnasium</span>
+            <span routerLink="/" class="logo" ></span>
+            <span  routerLink="/" >Gymnasium</span>
             <div class="profile">
                 <button *ngIf="!userExist" mat-icon-button (click)="onLogin()" matTooltip="Login or Register">
                     <mat-icon>person</mat-icon>
                 </button>
-                <a mat-button *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details">
+                <button mat-button *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details">
                     <mat-icon>account_circle</mat-icon> {{username}}
                     <mat-icon>keyboard_arrow_down</mat-icon>
-                </a>
+                </button>
 
                 <mat-menu class="profileView" #profileMenu="matMenu" xPosition="before">
                     <div mat-menu-item>
                         <mat-icon> email </mat-icon> {{email}}
                     </div>
                     <!-- <button mat-menu-item class="theme" (click)="changeTheme()">Change Theme</button> -->
-                    <button mat-menu-item class="theme" (click)="showNotification()"><mat-icon> notification_important </mat-icon> Notification</button>
+                    <button *ngIf="!isAdmin" mat-menu-item class="theme" (click)="showNotification()"><mat-icon> notification_important </mat-icon> Notification</button>
+                    <button *ngIf="isAdmin" mat-menu-item class="theme" (click)="broadcast()"><mat-icon> speaker_phone</mat-icon> Broadcast</button>
                     <button mat-menu-item class="logout" (click)="logout()"><mat-icon> power_settings_new </mat-icon> Logout</button>
                 </mat-menu>
 
@@ -33,7 +34,7 @@
 
 <mat-sidenav-container >
     <!-- Sidenav -->
-    <mat-sidenav #sidenav [class.pad-top-30]="true" [mode]="isBiggerScreen() ? 'push' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
+    <mat-sidenav #sidenav [class.pad-top-30]="broadcatMsgData" [mode]="isBiggerScreen() ? 'push' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
         [fixedTopGap]>
         <mat-nav-list>
             <a mat-list-item routerLinkActive="active" [routerLink]="['/home']"  matTooltip="Home" matTooltipPosition="right">

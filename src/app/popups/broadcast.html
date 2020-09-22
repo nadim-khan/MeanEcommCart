@@ -1,0 +1,56 @@
+<h1>Broadcast</h1>
+<form [formGroup]="broadcastData" (ngSubmit)="broadcastNow()">
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Message</mat-label>
+            <input matInput placeholder="Please provide message here" formControlName="message" required>
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-error *ngIf="f.message.touched && f.message.invalid ">Invalid
+                Message, Please check</mat-error>
+            <mat-hint>Hint : On sunday, Gym will; be closed.</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type">
+                <mat-option [value]="type.value" *ngFor="let type of type">{{ type.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>From Date</mat-label>
+            <input matInput [matDatepicker]="from" formControlName="fromDate">
+            <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+            <mat-datepicker #from></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Till Date</mat-label>
+            <input matInput [matDatepicker]="to" formControlName="toDate">
+            <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+            <mat-datepicker #to></mat-datepicker>
+        </mat-form-field>
+    </p>
+    <!-- <p>
+        <mat-form-field appearance="standard">
+            <mat-label>Re-enter password</mat-label>
+            <input matInput [type]="rehide ? 'password' : 'text'" name="repeatPassword" formControlName="repeatPassword"
+                required>
+            <a mat-icon-button matTooltip="Show/Hide Password" matSuffix (click)="rehide = !rehide"
+                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="rehide">
+                <mat-icon>{{rehide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </a>
+            <mat-error
+                *ngIf=" f.repeatPassword.touched && f.repeatPassword.invalid && f.repeatPassword.errors.passwordMatch">
+                Password should match</mat-error>
+        </mat-form-field>
+    </p> -->
+    <button [disabled]="!broadcastData.valid" mat-button type="submit" color="primary">
+        <mat-icon>check_circle_outline</mat-icon> Broadcast
+    </button>
+    <a mat-button (click)="clearForm()">
+        <mat-icon>highlight_off</mat-icon> Cancel
+    </a>
+
+</form>

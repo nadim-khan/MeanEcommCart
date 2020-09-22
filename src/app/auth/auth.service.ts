@@ -45,7 +45,9 @@ export class AuthService {
       const foundUser = {token: this.token, user: this.jwtHelper.decodeToken(this.token)};
       console.log('foundUser : ', foundUser);
       this.setUser(foundUser);
-      this.User.subscribe();
+      return of(foundUser);
+    } else {
+      return of(null);
     }
   }
 
@@ -68,8 +70,9 @@ export class AuthService {
 
   logout() {
     // remove user from Subject
-    this.setUser(null);
     localStorage.removeItem('currentUser');
+    this.setUser(null);
+    this.checkLoginStatus();
     console.log('User has been logged out');
   }
 

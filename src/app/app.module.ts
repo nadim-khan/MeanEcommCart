@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent , LoginDialogComponent, RegisterDialogComponent} from './app.component';
+import { AppComponent , LoginDialogComponent, RegisterDialogComponent, BroadcastDialogComponent} from './app.component';
 import { MaterialModule } from './material/material/material.module';
 import { HomeComponent } from './home/home.component';
 import { ProductsModule } from './products/products.module';
@@ -24,7 +24,8 @@ import { AboutComponent } from './about/about.component';
     HomeComponent,
     ContactComponent,
     FeeStructureComponent,
-    AboutComponent
+    AboutComponent,
+    BroadcastDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +37,7 @@ import { AboutComponent } from './about/about.component';
     MaterialModule,
     ProductsModule,
   ],
-  entryComponents: [LoginDialogComponent, RegisterDialogComponent],
+  entryComponents: [LoginDialogComponent, RegisterDialogComponent, BroadcastDialogComponent],
   providers: [ { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService],
   bootstrap: [AppComponent]

@@ -10,6 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from './auth/user';
 import { AuthService } from './auth/auth.service';
 import { GeneralService } from './services/general.service';
+import * as moment from 'moment';
+import { Broadcast } from './services/Broadcast';
 
 @Component({
   selector: 'app-root',
@@ -23,12 +25,17 @@ export class AppComponent implements OnInit, OnDestroy {
   isDark = false;
   userValues: User;
   userExist = false;
+  isAdmin = false;
+  hide = true;
+  mode = 'dark';
   username;
   email;
   error;
-  hide = true;
-  mode = 'dark';
+  role;
+  broadcatMsgData;
+  allBroadcastMsgs: Broadcast[] = [];
   userSubscription: Subscription;
+
   @HostBinding('class')
   get themeMode() {
     return this.isDark ? 'theme-dark' : 'theme-light';
@@ -47,6 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private general: GeneralService
   ) {
     this.getUserDetails();
+    this.getBroadcastMsg();
   }
 
   ngOnInit() {
@@ -65,23 +73,53 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  getUserDetails() {
-    this.authService.User.subscribe(userData => {
-      this.userValues = userData;
-      if (this.userValues && this.userValues.user) {
-        this.username = this.userValues.user.username;
-        this.email = this.userValues.user.email;
-        if (this.username && this.email && this.username !== '' && this.email !== '') {
-          this.userExist = true;
-        } else {
-          this.userExist = false;
-        }
-      } else {
-        this.userExist = false;
+  getBroadcastMsg() {
+    this.general.getAllBroadcast().subscribe(msgs => {
+      this.allBroadcastMsgs = (msgs as unknown as Broadcast[]);
+      if (this.allBroadcastMsgs && this.allBroadcastMsgs.length > 0) {
+        this.broadcatMsgData = this.allBroadcastMsgs[this.allBroadcastMsgs.length - 1];
       }
     });
   }
 
+  getUserDetails() {
+    this.authService.checkLoginStatus().subscribe(userData => {
+      this.userValues = userData;
+      if (this.userValues === null) {
+        this.authService.User.subscribe(user => {
+          this.userValues = user;
+          this.checkUserDetails();
+        });
+      } else {
+        this.checkUserDetails();
+      }
+    });
+  }
+
+  // Set user properties to display
+  checkUserDetails() {
+    if (this.userValues && this.userValues.user) {
+      this.username = this.userValues.user.username;
+      this.email = this.userValues.user.email;
+      this.role = this.userValues.user.roles[0];
+      console.log(' this.role : ', this.role);
+      if (this.role.length > 0 && this.role === 'admin') {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+      if (this.username && this.email && this.username !== '' && this.email !== '') {
+        this.userExist = true;
+      } else {
+        this.userExist = false;
+      }
+    } else {
+      this.userExist = false;
+      this.isAdmin = false;
+    }
+  }
+
+  // Login to Users account
   onLogin() {
     const dialogRef = this.dialog.open(LoginDialogComponent, {
       width: '650px',
@@ -110,6 +148,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Register new User
   onRegister() {
     const dialogRef = this.dialog.open(RegisterDialogComponent, {
       width: '650px',
@@ -137,10 +176,12 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Switch mode
   onModeSwitch(isDarkMode) {
     this.isDark = !this.isDark;
   }
 
+  // Choose theme
   themeOptions(option) {
     console.log(option.value);
     switch (option.value) {
@@ -161,7 +202,46 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  getAlertClass(type) {
+    if (type === 'general') {
+      return 'bg-green';
+    } else if (type === 'warning') {
+      return 'bg-yellow';
+    } else if (type === 'danger') {
+      return 'bg-red';
+    }
+  }
 
+  // Broadcast a message
+  broadcast() {
+    const dialogRef = this.dialog.open(BroadcastDialogComponent, {
+      width: '750px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.action && result.action === 'broadcast') {
+        const formattedData = {
+          message: result.data.message,
+          type: result.data.type,
+          fromDate: moment(new Date(result.data.fromDate)).format('YYYY-MM-DD[T00:00:00.000Z]'),
+          toDate: moment(new Date(result.data.toDate)).format('YYYY-MM-DD[T00:00:00.000Z]')
+        };
+        this.general.newBroadcast(formattedData).subscribe(response => {
+          if (response) {
+            this.snackBar.open('Message will be displayed to everyone.', 'Close', {
+              duration: 2000,
+            });
+          }
+        });
+      }
+    });
+  }
+
+  // Show notification
+  showNotification() {
+
+  }
+
+// Check screen width and size
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     if (event.target.innerWidth < 768) {
@@ -182,6 +262,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  // logout user
   logout() {
     this.authService.logout();
     this.getUserDetails();
@@ -191,14 +272,16 @@ export class AppComponent implements OnInit, OnDestroy {
     this.router.navigate(['']);
   }
 
+  // theme check
   changeTheme() {
     this.otherTheme = !this.otherTheme;
   }
 }
 
+// Login form inside popup
 @Component({
   selector: 'app-dialog-login',
-  templateUrl: 'login.html',
+  templateUrl: './popups/login.html',
 })
 export class LoginDialogComponent {
   hide = true;
@@ -226,9 +309,10 @@ export class LoginDialogComponent {
 
 }
 
+// Login form inside popup
 @Component({
   selector: 'app-dialog-register',
-  templateUrl: 'register.html',
+  templateUrl: './popups/register.html',
 })
 export class RegisterDialogComponent {
   hide = true;
@@ -287,10 +371,57 @@ export class RegisterDialogComponent {
 
   clearForm() {
     this.registrationData.reset();
+    this.dialogRef.close({ action: 'close' });
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+
+}
+
+// BroadcastDialogComponent
+
+@Component({
+  selector: 'app-dialog-broadcast',
+  templateUrl: './popups/broadcast.html',
+})
+export class BroadcastDialogComponent {
+  hide = true;
+  rehide = true;
+  type = [
+    {id: 1, name: 'General', value: 'general'},
+    {id: 2, name: 'Warning', value: 'warning'},
+    {id: 3, name: 'Danger', value: 'danger'}
+  ];
+
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    public dialogRef: MatDialogRef<BroadcastDialogComponent>
+  ) { }
+
+  broadcastData = new FormGroup({
+    message: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    type: new FormControl('', [Validators.required]),
+    fromDate: new FormControl('', [Validators.required]),
+    toDate: new FormControl('', [Validators.required]),
+  });
+
+  get f() {
+    return this.broadcastData.controls;
+  }
+
+  broadcastNow() {
+    if (!this.broadcastData.valid) {
+      this.dialogRef.close({ action: 'invalid' });
+      return;
+    }
+    const broadcast = this.broadcastData.getRawValue();
+    this.dialogRef.close({ action: 'broadcast', data: broadcast });
+  }
+
+  clearForm() {
+    this.broadcastData.reset();
+    this.dialogRef.close({ action: 'close' });
   }
 
 }
