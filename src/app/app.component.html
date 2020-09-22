@@ -1,5 +1,5 @@
 <header class="header mat-elevation-z3" [class.alternative]="otherTheme">
-    <div *ngIf="broadcatMsgData" class="Broadcast-alert" [ngClass]="getAlertClass(broadcatMsgData.type)">
+    <div *ngIf="broadcatMsgData && username" class="Broadcast-alert" [ngClass]="getAlertClass(broadcatMsgData.type)">
         <span>{{broadcatMsgData.message}}</span>
     </div>
     <mat-toolbar color="primary">
@@ -34,7 +34,7 @@
 
 <mat-sidenav-container >
     <!-- Sidenav -->
-    <mat-sidenav #sidenav [class.pad-top-30]="broadcatMsgData" [mode]="isBiggerScreen() ? 'push' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
+    <mat-sidenav #sidenav [class.pad-top-30]="broadcatMsgData && username" [mode]="isBiggerScreen() ? 'push' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
         [fixedTopGap]>
         <mat-nav-list>
             <a mat-list-item routerLinkActive="active" [routerLink]="['/home']"  matTooltip="Home" matTooltipPosition="right">

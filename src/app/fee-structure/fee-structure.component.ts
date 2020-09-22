@@ -13,7 +13,7 @@ import { GeneralService } from '../services/general.service';
 export class FeeStructureComponent implements OnInit, DoCheck {
   fieldArray: Fees[] = [];
   displayedColumns =
-      ['description', 'fees'];
+      ['description', 'fees', 'action'];
   disableAdd = true;
   showSpinner = true;
   isReadOnly = true;

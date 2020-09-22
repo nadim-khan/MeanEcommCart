@@ -1,3 +1,32 @@
+
+
+<div *ngIf="fieldArray.length > 0" class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="fieldArray">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="description" sticky>
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="fees">
+            <th mat-header-cell *matHeaderCellDef> Fee</th>
+            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element"> 
+                <button mat-button color="warn" (click)='deleteFieldValue(element._id)'><mat-icon>delete_forever</mat-icon></button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
 <div class="update">
     <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
@@ -17,31 +46,4 @@
         <mat-icon>queue</mat-icon>
     </button>
 </div>
-
-<div class="example-container mat-elevation-z8">
-    <table mat-table [dataSource]="fieldArray">
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="description" sticky>
-            <th mat-header-cell *matHeaderCellDef> Description </th>
-            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-        </ng-container>
-
-        <!-- Position Column -->
-        <ng-container matColumnDef="fees">
-            <th mat-header-cell *matHeaderCellDef> Fee</th>
-            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef> Weight </th>
-            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-</div>
-
 

@@ -53,6 +53,10 @@ export class AppComponent implements OnInit, OnDestroy {
     public snackBar: MatSnackBar,
     private general: GeneralService
   ) {
+   this.refreshAll();
+  }
+
+  refreshAll() {
     this.getUserDetails();
     this.getBroadcastMsg();
   }
@@ -134,7 +138,7 @@ export class AppComponent implements OnInit, OnDestroy {
               duration: 4000,
             });
             this.router.navigateByUrl('/');
-            this.getUserDetails();
+            this.refreshAll();
           }
         }, e => {
           this.error = e;
@@ -162,7 +166,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.snackBar.open('User has been registered succesfully.', 'Close', {
               duration: 2000,
             });
-            this.getUserDetails();
+            this.refreshAll();
           }
           this.router.navigate(['']);
         });
@@ -230,6 +234,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.snackBar.open('Message will be displayed to everyone.', 'Close', {
               duration: 2000,
             });
+            this.refreshAll();
           }
         });
       }
@@ -265,7 +270,7 @@ export class AppComponent implements OnInit, OnDestroy {
   // logout user
   logout() {
     this.authService.logout();
-    this.getUserDetails();
+    this.refreshAll();
     this.snackBar.open('Logged out successfully.', 'Close', {
       duration: 4000,
     });
