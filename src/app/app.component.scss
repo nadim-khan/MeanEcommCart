@@ -1,70 +1,3 @@
-/* .navbar{
-    justify-content: space-between;
-}
-span{
-    padding-right: 1rem;
-}
-.logo{
-    color:red;
-    font-size: 40px;
-    float:right;
-    margin-right:0;
-    padding-left:5vw;
-    cursor:pointer;
-}
-
-mat-sidenav-container{
-    height:90%;
-}
-mat-sidenav,mat-sidenav-content{
-    padding:5px 16px 0 16px;
-}
-mat-sidenav{
-    opacity: 0.9;
-    width:200px;
-}
-mat-sidenav .top{
-    margin-top:15px;
-}
-.mat-icon{
-    cursor:pointer;
-}
-.mat-icon:hover{
-    transform: scale(1.2);
-    transition: ease-out;
-    cursor:pointer;
-}
-
-
-
-@media only screen and (max-width: 600px) {
-    .logo{
-        color:red;
-        font-size: 25px;
-        float:right;
-        margin-right:0;
-        padding-left:80px;
-        text-align: center;
-        cursor:pointer;
-    }
-    span{
-        display:none;
-    }
-    mat-sidenav .top{
-        margin-top:5px;
-    }
-    mat-sidenav{
-        opacity: 0.9;
-        width:120px;
-    }
-    mat-sidenav,
-    mat-sidenav-content{
-        padding:5px 16px 0 2px;
-    }
-    mat-sidenav-content{
-        width:60vw;
-    }
-  } */
 
   .header {
     .active {
@@ -74,8 +7,14 @@ mat-sidenav .top{
         color: rgba(255, 255, 255, 0.87);
     }
     a,
-    span {
-        margin: 5px;
+    
+    .Broadcast-alert{
+        height: 15px;
+        font-size:10px;
+        font-weight: 600;
+        text-align: center;
+        color:#fff;
+        line-height: 15px;
     }
     .logo {
         background-image: url('../assets/gymnasium.png');
@@ -83,9 +22,9 @@ mat-sidenav .top{
         width: 45px;
         background-size: contain;
         background-repeat: no-repeat;
-        &:hover {
-            transform: scale(1.2);
-        }
+        // &:hover {
+        //     transform: scale(1.2);
+        // }
     }
     .logoname {
         height: inherit;
@@ -107,13 +46,16 @@ mat-sidenav .top{
     .profile {
         position: absolute;
         right: 0;
-        margin-right: 20px;
+        margin-right: 10px;
     }
 }
 
 .logout {
-    text-align: center;
     color: red;
+}
+
+.profileView {
+ width:400px;
 }
 
 .mat-nav-list {
@@ -134,4 +76,28 @@ mat-sidenav .top{
 
 .by {
     bottom: 0;
+}
+
+.bg-red {
+    background-color: rgb(245, 35, 35);
+}
+.bg-yellow {
+    background-color:rgb(220, 190, 20); 
+}
+
+.bg-green {
+    background-color:rgb(20, 220, 37);
+}
+.pad-top-30 {
+    padding-top:30px;
+}
+.active {
+    -webkit-box-shadow: 0px 0px 14px -7px rgba(0, 0, 0, 1);
+        -moz-box-shadow: 0px 0px 14px -7px rgba(0, 0, 0, 1);
+        box-shadow: 0px 0px 14px -7px rgba(0, 0, 0, 1);
+        color: rgba(255, 255, 255, 0.87);
+}
+.align-center{
+    align-items: center;
+    text-align: center;
 }

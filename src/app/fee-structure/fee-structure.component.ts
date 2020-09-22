@@ -1,5 +1,7 @@
 import { isDataSource } from '@angular/cdk/collections';
 import { Component, DoCheck, OnInit } from '@angular/core';
+import { ignoreElements } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 import { Fees } from '../services/fees';
 import { GeneralService } from '../services/general.service';
 
@@ -10,12 +12,17 @@ import { GeneralService } from '../services/general.service';
 })
 export class FeeStructureComponent implements OnInit, DoCheck {
   fieldArray: Fees[] = [];
+  displayedColumns =
+      ['description', 'fees'];
   disableAdd = true;
   showSpinner = true;
-  newAttribute: any = {description: '', fee: null};
+  isReadOnly = true;
+  userValues;
+  newAttribute: any = { description: '', fee: null };
 
   constructor(
-    private general: GeneralService
+    private general: GeneralService,
+    private authService: AuthService
   ) { }
 
   ngDoCheck() {
@@ -27,6 +34,14 @@ export class FeeStructureComponent implements OnInit, DoCheck {
   }
 
   getFeeStructure() {
+    this.authService.User.subscribe(userData => {
+      this.userValues = userData;
+      if (this.userValues && this.userValues.user) {
+        if (this.userValues.user.roles[0] === 'admin') {
+          this.isReadOnly = false;
+        }
+      }
+    });
     this.general.getFeeStructure().subscribe(data => {
       this.fieldArray = (data as unknown as Fees[]);
       this.showSpinner = false;
@@ -35,11 +50,11 @@ export class FeeStructureComponent implements OnInit, DoCheck {
 
   addFeeDetail() {
     this.showSpinner = true;
-    const details = {description: this.newAttribute.description, amount: this.newAttribute.fee};
+    const details = { description: this.newAttribute.description, amount: this.newAttribute.fee };
     this.general.postNewFeeDetails(details).subscribe(resp => {
       if (resp) {
         this.getFeeStructure();
-        this.newAttribute = {description: '', fee: null};
+        this.newAttribute = { description: '', fee: null };
       }
     });
   }
@@ -47,7 +62,7 @@ export class FeeStructureComponent implements OnInit, DoCheck {
   deleteFieldValue(id) {
     this.showSpinner = true;
     const feeId = id;
-    this.general.feeDelete({_id: feeId}).subscribe(response => {
+    this.general.feeDelete({ _id: feeId }).subscribe(response => {
       console.log('Delete Response : ', response);
       this.getFeeStructure();
     });
