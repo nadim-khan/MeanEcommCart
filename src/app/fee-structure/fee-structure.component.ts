@@ -1,6 +1,10 @@
 import { isDataSource } from '@angular/cdk/collections';
 import { Component, DoCheck, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ignoreElements } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+
 import { AuthService } from '../auth/auth.service';
 import { Fees } from '../services/fees';
 import { GeneralService } from '../services/general.service';
@@ -10,24 +14,22 @@ import { GeneralService } from '../services/general.service';
   templateUrl: './fee-structure.component.html',
   styleUrls: ['./fee-structure.component.scss']
 })
-export class FeeStructureComponent implements OnInit, DoCheck {
+export class FeeStructureComponent implements OnInit {
   fieldArray: Fees[] = [];
   displayedColumns =
-      ['description', 'fees', 'action'];
+      ['index', 'subscription', 'description', 'amount', 'action'];
   disableAdd = true;
   showSpinner = true;
   isReadOnly = true;
   userValues;
-  newAttribute: any = { description: '', fee: null };
 
   constructor(
     private general: GeneralService,
-    private authService: AuthService
+    private authService: AuthService,
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar,
   ) { }
 
-  ngDoCheck() {
-    this.checkField();
-  }
 
   ngOnInit() {
     this.getFeeStructure();
@@ -48,13 +50,17 @@ export class FeeStructureComponent implements OnInit, DoCheck {
     });
   }
 
-  addFeeDetail() {
-    this.showSpinner = true;
-    const details = { description: this.newAttribute.description, amount: this.newAttribute.fee };
-    this.general.postNewFeeDetails(details).subscribe(resp => {
-      if (resp) {
-        this.getFeeStructure();
-        this.newAttribute = { description: '', fee: null };
+  addNew() {
+    const dialogRef = this.dialog.open(AddFeeDialogComponent, { panelClass: 'custom-dialog-container' });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.action && result.action === 'addFee') {
+        this.general.postNewFeeDetails(result.data).subscribe(resp => {
+          if (resp) {
+            this.getFeeStructure();
+          }
+        });
+      } else {
+        return;
       }
     });
   }
@@ -68,13 +74,51 @@ export class FeeStructureComponent implements OnInit, DoCheck {
     });
   }
 
-  checkField() {
-    this.newAttribute.description = this.newAttribute.description.trim();
-    if (this.newAttribute.description === '' || this.newAttribute.fee < 1) {
-      this.disableAdd = true;
-    } else {
-      this.disableAdd = false;
+
+}
+
+// Add new fee detail inside popup
+@Component({
+  selector: 'app-dialog-login',
+  templateUrl: '../popups/addFee.html',
+})
+export class AddFeeDialogComponent {
+  hide = true;
+  description: string | null = null;
+  amount: number | null = null;
+  error: string;
+  constructor(
+    public dialogRef: MatDialogRef<AddFeeDialogComponent>,
+    private authService: AuthService
+  ) { }
+
+  feeData = new FormGroup({
+    subscription: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    description: new FormControl(''),
+    amount: new FormControl('', [Validators.required, Validators.min(0)]),
+  });
+
+  get f() {
+    return this.feeData.controls;
+  }
+
+  addFeeNow(): void {
+    if (!this.feeData.valid) {
+      this.dialogRef.close({ action: 'invalid' });
+      return;
     }
+    const feeDetails = this.feeData.getRawValue();
+    // console.log('registrationData data', this.registrationData.value);
+    this.authService.regUser = feeDetails;
+    this.dialogRef.close({ action: 'addFee', data: feeDetails });
+
+    this.feeData.reset();
+  }
+
+
+  onNoClick(): void {
+    this.dialogRef.close({ action: 'close' });
+    this.feeData.reset();
   }
 
 }

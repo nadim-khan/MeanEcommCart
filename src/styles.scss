@@ -213,6 +213,13 @@ body .push-right {
     background: #FFF; 
 }
 
+.custom-dialog-container .mat-dialog-container {
+    width:30em;
+    .mat-form-field {
+        width:100%;
+    }
+}
+
 @media (max-width: 767px) {
     .searchField {
         margin-top: -25px;

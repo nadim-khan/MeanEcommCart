@@ -1,9 +1,13 @@
 const mongoose = require('mongoose');
 
 const FeesSchema = new mongoose.Schema({
-    description: {
+    subscription: {
         type: String,
         required: true
+    },
+    description: {
+        type: String,
+        required: false
     },
     amount: {
         type: Number,

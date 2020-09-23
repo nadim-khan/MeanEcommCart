@@ -16,10 +16,10 @@
 //   }
 
 .example-container {
-    max-height: 90%;
     width: 100%;
     max-width: 100%;
     overflow:auto;
+    position: relative;
   }
   
   table {
@@ -36,16 +36,98 @@
     padding-left: 8px;
     
   }
+
+  .mat-column-index {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 5% !important;
+    width: 5% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
   
-//   .mat-table-sticky:first-child {
-//     border-right: 1px solid #e0e0e0;
-//   }
+    word-break: break-word;
   
-//   .mat-table-sticky:last-child {
-//     border-left: 1px solid #e0e0e0;
-//   }
-.update {
-    height: 10%;
-    width: 100%;
-    max-width: 100%;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
   }
+
+  .mat-column-subscription {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
+  .mat-column-description {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 30% !important;
+    width: 30% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
+  .mat-column-amount {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 15% !important;
+    width: 15% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
+  .mat-column-action {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 4% !important;
+    width: 8% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+  
+  
+  #add-button{
+    right: 3%;
+    bottom: 10px;
+    left: auto;
+    position: fixed;
+  }
+
+ ::ng-deep .custom-dialog-container .mat-dialog-container {
+    width:40em;
+    .mat-form-field {
+        width:100%;
+    }
+}

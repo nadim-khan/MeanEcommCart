@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductsModule } from './products/products.module';
 import { ContactComponent } from './contact/contact.component';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
-import { FeeStructureComponent } from './fee-structure/fee-structure.component';
+import { FeeStructureComponent, AddFeeDialogComponent } from './fee-structure/fee-structure.component';
 import { AboutComponent } from './about/about.component';
 
 
@@ -25,7 +25,8 @@ import { AboutComponent } from './about/about.component';
     ContactComponent,
     FeeStructureComponent,
     AboutComponent,
-    BroadcastDialogComponent
+    BroadcastDialogComponent,
+    AddFeeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,7 @@ import { AboutComponent } from './about/about.component';
     MaterialModule,
     ProductsModule,
   ],
-  entryComponents: [LoginDialogComponent, RegisterDialogComponent, BroadcastDialogComponent],
+  entryComponents: [LoginDialogComponent, RegisterDialogComponent, BroadcastDialogComponent, AddFeeDialogComponent ],
   providers: [ { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     JwtHelperService],
   bootstrap: [AppComponent]

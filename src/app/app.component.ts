@@ -125,9 +125,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Login to Users account
   onLogin() {
-    const dialogRef = this.dialog.open(LoginDialogComponent, {
-      width: '650px',
-    });
+    const dialogRef = this.dialog.open(LoginDialogComponent, { panelClass: 'custom-dialog-container' });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.action && result.action === 'login') {
@@ -154,10 +152,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Register new User
   onRegister() {
-    const dialogRef = this.dialog.open(RegisterDialogComponent, {
-      width: '650px',
-      data: { name: this.name, animal: this.animal }
-    });
+    const dialogRef = this.dialog.open(RegisterDialogComponent, { panelClass: 'custom-dialog-container' });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result.action && result.action === 'register') {
@@ -218,9 +213,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Broadcast a message
   broadcast() {
-    const dialogRef = this.dialog.open(BroadcastDialogComponent, {
-      width: '750px',
-    });
+    const dialogRef = this.dialog.open(BroadcastDialogComponent, { panelClass: 'custom-dialog-container' });
     dialogRef.afterClosed().subscribe(result => {
       if (result.action && result.action === 'broadcast') {
         const formattedData = {
