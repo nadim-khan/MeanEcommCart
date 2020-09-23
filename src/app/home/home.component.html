@@ -4,12 +4,12 @@
         Image Gallery
     </mat-tab>
     <mat-tab label="Fee structure">
-        <app-fee-structure></app-fee-structure>
+        <app-fee-structure [userInfo]="userInfo"></app-fee-structure>
     </mat-tab>
-    <mat-tab label="About Us">
-        <app-about></app-about>
+    <mat-tab  label="About Us">
+        <app-about [userInfo]="userInfo"></app-about>
     </mat-tab>
-    <mat-tab label="Contact Us">
-        <app-contact></app-contact>
+    <mat-tab  label="Contact Us">
+        <app-contact [userInfo]="userInfo"></app-contact>
     </mat-tab>
 </mat-tab-group>

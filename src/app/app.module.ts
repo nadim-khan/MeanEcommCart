@@ -10,6 +10,8 @@ import { AppComponent , LoginDialogComponent, RegisterDialogComponent, Broadcast
 import { MaterialModule } from './material/material/material.module';
 import { HomeComponent } from './home/home.component';
 import { ProductsModule } from './products/products.module';
+import { UsersModule } from './users/users.module';
+import { TrainersModule } from './trainers/trainers.module';
 import { ContactComponent } from './contact/contact.component';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { FeeStructureComponent, AddFeeDialogComponent } from './fee-structure/fee-structure.component';
@@ -26,7 +28,7 @@ import { AboutComponent } from './about/about.component';
     FeeStructureComponent,
     AboutComponent,
     BroadcastDialogComponent,
-    AddFeeDialogComponent
+    AddFeeDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,8 @@ import { AboutComponent } from './about/about.component';
     FormsModule,
     MaterialModule,
     ProductsModule,
+    UsersModule,
+    TrainersModule
   ],
   entryComponents: [LoginDialogComponent, RegisterDialogComponent, BroadcastDialogComponent, AddFeeDialogComponent ],
   providers: [ { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

@@ -25,6 +25,34 @@
         //     transform: scale(1.2);
         // }
     }
+    .logo:hover{
+        animation: effect 0.8s infinite;
+    }
+    @keyframes effect { 
+        0% { 
+            transform: translateX(0px) rotate(0deg); 
+        } 
+  
+        20% { 
+            transform: translateX(-4px) rotate(-4deg); 
+        } 
+  
+        40% { 
+            transform: translateX(-2px) rotate(-2deg); 
+        } 
+  
+        60% { 
+            transform: translateX(4px) rotate(4deg); 
+        } 
+  
+        80% { 
+            transform: translateX(2px) rotate(2deg); 
+        } 
+  
+        100% { 
+            transform: translateX(0px) rotate(0deg); 
+        } 
+    } 
     .logoname {
         height: inherit;
         .main {

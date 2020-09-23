@@ -1,5 +1,5 @@
 import { isDataSource } from '@angular/cdk/collections';
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ignoreElements } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,14 +14,14 @@ import { GeneralService } from '../services/general.service';
   templateUrl: './fee-structure.component.html',
   styleUrls: ['./fee-structure.component.scss']
 })
-export class FeeStructureComponent implements OnInit {
+export class FeeStructureComponent implements OnInit, OnChanges {
   fieldArray: Fees[] = [];
   displayedColumns =
       ['index', 'subscription', 'description', 'amount', 'action'];
   disableAdd = true;
   showSpinner = true;
-  isReadOnly = true;
-  userValues;
+  isAdmin = false;
+  @Input() userInfo;
 
   constructor(
     private general: GeneralService,
@@ -30,20 +30,22 @@ export class FeeStructureComponent implements OnInit {
     public snackBar: MatSnackBar,
   ) { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.userInfo) {
+      if (this.userInfo.roles.length > 0 && this.userInfo.roles[0] === 'admin') {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+    }
+  }
+
 
   ngOnInit() {
     this.getFeeStructure();
   }
 
   getFeeStructure() {
-    this.authService.User.subscribe(userData => {
-      this.userValues = userData;
-      if (this.userValues && this.userValues.user) {
-        if (this.userValues.user.roles[0] === 'admin') {
-          this.isReadOnly = false;
-        }
-      }
-    });
     this.general.getFeeStructure().subscribe(data => {
       this.fieldArray = (data as unknown as Fees[]);
       this.showSpinner = false;

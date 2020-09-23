@@ -33,14 +33,15 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Action </th>
             <td mat-cell *matCellDef="let element"> 
+                <span *ngIf="!isAdmin"> -- </span>
                 <!-- <button mat-button color="warn" (click)='editFieldValue(element._id)'><mat-icon>delete_forever</mat-icon></button> -->
-                <button mat-button color="warn" (click)='deleteFieldValue(element._id)'><mat-icon>delete_forever</mat-icon></button>
+                <button *ngIf="isAdmin" mat-button color="warn" (click)='deleteFieldValue(element._id)'><mat-icon>delete_forever</mat-icon></button>
             </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <button mat-fab color="primary" id="add-button" matTooltip="Add new Fee detail" (click)="addNew()"><i class="material-icons" >library_add</i></button>
+    <button *ngIf="isAdmin" mat-fab color="primary" id="add-button" matTooltip="Add new Fee detail" (click)="addNew()"><i class="material-icons" >library_add</i></button>
 </div>
 

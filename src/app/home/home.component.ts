@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { GeneralService } from '../services/general.service';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +11,22 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   data;
   show = false;
-  constructor( private router: Router) {
+  userInfo;
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private general: GeneralService
+    ) {
   }
 
   ngOnInit() {
+    this.getUserInfo();
+  }
+
+  getUserInfo() {
+    this.authService.User.subscribe(userData => {
+      this.userInfo = userData.user;
+    });
   }
 
   change(event) {
