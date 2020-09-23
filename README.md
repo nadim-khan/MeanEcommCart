@@ -1,27 +1,67 @@
-# MyEcommCart
+# Gymnasium - (As of now project is in progress)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+This project is built using MEAN stack.
+Frontend :- Angular 9
+Backend :- Node , Express JS
+Database :- Mongo DB
 
-## Development server
+# Start the app
+1. git clone https://github.com/nadim-khan/Gymnasium.git
+2. npm install
+3. create DB and configure it in .env file and 
+4. run the command - " npm run startbuiltApp "
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Build for general coding purpose.
 
-## Code scaffolding
+# Description of this project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Frontend : 
+Consist of 3 modules,
+1. Home 
+2. Users
+3. Trainers
 
-## Build
+User types :
+1. Admin
+-- Has access to every functionality
+-- Can broadcast a message
+-- Add, delete, edit the fee structure
+-- Add , delete, edit the User and Trainer details
+-- change everything
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+2. General User
+can only view the info
+no access to edit, create or delete anything
 
-## Running unit tests
+## Backend : 
+Has following types of API
+1. login, register (auth/login, auth/register)
+2. Broadcast (broadcast)
+3. Fee structure (feeStructure)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+for further details 
 
-## Running end-to-end tests
+### Contact - 7024019995 
+### Email - khan.nadim5811@gmail.com
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+# Scripts
+ 
+ to start , Run :- " npm run startbuiltApp "
+ 
+ or you can use any of the commands accordingly.
+ 
+ "scripts": {
+        "ng": "ng",
+        "serve": "ng serve",
+        "start": "ng serve",
+        "startBackend": "nodemon server/index.js",
+        "startbuiltApp": "concurrently \"npm run prodbuild \" \"npm run startBackend\" \"npm run start \"",
+        "build": "ng build",
+        "prodbuild": "npm run build -- --prod",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "debug": "node --nolazy --inspect-brk=9229 server/index.js"
+    },
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
