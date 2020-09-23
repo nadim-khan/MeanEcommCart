@@ -101,7 +101,6 @@ export class AuthService {
       } else {
         this.isAdmin = false;
       }
-      console.log('this.isAdmin ', this.isAdmin)
     });
     return this.user$.asObservable();
   }
@@ -116,7 +115,6 @@ export class AuthService {
     } else {
       this.isAdmin = false;
     }
-    console.log('UserType : ', this.isAdmin)
   }
 
 }

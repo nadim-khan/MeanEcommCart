@@ -51,7 +51,7 @@ export class FeeStructureComponent implements OnInit, OnChanges {
   addNew() {
     const dialogRef = this.dialog.open(AddFeeDialogComponent, { panelClass: 'custom-dialog-container' });
     dialogRef.afterClosed().subscribe(result => {
-      if (result.action && result.action === 'addFee') {
+      if (result && result.action && result.action === 'addFee') {
         this.general.postNewFeeDetails(result.data).subscribe(resp => {
           if (resp) {
             this.getFeeStructure();
