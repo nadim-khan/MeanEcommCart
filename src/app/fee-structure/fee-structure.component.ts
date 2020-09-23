@@ -28,16 +28,12 @@ export class FeeStructureComponent implements OnInit, OnChanges {
     private authService: AuthService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-  ) { }
+  ) {
+    this.isAdmin = this.authService.isAdmin;
+   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.userInfo) {
-      if (this.userInfo.roles.length > 0 && this.userInfo.roles[0] === 'admin') {
-        this.isAdmin = true;
-      } else {
-        this.isAdmin = false;
-      }
-    }
+  ngOnChanges() {
+    this.isAdmin = this.authService.isAdmin;
   }
 
 

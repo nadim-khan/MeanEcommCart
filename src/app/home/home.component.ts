@@ -17,6 +17,11 @@ export class HomeComponent implements OnInit {
     private authService: AuthService,
     private general: GeneralService
     ) {
+      this.authService.User.subscribe(userData => {
+        if (userData) {
+          this.userInfo = userData.user;
+        }
+    });
   }
 
   ngOnInit() {
@@ -25,7 +30,11 @@ export class HomeComponent implements OnInit {
 
   getUserInfo() {
     this.authService.User.subscribe(userData => {
-      this.userInfo = userData.user;
+      if (userData !== null) {
+        this.userInfo = userData.user;
+      } else {
+        this.userInfo = null;
+      }
     });
   }
 

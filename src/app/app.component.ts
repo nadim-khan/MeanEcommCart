@@ -105,10 +105,13 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.userValues && this.userValues.user) {
       this.username = this.userValues.user.username;
       this.email = this.userValues.user.email;
-      this.role = this.userValues.user.roles[0];
-      console.log(' this.role : ', this.role);
-      if (this.role.length > 0 && this.role === 'admin') {
+      if (this.userValues.user.roles.length > 0 ) {
+        this.role = this.userValues.user.roles[0];
+        if ( this.role === 'admin') {
         this.isAdmin = true;
+        } else {
+          this.isAdmin = false;
+        }
       } else {
         this.isAdmin = false;
       }
@@ -128,7 +131,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(LoginDialogComponent, { panelClass: 'custom-dialog-container' });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result.action && result.action === 'login') {
+      if (result && result.action && result.action === 'login') {
         console.log('Login result : ', result);
         this.authService.login(result.email, result.password).subscribe(res => {
           if (res) {
@@ -144,7 +147,7 @@ export class AppComponent implements OnInit, OnDestroy {
             duration: 4000,
           });
         });
-      } else if (result.action && result.action === 'register') {
+      } else if (result && result.action && result.action === 'register') {
         this.onRegister();
       }
     });
@@ -155,7 +158,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(RegisterDialogComponent, { panelClass: 'custom-dialog-container' });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result.action && result.action === 'register') {
+      if (result && result.action && result.action === 'register') {
         this.authService.register(result.data).subscribe(res => {
           if (res) {
             this.snackBar.open('User has been registered succesfully.', 'Close', {
@@ -165,11 +168,11 @@ export class AppComponent implements OnInit, OnDestroy {
           }
           this.router.navigate(['']);
         });
-      } else if (result.action && result.action === 'invalid') {
+      } else if (result &&  result.action && result.action === 'invalid') {
         this.snackBar.open('Invalid values! please re-register', 'Close', {
           duration: 2000,
         });
-      } else if (result.action && result.action === 'login') {
+      } else if (result && result.action && result.action === 'login') {
         this.onLogin();
       }
     });
