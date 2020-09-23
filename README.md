@@ -41,9 +41,8 @@ Has following types of API
 
 for further details 
 
-# Contact me : 7024019995 
-  or drop a mail at 
-# khan.nadim5811@gmail.com
+### Contact - 7024019995 
+### Email - khan.nadim5811@gmail.com
 
 # Scripts
  
