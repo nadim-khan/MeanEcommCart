@@ -1,4 +1,4 @@
-import { Component, ViewChild, HostListener, OnInit, OnDestroy, HostBinding } from '@angular/core';
+import { Component, ViewChild, HostListener, OnInit, OnDestroy, HostBinding, OnChanges, SimpleChanges } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -19,7 +19,7 @@ import { Broadcast } from './services/Broadcast';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy, OnChanges {
   [x: string]: any;
   opened = true;
   isDark = false;
@@ -54,6 +54,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private general: GeneralService
   ) {
    this.refreshAll();
+  }
+  ngOnChanges() {
+    this.refreshAll();
   }
 
   refreshAll() {

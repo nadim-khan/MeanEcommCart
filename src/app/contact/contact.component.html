@@ -4,44 +4,6 @@
     </div>
     <div class="location-image details">
         <div class="contact-form">
-            <mat-card class="card-form">
-                <form class="sendForm" [formGroup]="queryData" (ngSubmit)="sendQuery()">
-                    <mat-card-content>
-                        <H1 style="text-align: center;"> Write To Us</H1>
-                        <p>
-                            <mat-form-field appearance="standard">
-                                <mat-label>Email</mat-label>
-                                <input matInput placeholder="Email" formControlName="email" required>
-                                <mat-icon matSuffix>alternate_email</mat-icon>
-                                <mat-error *ngIf="f.email.touched && f.email.invalid && !f.email.errors.email">Please
-                                    provide your Email</mat-error>
-                                <mat-error *ngIf="f.email.touched && f.email.invalid && f.email.errors.email ">Invalid
-                                    email</mat-error>
-                                <mat-hint>Hint: john@gmail.com</mat-hint>
-                            </mat-form-field>
-                        </p>
-                        <p>
-                            <mat-form-field appearance="outline">
-                                <mat-label>Query</mat-label>
-                                <textarea matInput placeholder="Please provide your query" formControlName="queryDetail"
-                                    cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
-                                <mat-icon matSuffix>description</mat-icon>
-                                <mat-error *ngIf="f.queryDetail.touched && f.queryDetail.invalid ">Please provide more
-                                    description</mat-error>
-                                <mat-hint>Hint: Need yoga classes as well</mat-hint>
-                            </mat-form-field>
-                        </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button [disabled]="!queryData.valid" mat-button type="submit" color="primary">
-                            <mat-icon>check_circle_outline</mat-icon> Send
-                        </button>
-                        <a mat-button (click)="clearForm()">
-                            <mat-icon>highlight_off</mat-icon> Cancel
-                        </a>
-                    </mat-card-actions>
-                </form>
-            </mat-card>
             <div class="card-contact">
                 <div class="location-svg">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -107,6 +69,55 @@
                     <h3>H.No. 50, Musalmaan mohalla, Than-khamaria</h3>
                 </div>
             </div>
+            <mat-card class="card-form">
+                <form class="sendForm" [formGroup]="queryData" (ngSubmit)="sendQuery()">
+                    <mat-card-content>
+                        <H1 style="text-align: center;"> Write To Us</H1>
+                        <p>
+                            <mat-form-field appearance="standard">
+                                <mat-label>Username</mat-label>
+                                <input matInput placeholder="Placeholder" formControlName="username" required>
+                                <mat-icon matSuffix>account_circle</mat-icon>
+                                <mat-error *ngIf="f.username.touched && f.username.invalid && f.username.errors.cannotContainSpace">Invalid
+                                    Username</mat-error>
+                                <mat-hint>Hint : Nadeem Khan</mat-hint>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field appearance="standard">
+                                <mat-label>Email</mat-label>
+                                <input matInput placeholder="Email" formControlName="email" required>
+                                <mat-icon matSuffix>alternate_email</mat-icon>
+                                <mat-error *ngIf="f.email.touched && f.email.invalid && !f.email.errors.email">Please
+                                    provide your Email</mat-error>
+                                <mat-error *ngIf="f.email.touched && f.email.invalid && f.email.errors.email ">Invalid
+                                    email</mat-error>
+                                <mat-hint>Hint: john@gmail.com</mat-hint>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Query</mat-label>
+                                <textarea matInput placeholder="Please provide your query" formControlName="queryDetail"
+                                    cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+                                <mat-icon matSuffix>description</mat-icon>
+                                <mat-error *ngIf="f.queryDetail.touched && f.queryDetail.invalid ">Please provide more
+                                    description</mat-error>
+                                <mat-hint>Hint: Need yoga classes as well</mat-hint>
+                            </mat-form-field>
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button [disabled]="!queryData.valid" mat-button type="submit" color="primary">
+                            <mat-icon>check_circle_outline</mat-icon> Send
+                        </button>
+                        <a mat-button (click)="clearForm()">
+                            <mat-icon>highlight_off</mat-icon> Cancel
+                        </a>
+                    </mat-card-actions>
+                </form>
+            </mat-card>
+            
         </div>
     </div>
 </div>

@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Fees } from './fees';
 import { Broadcast } from './Broadcast';
+import { Mail } from './mail';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { Broadcast } from './Broadcast';
 export class GeneralService {
   feeApi = environment.feeStructureApi;
   broadcastApi = environment.broadcastApi;
+  mailApi = environment.mailApi;
   constructor(
     private authService: AuthService,
     private http: HttpClient
@@ -44,4 +46,18 @@ export class GeneralService {
     return this.http.post<Broadcast>(`${this.broadcastApi}/deleteBroadcast`, details);
   }
 
+  // calls for mail
+  // localhost:4050/api/mail/sendNewMail, getAllMails  and deleteMail call
+
+  getAllMails() {
+    return this.http.get<Mail>(`${this.mailApi}/getAllMails`);
+  }
+
+  newMail(details) {
+    return this.http.post<Mail>(`${this.mailApi}/sendNewMail`, details);
+  }
+
+  deleteMail(details) {
+    return this.http.post<Mail>(`${this.mailApi}/deleteMail`, details);
+  }
 }
