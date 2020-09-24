@@ -1,4 +1,4 @@
-import { Component, ViewChild, HostListener, OnInit, OnDestroy, HostBinding, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ViewChild, HostListener, OnInit, OnDestroy, HostBinding } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -19,7 +19,7 @@ import { Broadcast } from './services/Broadcast';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit, OnDestroy, OnChanges {
+export class AppComponent implements OnInit, OnDestroy {
   [x: string]: any;
   opened = true;
   isDark = false;
@@ -54,9 +54,6 @@ export class AppComponent implements OnInit, OnDestroy, OnChanges {
     private general: GeneralService
   ) {
    this.refreshAll();
-  }
-  ngOnChanges() {
-    this.refreshAll();
   }
 
   refreshAll() {
@@ -298,9 +295,21 @@ export class LoginDialogComponent {
     private authService: AuthService
   ) { }
 
+  loginData = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required]),
+  });
+  get f() {
+    return this.loginData.controls;
+  }
+
   login(): void {
-    this.error = '';
-    this.dialogRef.close({ action: 'login', email: this.email, password: this.password });
+    if (!this.loginData.valid) {
+      this.dialogRef.close({ action: 'invalid' });
+      return;
+    }
+    const loginCreds = this.loginData.getRawValue();
+    this.dialogRef.close({ action: 'login',  email: loginCreds.email , password: loginCreds.password});
   }
 
   register() {
@@ -330,6 +339,7 @@ export class RegisterDialogComponent {
   ) { }
 
   registrationData = new FormGroup({
+    profilePic: new FormControl(''),
     username: new FormControl('', [Validators.required, Validators.minLength(3), this.cannotContainSpace]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
