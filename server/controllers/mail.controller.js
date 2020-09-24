@@ -50,7 +50,7 @@ async function sendEmailToAddress() {
 
       let info = await transporter.sendMail({
         from: `"${userName}" <${emailId}>`, // sender address
-        to: "khan.nadim5811@gmail.com", // list of receivers
+        to: "gymnasium@getnada.com", // list of receivers
         subject: `Contact Us : Query by ${userName} - ${emailId}`, // Subject line
         text: `${queryDetails}`, // plain text body
       });
