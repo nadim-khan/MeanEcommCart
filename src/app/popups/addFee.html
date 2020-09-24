@@ -1,18 +1,20 @@
-<h1>Add Fee details</h1>
+<h1 style="text-align: center;">Add Fee details</h1>
 <form [formGroup]="feeData" (ngSubmit)="addFeeNow()">
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Subscription</mat-label>
             <input matInput placeholder="Placeholder" formControlName="subscription" required>
             <mat-icon matSuffix>date_range</mat-icon>
-            <mat-error *ngIf="f.subscription.touched && f.subscription.invalid ">Please provide correct details</mat-error>
+            <mat-error *ngIf="f.subscription.touched && f.subscription.invalid ">Please provide correct details
+            </mat-error>
             <mat-hint>Hint : " 1 Month, 2 Months, Personal training ... "</mat-hint>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="outline">
             <mat-label>Description</mat-label>
-            <textarea matInput placeholder="Extra benefits on this subscription" formControlName="description" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+            <textarea matInput placeholder="Extra benefits on this subscription" formControlName="description"
+                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
             <mat-icon matSuffix>description</mat-icon>
             <mat-hint>Hint : " Extra benefits"</mat-hint>
         </mat-form-field>
@@ -26,11 +28,13 @@
             <mat-hint>Hint: 1000m 2000, 5000 ...</mat-hint>
         </mat-form-field>
     </p>
-    <button [disabled]="!feeData.valid" mat-button type="submit" color="primary">
-        <mat-icon>check_circle_outline</mat-icon> Add
-    </button>
-    <a mat-button (click)="onNoClick()">
-        <mat-icon>highlight_off</mat-icon> Cancel
-    </a>
+    <div style="display: flex;justify-content: center;padding:5px;">
+        <button [disabled]="!feeData.valid" mat-button type="submit" color="primary">
+            <mat-icon>check_circle_outline</mat-icon> Add
+        </button>
+        <a mat-button (click)="onNoClick()">
+            <mat-icon>highlight_off</mat-icon> Cancel
+        </a>
+    </div>
 
 </form>

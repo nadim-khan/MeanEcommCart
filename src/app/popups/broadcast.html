@@ -1,4 +1,4 @@
-<h1>Broadcast</h1>
+<h1 style="text-align: center;">Broadcast</h1>
 <form [formGroup]="broadcastData" (ngSubmit)="broadcastNow()">
     <p>
         <mat-form-field appearance="outline">
@@ -46,11 +46,13 @@
                 Password should match</mat-error>
         </mat-form-field>
     </p> -->
-    <button [disabled]="!broadcastData.valid" mat-button type="submit" color="primary">
-        <mat-icon>check_circle_outline</mat-icon> Broadcast
-    </button>
-    <a mat-button (click)="clearForm()">
-        <mat-icon>highlight_off</mat-icon> Cancel
-    </a>
+    <div style="display: flex;justify-content: center;padding:5px;">
+        <button [disabled]="!broadcastData.valid" mat-button type="submit" color="primary">
+            <mat-icon>check_circle_outline</mat-icon> Broadcast
+        </button>
+        <a mat-button (click)="clearForm()">
+            <mat-icon>highlight_off</mat-icon> Cancel
+        </a>
+    </div>
 
 </form>
