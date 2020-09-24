@@ -220,6 +220,22 @@ body .push-right {
     }
 }
 
+.avatar svg{
+    animation: 3s ease 0s normal none infinite running zoomEffect;
+    -webkit-animation: 3s ease 0s normal none infinite running zoomEffect;
+    -o-animation: 3s ease 0s normal none infinite running zoomEffect;
+    -moz--o-animation: 3s ease 0s normal none infinite running zoomEffect;
+    transform: scale(1, 1) translate(0px, 0px);
+    -webkit-transform: scale(1, 1) translate(0px, 0px);
+    -moz-transform: scale(1, 1) translate(0px, 0px);
+	-o-transform: scale(1, 1) translate(0px, 0px);
+}
+
+@keyframes zoomEffect {
+    from {transform: scale(1, 1)}
+    to {transform: scale(1.2, 1.2)}
+}
+
 @media (max-width: 767px) {
     .searchField {
         margin-top: -25px;

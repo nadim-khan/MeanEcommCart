@@ -1,7 +1,7 @@
 import { Component, ViewChild, HostListener, OnInit, OnDestroy, HostBinding } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators, FormGroup, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
@@ -12,6 +12,8 @@ import { AuthService } from './auth/auth.service';
 import { GeneralService } from './services/general.service';
 import * as moment from 'moment';
 import { Broadcast } from './services/Broadcast';
+import { HttpClient, HttpErrorResponse, HttpEventType, HttpRequest } from '@angular/common/http';
+import { catchError, last, map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -53,7 +55,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public snackBar: MatSnackBar,
     private general: GeneralService
   ) {
-   this.refreshAll();
+    this.refreshAll();
   }
 
   refreshAll() {
@@ -105,10 +107,10 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.userValues && this.userValues.user) {
       this.username = this.userValues.user.username;
       this.email = this.userValues.user.email;
-      if (this.userValues.user.roles.length > 0 ) {
+      if (this.userValues.user.roles.length > 0) {
         this.role = this.userValues.user.roles[0];
-        if ( this.role === 'admin') {
-        this.isAdmin = true;
+        if (this.role === 'admin') {
+          this.isAdmin = true;
         } else {
           this.isAdmin = false;
         }
@@ -168,7 +170,7 @@ export class AppComponent implements OnInit, OnDestroy {
           }
           this.router.navigate(['']);
         });
-      } else if (result &&  result.action && result.action === 'invalid') {
+      } else if (result && result.action && result.action === 'invalid') {
         this.snackBar.open('Invalid values! please re-register', 'Close', {
           duration: 2000,
         });
@@ -242,7 +244,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
-// Check screen width and size
+  // Check screen width and size
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     if (event.target.innerWidth < 768) {
@@ -309,7 +311,7 @@ export class LoginDialogComponent {
       return;
     }
     const loginCreds = this.loginData.getRawValue();
-    this.dialogRef.close({ action: 'login',  email: loginCreds.email , password: loginCreds.password});
+    this.dialogRef.close({ action: 'login', email: loginCreds.email, password: loginCreds.password });
   }
 
   register() {
@@ -330,12 +332,14 @@ export class LoginDialogComponent {
 export class RegisterDialogComponent {
   hide = true;
   rehide = true;
+  files = [];
 
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    public dialogRef: MatDialogRef<RegisterDialogComponent>
+    public dialogRef: MatDialogRef<RegisterDialogComponent>,
+    private http: HttpClient
   ) { }
 
   registrationData = new FormGroup({
@@ -365,6 +369,21 @@ export class RegisterDialogComponent {
       passwordMatch: true
     } : null;
   }
+
+  onUploadClick() {
+    const fileUpload = document.getElementById('fileUpload') as HTMLInputElement;
+    fileUpload.onchange = () => {
+      // tslint:disable-next-line:prefer-for-of
+      for (let index = 0; index < fileUpload.files.length; index++) {
+        const file = fileUpload.files[index];
+        this.files.push({
+          data: file, state: 'in',
+          inProgress: false, progress: 0, canRetry: false, canCancel: true
+        });
+      }
+    };
+  }
+
 
   register() {
     if (!this.registrationData.valid) {
@@ -401,9 +420,9 @@ export class BroadcastDialogComponent {
   hide = true;
   rehide = true;
   type = [
-    {id: 1, name: 'General', value: 'general'},
-    {id: 2, name: 'Warning', value: 'warning'},
-    {id: 3, name: 'Danger', value: 'danger'}
+    { id: 1, name: 'General', value: 'general' },
+    { id: 2, name: 'Warning', value: 'warning' },
+    { id: 3, name: 'Danger', value: 'danger' }
   ];
 
   constructor(
