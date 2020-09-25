@@ -4,6 +4,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent , LoginDialogComponent, RegisterDialogComponent, BroadcastDialogComponent} from './app.component';
@@ -13,8 +16,8 @@ import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
 import { TrainersModule } from './trainers/trainers.module';
 import { ContactComponent } from './contact/contact.component';
-import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { FeeStructureComponent, AddFeeDialogComponent } from './fee-structure/fee-structure.component';
+import { GymViewComponent } from './gym-view/gym-view.component';
 
 
 @NgModule({
@@ -27,6 +30,7 @@ import { FeeStructureComponent, AddFeeDialogComponent } from './fee-structure/fe
     FeeStructureComponent,
     BroadcastDialogComponent,
     AddFeeDialogComponent,
+    GymViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,8 @@ import { FeeStructureComponent, AddFeeDialogComponent } from './fee-structure/fe
     MaterialModule,
     ProductsModule,
     UsersModule,
-    TrainersModule
+    TrainersModule,
+    MatCarouselModule.forRoot(),
   ],
   entryComponents: [LoginDialogComponent, RegisterDialogComponent, BroadcastDialogComponent, AddFeeDialogComponent ],
   providers: [ { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

@@ -1,7 +1,7 @@
 
 <mat-tab-group mat-stretch-tabs color="accent" (selectedIndexChange)="change($event)">
     <mat-tab label="Gym View">
-        Image Gallery
+        <app-gym-view></app-gym-view>
     </mat-tab>
     <mat-tab label="Fee structure">
         <app-fee-structure [userInfo]="userInfo"></app-fee-structure>
