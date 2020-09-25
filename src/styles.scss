@@ -74,7 +74,7 @@ mat-list-base[dense] .mat-list-item {
 }
 
 .mat-sidenav-content {
-    padding: 25px 40px 0;
+    padding: 15px 0 0;
 }
 
 .mat-sidenav {
@@ -213,6 +213,27 @@ body .push-right {
     background: #FFF; 
 }
 
+.mat-snack-bar-container{
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    margin: 24px;
+    max-width: 33vw;
+    min-width: 344px;
+    padding: 14px 16px;
+    min-height: 48px;
+    transform-origin: center;
+    background: #fffffff2;
+  }
+  .mat-simple-snackbar-action button {
+    max-height: 36px;
+    min-width: 0;
+    color: #fff;
+    border: 1px solid black;
+    background: red;
+}
+  
+
 .custom-dialog-container .mat-dialog-container {
     width:30em;
     .mat-form-field {
@@ -284,8 +305,10 @@ body .push-right {
         width: 100%;
     }
     .mat-sidenav-content {
-        padding: 20px 20px 0;
+        padding: 10px 0 0;
     }
+
+    
     .misc-bottom-padding mat-label {
         display: block;
         padding-bottom: 10px;

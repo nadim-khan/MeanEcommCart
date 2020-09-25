@@ -157,7 +157,7 @@
             </g>
         </svg>
     </div>
-    <input type="file" id="fileUpload" name="fileUpload" accept='image/*' (change)="uploadAfterSelect($event)" style="display:none;"/>
+    <input type="file" id="fileUpload" name="fileUpload" accept='image/*'  style="display:none;"/>
     <p>
         <mat-form-field appearance="standard">
             <mat-label>Username</mat-label>
@@ -205,7 +205,7 @@
     <h5 style="text-align: center;">Already have an account ?<a mat-button color="primary" (click)="login()">Login</a>
     </h5>
     <div style="display: flex;justify-content: center;padding:5px;">
-        <button mat-button color="primary" [disabled]="!registrationData.valid" mat-button type="submit" color="primary">
+        <button mat-button [disabled]="!registrationData.valid" mat-button type="submit" color="primary">
             <mat-icon>check_circle_outline</mat-icon> Register
         </button>
         <a mat-button color="warn" (click)="clearForm()">

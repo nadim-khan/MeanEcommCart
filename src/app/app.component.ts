@@ -6,6 +6,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators, FormGroup, FormControl, AbstractControl, ValidationErrors } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {OverlayContainer} from '@angular/cdk/overlay';
 
 import { User } from './auth/user';
 import { AuthService } from './auth/auth.service';
@@ -53,7 +54,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    private general: GeneralService
+    private general: GeneralService,
+    public overlayContainer: OverlayContainer
   ) {
     this.refreshAll();
   }
@@ -138,7 +140,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.authService.login(result.email, result.password).subscribe(res => {
           if (res) {
             this.snackBar.open('Succesfully logged in.', 'Close', {
-              duration: 4000,
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
             });
             this.router.navigateByUrl('/');
             this.refreshAll();
@@ -146,7 +150,9 @@ export class AppComponent implements OnInit, OnDestroy {
         }, e => {
           this.error = e;
           this.snackBar.open('Oops! Something went wrong. Please try again.', 'Close', {
-            duration: 4000,
+            duration: 3000,
+            horizontalPosition: 'center',
+              verticalPosition: 'top',
           });
         });
       } else if (result && result.action && result.action === 'register') {
@@ -165,6 +171,8 @@ export class AppComponent implements OnInit, OnDestroy {
           if (res) {
             this.snackBar.open('User has been registered succesfully.', 'Close', {
               duration: 2000,
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
             });
             this.refreshAll();
           }
@@ -172,7 +180,9 @@ export class AppComponent implements OnInit, OnDestroy {
         });
       } else if (result && result.action && result.action === 'invalid') {
         this.snackBar.open('Invalid values! please re-register', 'Close', {
-          duration: 2000,
+          duration: 3000,
+          horizontalPosition: 'center',
+              verticalPosition: 'top',
         });
       } else if (result && result.action && result.action === 'login') {
         this.onLogin();
@@ -187,7 +197,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Choose theme
   themeOptions(option) {
-    console.log(option.value);
+    this.overlayContainer.getContainerElement().classList.value = 'cdk-overlay-container';
+    this.overlayContainer.getContainerElement().classList.add(option.value);
     switch (option.value) {
       case 'dark':
         this.mode = 'dark';
@@ -220,7 +231,7 @@ export class AppComponent implements OnInit, OnDestroy {
   broadcast() {
     const dialogRef = this.dialog.open(BroadcastDialogComponent, { panelClass: 'custom-dialog-container' });
     dialogRef.afterClosed().subscribe(result => {
-      if (result.action && result.action === 'broadcast') {
+      if (result && result.action && result.action === 'broadcast') {
         const formattedData = {
           message: result.data.message,
           type: result.data.type,
@@ -231,6 +242,8 @@ export class AppComponent implements OnInit, OnDestroy {
           if (response) {
             this.snackBar.open('Message will be displayed to everyone.', 'Close', {
               duration: 2000,
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
             });
             this.refreshAll();
           }
@@ -295,7 +308,9 @@ export class LoginDialogComponent {
     public dialogRef: MatDialogRef<LoginDialogComponent>,
     private router: Router,
     private authService: AuthService
-  ) { }
+  ) {
+    this.dialogRef.disableClose = true;
+  }
 
   loginData = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -340,7 +355,9 @@ export class RegisterDialogComponent {
     private authService: AuthService,
     public dialogRef: MatDialogRef<RegisterDialogComponent>,
     private http: HttpClient
-  ) { }
+  ) {
+    this.dialogRef.disableClose = true;
+  }
 
   registrationData = new FormGroup({
     profilePic: new FormControl(''),
@@ -419,6 +436,7 @@ export class RegisterDialogComponent {
 export class BroadcastDialogComponent {
   hide = true;
   rehide = true;
+  minDate = new Date();
   type = [
     { id: 1, name: 'General', value: 'general' },
     { id: 2, name: 'Warning', value: 'warning' },
@@ -430,7 +448,9 @@ export class BroadcastDialogComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     public dialogRef: MatDialogRef<BroadcastDialogComponent>
-  ) { }
+  ) {
+    this.dialogRef.disableClose = true;
+   }
 
   broadcastData = new FormGroup({
     message: new FormControl('', [Validators.required, Validators.minLength(3)]),

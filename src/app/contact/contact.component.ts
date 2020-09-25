@@ -44,11 +44,15 @@ export class ContactComponent implements OnInit, OnChanges {
     this.general.newMail(queryToBeSent).subscribe(response => {
       if (response) {
         this.snackBar.open(`Query has been sent successfully. We'll get back to you`, 'Close', {
-          duration: 4000,
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
         });
       } else {
         this.snackBar.open('Oops! Something went wrong. Please try again.', 'Close', {
-          duration: 4000,
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
         });
       }
     });

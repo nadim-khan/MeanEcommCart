@@ -40,7 +40,7 @@ $blue-theme:mat-light-theme($blue-primary, $blue-accent, $blue-warn);
 $green-primary: mat-palette($mat-green, 600);
 $green-accent: mat-palette($mat-grey, A200);
 $green-warn:mat-palette($mat-red);
-$green-theme:mat-light-theme($green-primary, $green-accent, $green-warn);
+$green-theme:mat-dark-theme($green-primary, $green-accent, $green-warn);
 .green {
     @include angular-material-theme($green-theme);
 }

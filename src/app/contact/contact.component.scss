@@ -48,11 +48,9 @@
       svg {
         height: 45%;
         width: 45%;
-      }
-
-      svg:hover {
         animation: effect 0.4s infinite;
       }
+
 
       @keyframes effect {
         0% {

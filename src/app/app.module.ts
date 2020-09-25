@@ -15,7 +15,6 @@ import { TrainersModule } from './trainers/trainers.module';
 import { ContactComponent } from './contact/contact.component';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 import { FeeStructureComponent, AddFeeDialogComponent } from './fee-structure/fee-structure.component';
-import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -26,7 +25,6 @@ import { AboutComponent } from './about/about.component';
     HomeComponent,
     ContactComponent,
     FeeStructureComponent,
-    AboutComponent,
     BroadcastDialogComponent,
     AddFeeDialogComponent,
   ],

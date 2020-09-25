@@ -88,7 +88,9 @@ export class AddFeeDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<AddFeeDialogComponent>,
     private authService: AuthService
-  ) { }
+  ) {
+    this.dialogRef.disableClose = true;
+  }
 
   feeData = new FormGroup({
     subscription: new FormControl('', [Validators.required, Validators.minLength(3)]),

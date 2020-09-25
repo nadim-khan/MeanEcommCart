@@ -21,36 +21,23 @@
     <p>
         <mat-form-field appearance="fill">
             <mat-label>From Date</mat-label>
-            <input matInput [matDatepicker]="from" formControlName="fromDate">
+            <input matInput [matDatepicker]="from" formControlName="fromDate" [min]="minDate" (focus)="from.open()"  (click)="from.open()">
             <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
             <mat-datepicker #from></mat-datepicker>
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Till Date</mat-label>
-            <input matInput [matDatepicker]="to" formControlName="toDate">
+            <input matInput [matDatepicker]="to" formControlName="toDate" [min]="(broadcastData.value.fromDate)?(broadcastData.value.fromDate): minDate" (focus)="to.open()"  (click)="to.open()">
             <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
             <mat-datepicker #to></mat-datepicker>
         </mat-form-field>
     </p>
-    <!-- <p>
-        <mat-form-field appearance="standard">
-            <mat-label>Re-enter password</mat-label>
-            <input matInput [type]="rehide ? 'password' : 'text'" name="repeatPassword" formControlName="repeatPassword"
-                required>
-            <a mat-icon-button matTooltip="Show/Hide Password" matSuffix (click)="rehide = !rehide"
-                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="rehide">
-                <mat-icon>{{rehide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </a>
-            <mat-error
-                *ngIf=" f.repeatPassword.touched && f.repeatPassword.invalid && f.repeatPassword.errors.passwordMatch">
-                Password should match</mat-error>
-        </mat-form-field>
-    </p> -->
+    <h4 *ngIf="broadcastData.valid" style="text-align: center;color:red"> Broadcasting new message will disable previous broadcast</h4>
     <div style="display: flex;justify-content: center;padding:5px;">
         <button [disabled]="!broadcastData.valid" mat-button type="submit" color="primary">
             <mat-icon>check_circle_outline</mat-icon> Broadcast
         </button>
-        <a mat-button (click)="clearForm()">
+        <a mat-button color="warn" (click)="clearForm()">
             <mat-icon>highlight_off</mat-icon> Cancel
         </a>
     </div>
