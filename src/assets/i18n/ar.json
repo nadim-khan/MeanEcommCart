@@ -25,7 +25,9 @@
         "FORM_RE_PASSWORD_INVALID":"يجب أن تتطابق كلمتا المرور",
         "BUTTON_LOGIN": "تسجيل الدخول أو التسجيل",
         "BUTTON_SEND": "بند",
-        "BUTTON_CANCEL": "ألغها"
+        "BUTTON_BROADCAST":"قم ببثها",
+        "BUTTON_CANCEL": "ألغها",
+        "BUTTON_LOGOUT": "تسجيل خروج"
     },
     "HOME": {
         "TAB1": "عرض الصالة الرياضية",

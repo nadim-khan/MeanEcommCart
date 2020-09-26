@@ -25,7 +25,9 @@
         "FORM_RE_PASSWORD_INVALID":"दोनों पासवर्ड का मिलान होना चाहिए",
         "BUTTON_LOGIN": "भाग लें या पंजीकरण करें",
         "BUTTON_SEND": "भेज दे",
-        "BUTTON_CANCEL": "इसे रद्द करें"
+        "BUTTON_BROADCAST":"ब्रॉडकास्ट करें",
+        "BUTTON_CANCEL": "इसे रद्द करें",
+        "BUTTON_LOGOUT": "लॉग आउट"
     },
     "HOME": {
         "TAB1": "व्यायामशाला का दृश्य",

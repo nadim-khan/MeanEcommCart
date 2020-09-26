@@ -25,7 +25,9 @@
         "FORM_RE_PASSWORD_INVALID":"Passwords should match",
         "BUTTON_LOGIN": "Login or Register",
         "BUTTON_SEND": "Send",
-        "BUTTON_CANCEL": "Cancel"
+        "BUTTON_BROADCAST":"Broadcast",
+        "BUTTON_CANCEL": "Cancel",
+        "BUTTON_LOGOUT": "Logout"
     },
     "HOME": {
         "TAB1": "GYM VIEW",

@@ -45,8 +45,8 @@
                         <mat-icon>language</mat-icon> {{'APP.SELECT' |translate}}
                     </button>
                     <button *ngIf="!isAdmin" mat-menu-item class="theme" (click)="showNotification()"><mat-icon> notification_important </mat-icon> Notification</button>
-                    <button *ngIf="isAdmin" mat-menu-item class="theme" (click)="broadcast()"><mat-icon> speaker_phone</mat-icon> Broadcast</button>
-                    <button mat-menu-item class="logout" (click)="logout()"><mat-icon> power_settings_new </mat-icon> Logout</button>
+                    <button *ngIf="isAdmin" mat-menu-item class="theme" (click)="broadcast()"><mat-icon> speaker_phone</mat-icon> {{'APP.BUTTON_BROADCAST'|translate}}</button>
+                    <button mat-menu-item class="logout" (click)="logout()"><mat-icon> power_settings_new </mat-icon> {{'APP.BUTTON_LOGOUT'|translate}}</button>
                 </mat-menu>
 
                 <button *ngIf="!userExist" mat-icon-button (click)="onLogin()" matTooltip="{{'APP.BUTTON_LOGIN'|translate}}">
