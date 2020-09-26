@@ -66,53 +66,49 @@
                 </div>
                 <div class="numbers">
                     <h3>+91-7024019995</h3>
-                    <h3>H.No. 50, Musalmaan mohalla, Than-khamaria</h3>
+                    <h3>{{'HOME.TAB3_VIEW.ADDRESS'|translate}}</h3>
                 </div>
             </div>
             <mat-card class="card-form">
                 <form class="sendForm" [formGroup]="queryData" (ngSubmit)="sendQuery()">
                     <mat-card-content>
-                        <H1 style="text-align: center;"> Write To Us</H1>
+                        <H1 style="text-align: center;"> {{'HOME.TAB3_VIEW.HEADER'|translate}}</H1>
                         <p>
                             <mat-form-field appearance="standard">
-                                <mat-label>Username</mat-label>
-                                <input matInput placeholder="Placeholder" formControlName="username" required>
+                                <mat-label>{{'APP.FORM_USERNAME'|translate}}</mat-label>
+                                <input matInput placeholder="{{'APP.FORM_USERNAME_PLACEHOLDER'|translate}}" formControlName="username" required>
                                 <mat-icon matSuffix>account_circle</mat-icon>
-                                <mat-error *ngIf="f.username.touched && f.username.invalid && f.username.errors.cannotContainSpace">Invalid
-                                    Username</mat-error>
-                                <mat-hint>Hint : Nadeem Khan</mat-hint>
+                                <mat-error *ngIf="f.username.touched && f.username.invalid && f.username.errors.cannotContainSpace">{{'APP.FORM_USERNAME_INVALID'|translate}}</mat-error>
+                                <mat-hint>{{'APP.FORM_USERNAME_HINT'|translate}}</mat-hint>
                             </mat-form-field>
                         </p>
                         <p>
                             <mat-form-field appearance="standard">
-                                <mat-label>Email</mat-label>
-                                <input matInput placeholder="Email" formControlName="email" required>
+                                <mat-label>{{'APP.FORM_EMAIL'|translate}}</mat-label>
+                                <input matInput placeholder="{{'APP.FORM_EMAIL_PLACEHOLDER'|translate}}" formControlName="email" required>
                                 <mat-icon matSuffix>alternate_email</mat-icon>
-                                <mat-error *ngIf="f.email.touched && f.email.invalid && !f.email.errors.email">Please
-                                    provide your Email</mat-error>
-                                <mat-error *ngIf="f.email.touched && f.email.invalid && f.email.errors.email ">Invalid
-                                    email</mat-error>
-                                <mat-hint>Hint: john@gmail.com</mat-hint>
+                                <mat-error *ngIf="f.email.touched && f.email.invalid && !f.email.errors.email">{{'APP.FORM_EMAIL_EMPTY'|translate}}</mat-error>
+                                <mat-error *ngIf="f.email.touched && f.email.invalid && f.email.errors.email ">{{'APP.FORM_EMAIL_INVALID'|translate}}</mat-error>
+                                <mat-hint>{{'APP.FORM_EMAIL_HINT'|translate}}</mat-hint>
                             </mat-form-field>
                         </p>
                         <p>
                             <mat-form-field appearance="outline">
-                                <mat-label>Query</mat-label>
-                                <textarea matInput placeholder="Please provide your query" formControlName="queryDetail"
+                                <mat-label>{{'HOME.TAB3_VIEW.FORM_QUERY'|translate}}</mat-label>
+                                <textarea matInput placeholder="{{'HOME.TAB3_VIEW.FORM_QUERY_PLACEHOLDER'|translate}} " formControlName="queryDetail"
                                     cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
                                 <mat-icon matSuffix>description</mat-icon>
-                                <mat-error *ngIf="f.queryDetail.touched && f.queryDetail.invalid ">Please provide more
-                                    description</mat-error>
-                                <mat-hint>Hint: Need yoga classes as well</mat-hint>
+                                <mat-error *ngIf="f.queryDetail.touched && f.queryDetail.invalid ">{{'HOME.TAB3_VIEW.FORM_QUERY_INVALID'|translate}}</mat-error>
+                                <mat-hint>{{'HOME.TAB3_VIEW.FORM_QUERY_HINT'|translate}}</mat-hint>
                             </mat-form-field>
                         </p>
                     </mat-card-content>
                     <mat-card-actions>
                         <button [disabled]="!queryData.valid" mat-button type="submit" color="primary">
-                            <mat-icon>check_circle_outline</mat-icon> Send
+                            <mat-icon>check_circle_outline</mat-icon> {{'APP.BUTTON_SEND'|translate}}
                         </button>
                         <a mat-button (click)="clearForm()">
-                            <mat-icon>highlight_off</mat-icon> Cancel
+                            <mat-icon>highlight_off</mat-icon> {{'APP.BUTTON_CANCEL'|translate}}
                         </a>
                     </mat-card-actions>
                 </form>

@@ -1,32 +1,34 @@
-<h1 style="text-align: center;">Login</h1>
+<h1 style="text-align: center;">{{'POPUP.LOGIN_HEAD'|translate}}</h1>
 
 <form [formGroup]="loginData" (ngSubmit)="login()">
 <p>
     <mat-form-field appearance="standard">
-        <mat-label>Email</mat-label>
-        <input matInput  placeholder="Email id" formControlName="email" name="email"
+        <mat-label>{{'APP.FORM_EMAIL'|translate}}</mat-label>
+        <input matInput  placeholder="{{'APP.FORM_EMAIL_PLACEHOLDER'|translate}}" formControlName="email" name="email"
             required>
         <mat-icon matSuffix>account_circle</mat-icon>
-        <mat-hint>Hint:khan.nadim@gmail.com</mat-hint>
+        <mat-hint>{{'APP.FORM_EMAIL_HINT'|translate}}</mat-hint>
     </mat-form-field>
 </p>
 <p>
     <mat-form-field appearance="standard">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" name="password" required>
+        <mat-label>{{'APP.FORM_PASSWORD'|translate}}</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="{{'APP.FORM_PASSWORD_PLACEHOLDER'|translate}}"formControlName="password" name="password" required>
         <a mat-icon-button matTooltip="Show/Hide Password" matSuffix (click)="hide = !hide"
             [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </a>
+        <mat-error *ngIf="f.password.invalid && f.password.touched">{{'APP.FORM_PASSWORDL_INVALID'|translate}}</mat-error>
+            <mat-hint>{{'APP.FORM_PASSWORDL_HINT'|translate}}</mat-hint>
     </mat-form-field>
 </p>
-<h5 style="text-align: center;">User has to <a (click)="register()" mat-button color="primary">register</a> first!</h5>
+<h5 style="text-align: center;">{{'POPUP.LOGIN_TEXT_FOR_REGISTER'|translate}} <a (click)="register()" mat-button color="primary">{{'POPUP.BUTTON_REGISTER'|translate}}</a> </h5>
 <div style="display: flex;justify-content: center;padding:5px;">
     <button mat-button type="submit" [disabled] = "!loginData.valid " color="primary" >
-        <mat-icon>check_circle_outline</mat-icon> Login
+        <mat-icon>check_circle_outline</mat-icon> {{'POPUP.LOGIN_HEAD'|translate}}
     </button>
     <a mat-button color="warn" (click)="onNoClick()">
-        <mat-icon >highlight_off</mat-icon> Cancel
+        <mat-icon >highlight_off</mat-icon> {{'POPUP.BUTTON_CANCEL'|translate}}
     </a>
 </div>
 </form>

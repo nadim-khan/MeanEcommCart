@@ -36,6 +36,8 @@ export class AppComponent implements OnInit, OnDestroy {
   email;
   error;
   role;
+  browserLang;
+  languageSet = [];
   broadcatMsgData;
   allBroadcastMsgs: Broadcast[] = [];
   userSubscription: Subscription;
@@ -60,15 +62,40 @@ export class AppComponent implements OnInit, OnDestroy {
     public translate: TranslateService
   ) {
     this.refreshAll();
-    translate.addLangs(['en', 'hi']);
+    translate.addLangs(['en', 'hi', 'ar']);
     translate.setDefaultLang('en');
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|hi/) ? browserLang : 'en');
+    this.browserLang = translate.getBrowserLang();
+    translate.use(this.browserLang.match(/en|hi/) ? this.browserLang : 'en');
+    this.generateLanguageSet();
   }
 
   refreshAll() {
     this.getUserDetails();
     this.getBroadcastMsg();
+  }
+
+  generateLanguageSet() {
+    const langs = this.translate.getLangs();
+    const set = [
+      {code: 'en', name: 'English', nativeName: 'English'},
+      {code: 'hi', name: 'Hindi', nativeName: 'हिन्दी'},
+      {code: 'ar', name: 'Arabic', nativeName: 'العربية'},
+    ];
+    set.forEach(data => {
+      if (langs.includes(data.code)) {
+        this.languageSet.push(data);
+      }
+    });
+    const localStorageLang = localStorage.getItem('selectedLanguage');
+    console.log('this.languageSet', this.languageSet);
+    if (localStorageLang) {
+      this.translate.use(localStorageLang);
+      this.browserLang = localStorageLang;
+    }
+  }
+
+  setLanguage(value) {
+    localStorage.setItem('selectedLanguage', value);
   }
 
   ngOnInit() {

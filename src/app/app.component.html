@@ -8,18 +8,20 @@
             <span routerLink="/" class="logo" ></span>
             <span  routerLink="/" >{{'APP.TITLE' | translate}}</span>
             <div class="profile">
-                <button *ngIf="!userExist" mat-icon-button (click)="onLogin()" matTooltip="{{'APP.BUTTON_LOGIN'|translate}}">
-                    <mat-icon>person</mat-icon>
+                
+                <button mat-button *ngIf="!userExist" [matMenuTriggerFor]="languageMenu" matTooltip="{{'APP.SELECT' |translate}}">
+                    <mat-icon>language</mat-icon> {{browserLang}}
+                    <mat-icon>keyboard_arrow_down</mat-icon>
                 </button>
-                <button *ngIf="!userExist" mat-icon-button [matMenuTriggerFor]="languageMenu" matTooltip="{{'APP.SELECT' |translate}}" matTooltipPosition="right">
-                    <mat-icon>language</mat-icon>
-                </button>
+                <!-- <button *ngIf="!userExist" mat-icon-button [matMenuTriggerFor]="languageMenu" matTooltip="{{'APP.SELECT' |translate}}" matTooltipPosition="right">
+                    <mat-icon>language</mat-icon> 
+                </button> -->
                 <mat-menu #languageMenu="matMenu" xPosition="before">
 
-                    <mat-radio-group (change)="translate.use($event.value)">
+                    <mat-radio-group (change)="translate.use($event.value); browserLang = $event.value; setLanguage($event.value)">
                         <mat-list>
-                            <mat-list-item *ngFor="let lang of translate.getLangs()">
-                                <mat-radio-button [value]="lang" [checked]="(translate.getBrowserLang() === lang) ?true : false">{{lang}}</mat-radio-button>
+                            <mat-list-item *ngFor="let lang of languageSet">
+                                <mat-radio-button [value]="lang.code" [checked]="(browserLang === lang.code) ?true : false">{{lang.name}} ({{lang.nativeName}})</mat-radio-button>
                             </mat-list-item>
                         </mat-list>
                     </mat-radio-group>
@@ -39,12 +41,17 @@
                     <div mat-menu-item>
                         <mat-icon> email </mat-icon> {{email}}
                     </div>
-                    <!-- <button mat-menu-item class="theme" (click)="changeTheme()">Change Theme</button> -->
+                    <button mat-menu-item [matMenuTriggerFor]="languageMenu" >
+                        <mat-icon>language</mat-icon> {{'APP.SELECT' |translate}}
+                    </button>
                     <button *ngIf="!isAdmin" mat-menu-item class="theme" (click)="showNotification()"><mat-icon> notification_important </mat-icon> Notification</button>
                     <button *ngIf="isAdmin" mat-menu-item class="theme" (click)="broadcast()"><mat-icon> speaker_phone</mat-icon> Broadcast</button>
                     <button mat-menu-item class="logout" (click)="logout()"><mat-icon> power_settings_new </mat-icon> Logout</button>
                 </mat-menu>
 
+                <button *ngIf="!userExist" mat-icon-button (click)="onLogin()" matTooltip="{{'APP.BUTTON_LOGIN'|translate}}">
+                    <mat-icon>person</mat-icon>
+                </button>
             </div>
         </mat-toolbar-row>
     </mat-toolbar>

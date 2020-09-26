@@ -1,39 +1,39 @@
-<h1 style="text-align: center;">Add Fee details</h1>
+<h1 style="text-align: center;">{{'POPUP.ADD_FEE_HEAD'|translate}}</h1>
 <form [formGroup]="feeData" (ngSubmit)="addFeeNow()">
     <p>
         <mat-form-field appearance="outline">
-            <mat-label>Subscription</mat-label>
-            <input matInput placeholder="Placeholder" formControlName="subscription" required>
+            <mat-label>{{'POPUP.FORM_SUBSCRIPTION'|translate}}</mat-label>
+            <input matInput placeholder="{{'POPUP.FORM_SUBSCRIPTION_PLACEHOLDER'|translate}}" formControlName="subscription" required>
             <mat-icon matSuffix>date_range</mat-icon>
-            <mat-error *ngIf="f.subscription.touched && f.subscription.invalid ">Please provide correct details
+            <mat-error *ngIf="f.subscription.touched && f.subscription.invalid ">{{'POPUP.FORM_SUBSCRIPTION_INVALID'|translate}}
             </mat-error>
-            <mat-hint>Hint : " 1 Month, 2 Months, Personal training ... "</mat-hint>
+            <mat-hint>{{'POPUP.FORM_SUBSCRIPTION_HINT'|translate}}</mat-hint>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="outline">
-            <mat-label>Description</mat-label>
-            <textarea matInput placeholder="Extra benefits on this subscription" formControlName="description"
+            <mat-label>{{'POPUP.FORM_DESCRIPTION'|translate}}</mat-label>
+            <textarea matInput placeholder="{{'POPUP.FORM_DESCRIPTION_PLACEHOLDER'|translate}}" formControlName="description"
                 cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
             <mat-icon matSuffix>description</mat-icon>
-            <mat-hint>Hint : " Extra benefits"</mat-hint>
+            <mat-hint>{{'POPUP.FORM_DESCRIPTION_HINT'|translate}}</mat-hint>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="standard">
-            <mat-label>Amount</mat-label>
-            <input matInput placeholder="Placeholder" formControlName="amount" required>
+            <mat-label>{{'POPUP.FORM_AMOUNT'|translate}}</mat-label>
+            <input matInput placeholder="{{'POPUP.FORM_AMOUNT_PLACEHOLDER'|translate}}" formControlName="amount" required>
             <mat-icon matSuffix>attach_money</mat-icon>
-            <mat-error *ngIf="f.amount.touched && f.amount.invalid ">Please enter the correct amount.</mat-error>
-            <mat-hint>Hint: 1000m 2000, 5000 ...</mat-hint>
+            <mat-error *ngIf="f.amount.touched && f.amount.invalid ">{{'POPUP.FORM_AMOUNT_INVALID'|translate}}</mat-error>
+            <mat-hint>{{'POPUP.FORM_AMOUNT_HINT'|translate}}</mat-hint>
         </mat-form-field>
     </p>
     <div style="display: flex;justify-content: center;padding:5px;">
         <button [disabled]="!feeData.valid" mat-button type="submit" color="primary">
-            <mat-icon>check_circle_outline</mat-icon> Add
+            <mat-icon>check_circle_outline</mat-icon> {{'POPUP.BUTTON_ADD'|translate}}
         </button>
         <a mat-button color="warn" (click)="onNoClick()">
-            <mat-icon>highlight_off</mat-icon> Cancel
+            <mat-icon>highlight_off</mat-icon> {{'POPUP.BUTTON_CANCEL'|translate}}
         </a>
     </div>
 

@@ -1,0 +1,78 @@
+{
+    "APP": {
+        "TITLE" : "صالة الألعاب الرياضية",
+        "SELECT": "اختار اللغة",
+        "MENU_HOME": "الأساسية",
+        "MENU_USERS": "المستخدمون",
+        "MENU_TRAINERS": "المدربون",
+        "MENU_THEME": "حدد موضوعًا",
+        "FORM_USERNAME": "اسم المستخدم",
+        "FORM_USERNAME_PLACEHOLDER": "ادخل اسم المستخدم",
+        "FORM_USERNAME_HINT": "ملحوظة : Nadeem Khan",
+        "FORM_USERNAME_INVALID":"إسم المستخدم غير صحيح",
+        "FORM_EMAIL": "البريد الإلكتروني",
+        "FORM_EMAIL_PLACEHOLDER": "أدخل معرف البريد الإلكتروني",
+        "FORM_EMAIL_HINT": "ملحوظة : nadim@gmail.com",
+        "FORM_EMAIL_EMPTY":"يرجى تقديم معرف البريد الإلكتروني",
+        "FORM_EMAIL_INVALID":"البريد الإلكتروني غير صالح",
+        "FORM_PASSWORD": "كلمه السر",
+        "FORM_PASSWORD_PLACEHOLDER": "أدخل كلمة المرور",
+        "FORM_PASSWORDL_HINT": "ملحوظة : mhdf@k#35",
+        "FORM_PASSWORDL_INVALID" :"رمز مرور خاطئ",
+        "FORM_RE_PASSWORD": "إعادة إدخال كلمة المرور",
+        "FORM_RE_PASSWORD_PLACEHOLDER": "إعادة إدخال كلمة المرور",
+        "FORM_RE_PASSWORDL_HINT": "ملحوظة : كلمتك السرية ",
+        "FORM_RE_PASSWORD_INVALID":"يجب أن تتطابق كلمتا المرور",
+        "BUTTON_LOGIN": "تسجيل الدخول أو التسجيل",
+        "BUTTON_SEND": "بند",
+        "BUTTON_CANCEL": "ألغها"
+    },
+    "HOME": {
+        "TAB1": "عرض الصالة الرياضية",
+        "TAB1_VIEW": {
+            "HEADING": "صالة رياضية - ثان الخمارية"
+        },
+        "TAB2": "هيكل الرسوم",
+        "TAB2_VIEW": {
+            "TABLE_COL2": "الاشتراك",
+            "TABLE_COL3": "وصف",
+            "TABLE_COL4": "كمية",
+            "TABLE_COL5": "عمل",
+            "VIWE_ONLY_BUTTON": "يمكن أن يرى فقط"
+        },
+        "TAB3": "اتصل بنا",
+        "TAB3_VIEW": {
+            "ADDRESS": "البيت 50 ، مسلم موهالا ، ثان الخمارية ، (تشاتيسجاره) ، 491338",
+            "HEADER": "اكتب لنا",
+            "FORM_QUERY": "استعلام",
+            "FORM_QUERY_PLACEHOLDER": "يرجى تقديم استفسارك",
+            "FORM_QUERY_INVALID":"يرجى تقديم المزيد من الوصف",
+            "FORM_QUERY_HINT":"تلميح: بحاجة إلى تفاصيل صف اليوغا"
+        }
+    },
+    "POPUP":{
+        "LOGIN_HEAD":"تسجيل الدخول",
+        "LOGIN_TEXT_FOR_REGISTER":"يجب على المستخدم تسجيل الدخول أولا ",
+        "REGISTER_HEAD":"تسجيل",
+        "REGISTER_TEXT_FOR_LOGIN":"هل لديك حساب ؟ ",
+        "BROADCAST_HEAD":"بث",
+        "ADD_FEE_HEAD":"إضافة تفاصيل الرسوم",
+        "BUTTON_SEND": "بند",
+        "BUTTON_CANCEL": "ألغها",
+        "BUTTON_LOGIN": "تسجيل الدخول",
+        "BUTTON_REGISTER": "تسجيل",
+        "BUTTON_BROADCAST":"قم ببثها",
+        "BUTTON_ADD":"أضف",
+        "FORM_SUBSCRIPTION": "الاشتراك",
+        "FORM_SUBSCRIPTION_PLACEHOLDER": "يرجى تقديم تفاصيل",
+        "FORM_SUBSCRIPTION_HINT": "تلميح: شهر ، شهرين ، دروس يوجا ...",
+        "FORM_SUBSCRIPTION_INVALID":"يرجى تقديم التفاصيل الصحيحة",
+        "FORM_DESCRIPTION": "وصف",
+        "FORM_DESCRIPTION_PLACEHOLDER": "مزايا إضافية على هذا الاشتراك",
+        "FORM_DESCRIPTION_HINT": "تلميح: فوائد إضافية",
+        "FORM_AMOUNT": "كمية",
+        "FORM_AMOUNT_PLACEHOLDER": "الرجاء إدخال المبلغ",
+        "FORM_AMOUNT_HINT":"تلميح: 1000 2000 ، 5000 ",
+        "FORM_AMOUNT_INVALID":"يرجى إدخال مبلغ صالح."
+    }
+}

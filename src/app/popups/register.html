@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">Register</h1>
+<h1 style="text-align: center;">{{'POPUP.REGISTER_HEAD'|translate}}</h1>
 <form [formGroup]="registrationData" (ngSubmit)="register()">
     <div class="avatar" style="display: flex;justify-content: center;" matTooltip="Upload profile pic" (click)="onUploadClick()">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1"
@@ -160,56 +160,55 @@
     <input type="file" id="fileUpload" name="fileUpload" accept='image/*'  style="display:none;"/>
     <p>
         <mat-form-field appearance="standard">
-            <mat-label>Username</mat-label>
-            <input matInput placeholder="Placeholder" formControlName="username" required>
+            <mat-label>{{'APP.FORM_USERNAME'|translate}}</mat-label>
+            <input matInput placeholder="{{'APP.FORM_USERNAME_PLACEHOLDER'|translate}}" formControlName="username" required>
             <mat-icon matSuffix>account_circle</mat-icon>
-            <mat-error *ngIf="f.username.touched && f.username.invalid && f.username.errors.cannotContainSpace">Invalid
-                Username</mat-error>
-            <mat-hint>Hint</mat-hint>
+            <mat-error *ngIf="f.username.touched && f.username.invalid && f.username.errors.cannotContainSpace">{{'APP.FORM_USERNAME_INVALID'|translate}}</mat-error>
+            <mat-hint>{{'APP.FORM_USERNAME_HINT'|translate}}</mat-hint>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="standard">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="Placeholder" formControlName="email" required>
+            <mat-label>{{'APP.FORM_EMAIL'|translate}}</mat-label>
+            <input matInput placeholder="{{'APP.FORM_EMAIL_PLACEHOLDER'|translate}}" formControlName="email" required>
             <mat-icon matSuffix>alternate_email</mat-icon>
-            <mat-error *ngIf="f.email.touched && f.email.invalid && f.email.errors.email">Invalid Email</mat-error>
-            <mat-hint>Hint</mat-hint>
+            <mat-error *ngIf="f.email.touched && f.email.invalid && f.email.errors.email">{{'APP.FORM_EMAIL_INVALID'|translate}}</mat-error>
+            <mat-hint>{{'APP.FORM_EMAIL_HINT'|translate}}</mat-hint>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="standard">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" name="password" formControlName="password" required>
+            <mat-label>{{'APP.FORM_PASSWORD'|translate}}</mat-label>
+            <input matInput placeholder="{{'APP.FORM_PASSWORD_PLACEHOLDER'|translate}}" [type]="hide ? 'password' : 'text'" name="password" formControlName="password" required>
             <a mat-icon-button matTooltip="Show/Hide Password" matSuffix (click)="hide = !hide"
                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </a>
-            <mat-error *ngIf="f.password.invalid && f.password.touched">Invalid Password</mat-error>
+            <mat-error *ngIf="f.password.invalid && f.password.touched">{{'APP.FORM_PASSWORDL_INVALID'|translate}}</mat-error>
+            <mat-hint>{{'APP.FORM_PASSWORDL_HINT'|translate}}</mat-hint>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="standard">
-            <mat-label>Re-enter password</mat-label>
-            <input matInput [type]="rehide ? 'password' : 'text'" name="repeatPassword" formControlName="repeatPassword"
+            <mat-label>{{'APP.FORM_RE_PASSWORD'|translate}}</mat-label>
+            <input matInput placeholder="{{'APP.FORM_RE_PASSWORD_PLACEHOLDER'|translate}}" [type]="rehide ? 'password' : 'text'" name="repeatPassword" formControlName="repeatPassword"
                 required>
             <a mat-icon-button matTooltip="Show/Hide Password" matSuffix (click)="rehide = !rehide"
                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="rehide">
                 <mat-icon>{{rehide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </a>
             <mat-error
-                *ngIf=" f.repeatPassword.touched && f.repeatPassword.invalid && f.repeatPassword.errors.passwordMatch">
-                Password should match</mat-error>
+                *ngIf=" f.repeatPassword.touched && f.repeatPassword.invalid && f.repeatPassword.errors.passwordMatch">{{'APP.FORM_RE_PASSWORD_INVALID'|translate}}</mat-error>
         </mat-form-field>
     </p>
-    <h5 style="text-align: center;">Already have an account ?<a mat-button color="primary" (click)="login()">Login</a>
+    <h5 style="text-align: center;">{{'POPUP.REGISTER_TEXT_FOR_LOGIN'|translate}}<a mat-button color="primary" (click)="login()">{{'POPUP.BUTTON_LOGIN'|translate}}</a>
     </h5>
     <div style="display: flex;justify-content: center;padding:5px;">
         <button mat-button [disabled]="!registrationData.valid" mat-button type="submit" color="primary">
-            <mat-icon>check_circle_outline</mat-icon> Register
+            <mat-icon>check_circle_outline</mat-icon> {{'POPUP.BUTTON_REGISTER'|translate}}
         </button>
         <a mat-button color="warn" (click)="clearForm()">
-            <mat-icon>highlight_off</mat-icon> Cancel
+            <mat-icon>highlight_off</mat-icon> {{'POPUP.BUTTON_CANCEL'|translate}}
         </a>
     </div>
 </form>

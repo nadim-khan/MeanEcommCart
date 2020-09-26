@@ -1,11 +1,79 @@
 {
     "APP": {
-        "TITLE" : "GYMNASIUM",
+        "TITLE": "GYMNASIUM",
         "SELECT": "Select language",
         "MENU_HOME": "Home",
         "MENU_USERS": "Users",
         "MENU_TRAINERS": "Trainers",
         "MENU_THEME": "Select a theme",
-        "BUTTON_LOGIN": "Login or Register"
+        "FORM_USERNAME": "Username",
+        "FORM_USERNAME_PLACEHOLDER": "Enter Username",
+        "FORM_USERNAME_HINT": "Hint : Nadeem Khan",
+        "FORM_USERNAME_INVALID":"Invalid Username",
+        "FORM_EMAIL": "Email",
+        "FORM_EMAIL_PLACEHOLDER": "Enter Email id",
+        "FORM_EMAIL_HINT": "Hint : nadim@gmail.com",
+        "FORM_EMAIL_EMPTY":"Please provide email id",
+        "FORM_EMAIL_INVALID":"Invalid email id",
+        "FORM_PASSWORD": "Password",
+        "FORM_PASSWORD_PLACEHOLDER": "Enter password",
+        "FORM_PASSWORDL_HINT": "Hint : mhdf@k#35",
+        "FORM_PASSWORDL_INVALID" :"Invalid Password",
+        "FORM_RE_PASSWORD": "Re-enter Password",
+        "FORM_RE_PASSWORD_PLACEHOLDER": "Re-enter Password",
+        "FORM_RE_PASSWORDL_HINT": "Hint : Your password ",
+        "FORM_RE_PASSWORD_INVALID":"Passwords should match",
+        "BUTTON_LOGIN": "Login or Register",
+        "BUTTON_SEND": "Send",
+        "BUTTON_CANCEL": "Cancel"
+    },
+    "HOME": {
+        "TAB1": "GYM VIEW",
+        "TAB1_VIEW": {
+            "HEADING": "Gym - Thaan Khamaria"
+        },
+        "TAB2": "FEE STRUCTURE",
+        "TAB2_VIEW": {
+            "TABLE_COL2": "Subscription",
+            "TABLE_COL3": "Description",
+            "TABLE_COL4": "Amount",
+            "TABLE_COL5": "Action",
+            "VIWE_ONLY_BUTTON": "View Only User"
+        },
+        "TAB3": "CONTACT US",
+        "TAB3_VIEW": {
+            "ADDRESS": "House 50, Musalmaan mohalla, Than-khamaria, (CG), 491338",
+            "HEADER": "Write To Us",
+            "FORM_QUERY": "Query",
+            "FORM_QUERY_PLACEHOLDER": "Please provide your query",
+            "FORM_QUERY_INVALID":"Please provide more description",
+            "FORM_QUERY_HINT":"Hint: Need yoga class details"
+            
+        }
+    },
+    "POPUP":{
+        "LOGIN_HEAD":"LOGIN",
+        "LOGIN_TEXT_FOR_REGISTER":"User has to login first! ",
+        "REGISTER_HEAD":"REGISTER",
+        "REGISTER_TEXT_FOR_LOGIN":"Already have an account ? ",
+        "BROADCAST_HEAD":"BROADCAST",
+        "ADD_FEE_HEAD":"ADD FEE DETAILS",
+        "BUTTON_SEND": "Send",
+        "BUTTON_CANCEL": "Cancel",
+        "BUTTON_LOGIN": "Login",
+        "BUTTON_REGISTER": "Register",
+        "BUTTON_BROADCAST":"Broadcast",
+        "BUTTON_ADD":"Add",
+        "FORM_SUBSCRIPTION": "Subscription",
+        "FORM_SUBSCRIPTION_PLACEHOLDER": "Please provide details",
+        "FORM_SUBSCRIPTION_HINT": "Hint: 1 month , 2 Month, Yoga Classes ...",
+        "FORM_SUBSCRIPTION_INVALID":"Please provide correct details",
+        "FORM_DESCRIPTION": "Description",
+        "FORM_DESCRIPTION_PLACEHOLDER": "Extra benefits on this subscription",
+        "FORM_DESCRIPTION_HINT": "Hint : Extra benefits",
+        "FORM_AMOUNT": "Amount",
+        "FORM_AMOUNT_PLACEHOLDER": "Please enter the amount",
+        "FORM_AMOUNT_HINT": "Hint: 1000m 2000, 5000 ... ",
+        "FORM_AMOUNT_INVALID":"Please enter a valid amount."
     }
 }

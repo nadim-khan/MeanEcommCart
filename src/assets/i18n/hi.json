@@ -6,6 +6,73 @@
         "MENU_USERS": "उपयोगकर्ता"
         ,"MENU_TRAINERS": "प्रशिक्षक",
         "MENU_THEME": "एक विषय का चयन करें",
-        "BUTTON_LOGIN": "भाग लें या पंजीकरण करें"
+        "FORM_USERNAME": "उपयोगकर्ता का नाम",
+        "FORM_USERNAME_PLACEHOLDER": "उपयोगकर्ता का नाम दर्ज करें",
+        "FORM_USERNAME_HINT": "संकेत : Nadeem Khan",
+        "FORM_USERNAME_INVALID":"उपयोगकर्ता का नाम अमान्य है",
+        "FORM_EMAIL": "ईमेल",
+        "FORM_EMAIL_PLACEHOLDER": "ईमेल आईडी दर्ज करें",
+        "FORM_EMAIL_HINT": "संकेत : nadim@gmail.com",
+        "FORM_EMAIL_EMPTY":"कृपया ईमेल आईडी प्रदान करें",
+        "FORM_EMAIL_INVALID":"अमान्य ईमेल आईडी",
+        "FORM_PASSWORD": "पास वर्ड",
+        "FORM_PASSWORD_PLACEHOLDER": "पास वर्ड दर्ज करें",
+        "FORM_PASSWORDL_HINT": "संकेत : mhdf@k#35",
+        "FORM_PASSWORDL_INVALID" :"अवैध पासवर्ड",
+        "FORM_RE_PASSWORD": "पासवर्ड फिर से दर्ज करें",
+        "FORM_RE_PASSWORD_PLACEHOLDER": "पासवर्ड फिर से दर्ज करें",
+        "FORM_RE_PASSWORDL_HINT": "संकेत : आपका पासवर्ड ",
+        "FORM_RE_PASSWORD_INVALID":"दोनों पासवर्ड का मिलान होना चाहिए",
+        "BUTTON_LOGIN": "भाग लें या पंजीकरण करें",
+        "BUTTON_SEND": "भेज दे",
+        "BUTTON_CANCEL": "इसे रद्द करें"
+    },
+    "HOME": {
+        "TAB1": "व्यायामशाला का दृश्य",
+        "TAB1_VIEW": {
+            "HEADING": "जिम - थान खमरिया"
+        },
+        "TAB2": "शुल्क संरचना",
+        "TAB2_VIEW": {
+            "TABLE_COL2": "सदस्यता मान",
+            "TABLE_COL3": "विवरण",
+            "TABLE_COL4": "रकम",
+            "TABLE_COL5": "कार्रवाई करें",
+            "VIWE_ONLY_BUTTON": "केवल देख सकते हैं"
+        },
+        "TAB3": "संपर्क करें",
+        "TAB3_VIEW": {
+            "ADDRESS": "हाउस 50, मुसलमान मोहल्ले, थान-खमरिअ, (छ.ग.), 491338",
+            "HEADER": "हमें लिखें",
+            "FORM_QUERY": "प्रश्न पूछें",
+            "FORM_QUERY_PLACEHOLDER": "कृपया अपनी क्वेरी प्रदान करें",
+            "FORM_QUERY_INVALID":"कृपया अधिक विवरण प्रदान करें",
+            "FORM_QUERY_HINT":"संकेत: योग कक्षा विस्तार की आवश्यकता है"
+        }
+    },
+    "POPUP":{
+        "LOGIN_HEAD":"लॉग इन करें",
+        "LOGIN_TEXT_FOR_REGISTER":"उपयोगकर्ता को पहले लॉगिन करना होगा  ",
+        "REGISTER_HEAD":"रजिस्टर करें",
+        "REGISTER_TEXT_FOR_LOGIN":"पहले से ही एक खाता है ? ",
+        "BROADCAST_HEAD":"प्रसारण",
+        "ADD_FEE_HEAD":"फीस विवरण जोड़ें",
+        "BUTTON_SEND": "भेज दे",
+        "BUTTON_CANCEL": "इसे रद्द करें",
+        "BUTTON_LOGIN": "लॉग इन करें",
+        "BUTTON_REGISTER": "रजिस्टर करें",
+        "BUTTON_BROADCAST":"इसे ब्रॉडकास्ट करें",
+        "BUTTON_ADD":"इसे जोड़ें",
+        "FORM_SUBSCRIPTION": "सदस्यता विवरण",
+        "FORM_SUBSCRIPTION_PLACEHOLDER": "कृप्या जानकारी प्रदान करें",
+        "FORM_SUBSCRIPTION_HINT": "संकेत: 1 महीने, 2 महीने, योग कक्षाएं ...",
+        "FORM_SUBSCRIPTION_INVALID":"कृपया सही विवरण दें",
+        "FORM_DESCRIPTION": "विवरण",
+        "FORM_DESCRIPTION_PLACEHOLDER": "इस सदस्यता पर अतिरिक्त लाभn",
+        "FORM_DESCRIPTION_HINT": "संकेत: अतिरिक्त लाभ",
+        "FORM_AMOUNT": "शुल्क",
+        "FORM_AMOUNT_PLACEHOLDER": "कृपया राशि दर्ज करें",
+        "FORM_AMOUNT_HINT": "संकेत: 1000 2000, 5000 ...",
+        "FORM_AMOUNT_INVALID":"कृपया एक मान्य राशि दर्ज करें"
     }
 }
