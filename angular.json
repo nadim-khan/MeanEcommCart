@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "MyEcommCart": {
+        "gymnasium": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -58,25 +58,80 @@
                                     "maximumError": "10kb"
                                 }
                             ]
-                        }
+                        },
+                        "production-hi": {
+                            "fileReplacements": [
+                              {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.prod.ts"
+                              }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "outputPath": "dist/",
+                            "i18nFile": "src/locale/messages.hi.xlf",
+                            "i18nFormat": "xlf",
+                            "i18nLocale": "hi",
+                            "i18nMissingTranslation": "error"
+                          },
+                          "hi": {
+                            "aot": true,
+                            "outputPath": "dist/",
+                            "i18nFile": "src/locale/messages.hi.xlf",
+                            "i18nFormat": "xlf",
+                            "i18nLocale": "hi",
+                            "i18nMissingTranslation": "error"
+                          },
+                          "production-gu": {
+                            "fileReplacements": [
+                              {
+                                "replace": "src/environments/environment.ts",
+                                "with": "src/environments/environment.prod.ts"
+                              }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "outputPath": "dist/",
+                            "i18nFile": "src/locale/messages.gu.xlf",
+                            "i18nFormat": "xlf",
+                            "i18nLocale": "gu",
+                            "i18nMissingTranslation": "error"
+                          }
                     }
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "MyEcommCart:build",
+                        "browserTarget": "gymnasium:build",
                         "proxyConfig": "proxy.conf.json"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "MyEcommCart:build:production"
-                        }
+                            "browserTarget": "gymnasium:build:production"
+                        },
+                        "hi":{
+                            "browserTarget": "gymnasium:build:hi"
+                          }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "MyEcommCart:build"
+                        "browserTarget": "gymnasium:build"
                     }
                 },
                 "test": {
@@ -115,16 +170,16 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "MyEcommCart:serve"
+                        "devServerTarget": "gymnasium:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "MyEcommCart:serve:production"
+                            "devServerTarget": "gymnasium:serve:production"
                         }
                     }
                 }
             }
         }
     },
-    "defaultProject": "MyEcommCart"
+    "defaultProject": "gymnasium"
 }
