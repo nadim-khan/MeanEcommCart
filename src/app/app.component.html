@@ -6,11 +6,30 @@
         <mat-toolbar-row>
             <mat-icon *ngIf="isBiggerScreen()" (click)="sidenav.toggle()" class="hamburger" matTooltip="Show/Hide links">menu</mat-icon>
             <span routerLink="/" class="logo" ></span>
-            <span  routerLink="/" >Gymnasium</span>
+            <span  routerLink="/" >{{'APP.TITLE' | translate}}</span>
             <div class="profile">
-                <button *ngIf="!userExist" mat-icon-button (click)="onLogin()" matTooltip="Login or Register">
+                <button *ngIf="!userExist" mat-icon-button (click)="onLogin()" matTooltip="{{'APP.BUTTON_LOGIN'|translate}}">
                     <mat-icon>person</mat-icon>
                 </button>
+                <button *ngIf="!userExist" mat-icon-button [matMenuTriggerFor]="languageMenu" matTooltip="{{'APP.SELECT' |translate}}" matTooltipPosition="right">
+                    <mat-icon>language</mat-icon>
+                </button>
+                <mat-menu #languageMenu="matMenu" xPosition="before">
+
+                    <mat-radio-group (change)="translate.use($event.value)">
+                        <mat-list>
+                            <mat-list-item *ngFor="let lang of translate.getLangs()">
+                                <mat-radio-button [value]="lang" [checked]="(translate.getBrowserLang() === lang) ?true : false">{{lang}}</mat-radio-button>
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-radio-group>
+                </mat-menu>
+                <!-- <label *ngIf="!userExist" for=""> 
+                    {{'HOME.SELECT'|translate}}
+                    <select #languageSelect (change)="translate.use(languageSelect.value)">
+                        <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang}}</option>
+                        </select>
+                </label> -->
                 <button mat-button *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details">
                     <mat-icon>account_circle</mat-icon> {{username}}
                     <mat-icon>keyboard_arrow_down</mat-icon>
@@ -37,17 +56,17 @@
     <mat-sidenav #sidenav [class.pad-top-30]="broadcatMsgData && username" [mode]="isBiggerScreen() ? 'push' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
         [fixedTopGap]>
         <mat-nav-list>
-            <a mat-list-item routerLinkActive="active" [routerLink]="['/home']"  matTooltip="Home" matTooltipPosition="right">
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/home']"  matTooltip="{{'APP.MENU_HOME'|translate}}" matTooltipPosition="right">
                 <mat-icon>home</mat-icon>
             </a>
-            <a mat-list-item routerLinkActive="active" [routerLink]="['/users']" matTooltip="Users" matTooltipPosition="right">
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/users']" matTooltip="{{'APP.MENU_USERS'|translate}}" matTooltipPosition="right">
                 <mat-icon>group</mat-icon>
             </a>
-            <a mat-list-item routerLinkActive="active" [routerLink]="['/trainers']" matTooltip="Trainers" matTooltipPosition="right">
+            <a mat-list-item routerLinkActive="active" [routerLink]="['/trainers']" matTooltip="{{'APP.MENU_TRAINERS'|translate}}" matTooltipPosition="right">
                 <mat-icon>face</mat-icon>
             </a>
             <div  mat-list-item>
-                <button mat-icon-button [matMenuTriggerFor]="themeMenu" matTooltip="Select a theme" matTooltipPosition="right">
+                <button mat-icon-button [matMenuTriggerFor]="themeMenu" matTooltip="{{'APP.MENU_THEME'|translate}}" matTooltipPosition="right">
                     <mat-icon>format_color_fill</mat-icon>
                 </button>
                 <mat-menu #themeMenu="matMenu" xPosition="before">
@@ -79,13 +98,6 @@
 
     <!-- Main content -->
     <mat-sidenav-content>
-        <!-- <h1 i18n="@@welcome" >Hello World!!</h1>
-        <h1 i18n="@@sampletext" >This is just a demo of how to use i18n in angular application.</h1>
-        <a href="\">English</a>
-    <br>
-    <a href="\gu">Gujarati</a>
-    <br>
-    <a href="\hi">Hindi</a> -->
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

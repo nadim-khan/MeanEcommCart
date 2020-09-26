@@ -1,0 +1,11 @@
+{
+    "APP": {
+        "TITLE" : "GYMNASIUM",
+        "SELECT": "Select language",
+        "MENU_HOME": "Home",
+        "MENU_USERS": "Users",
+        "MENU_TRAINERS": "Trainers",
+        "MENU_THEME": "Select a theme",
+        "BUTTON_LOGIN": "Login or Register"
+    }
+}

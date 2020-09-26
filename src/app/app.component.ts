@@ -15,6 +15,7 @@ import * as moment from 'moment';
 import { Broadcast } from './services/Broadcast';
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpRequest } from '@angular/common/http';
 import { catchError, last, map, tap } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -55,9 +56,14 @@ export class AppComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private general: GeneralService,
-    public overlayContainer: OverlayContainer
+    public overlayContainer: OverlayContainer,
+    public translate: TranslateService
   ) {
     this.refreshAll();
+    translate.addLangs(['en', 'hi']);
+    translate.setDefaultLang('en');
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|hi/) ? browserLang : 'en');
   }
 
   refreshAll() {
