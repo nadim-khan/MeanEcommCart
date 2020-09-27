@@ -5,11 +5,19 @@ import { MaterialModule } from '../material/material/material.module';
 import { FormsModule } from '@angular/forms';
 import { UsersComponent } from './users.component';
 import { UsersRoutingModule } from './users-routing.module';
+import { AddUserComponent } from './add-user/add-user.component';
+import { AddPaymentComponent } from './add-payment/add-payment.component';
+import { AllUsersComponent } from './all-users/all-users.component';
 
 
 
 @NgModule({
-  declarations: [UsersComponent],
+  declarations: [
+    UsersComponent,
+    AddUserComponent,
+    AddPaymentComponent,
+    AllUsersComponent
+  ],
   imports: [
     CommonModule,
     UsersRoutingModule,

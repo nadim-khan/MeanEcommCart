@@ -16,6 +16,7 @@ import { Broadcast } from './services/Broadcast';
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpRequest } from '@angular/common/http';
 import { catchError, last, map, tap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-root',
@@ -59,7 +60,8 @@ export class AppComponent implements OnInit, OnDestroy {
     public snackBar: MatSnackBar,
     private general: GeneralService,
     public overlayContainer: OverlayContainer,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private dateAdapter: DateAdapter<Date>
   ) {
     this.refreshAll();
     translate.addLangs(['en', 'hi', 'ar']);
@@ -90,7 +92,7 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log('this.languageSet', this.languageSet);
     if (localStorageLang) {
       this.translate.use(localStorageLang);
-      this.browserLang = localStorageLang;
+      this.dateAdapter.setLocale( localStorageLang);
     }
   }
 

@@ -75,6 +75,17 @@
         "FORM_AMOUNT": "शुल्क",
         "FORM_AMOUNT_PLACEHOLDER": "कृपया राशि दर्ज करें",
         "FORM_AMOUNT_HINT": "संकेत: 1000 2000, 5000 ...",
-        "FORM_AMOUNT_INVALID":"कृपया एक मान्य राशि दर्ज करें"
+        "FORM_AMOUNT_INVALID":"कृपया एक मान्य राशि दर्ज करें",
+        "FORM_BROADCAST":"एक संदेश प्रसारित करें",
+        "FORM_BROADCAST_PLACEHOLDER": "कृपया प्रसारित होने के लिए संदेश प्रदान करें",
+        "FORM_BROADCAST_HINT": "संकेत: जिम इस शुक्रवार को बंद रहेगा",
+        "FORM_BROADCAST_INVALID":"अवैध प्रसारण संदेश",
+        "FORM_TYPE":"प्रसारण का प्रकार",
+        "FORM_TYPE_PLACEHOLDER": "कृपया प्रसारित किए जाने वाले संदेश का प्रकार प्रदान करें",
+        "FORM_FROM_DATE": "किस दिनांक से",
+        "FORM_FROM_DATE_PLACEHOLDER": "एक आरंभ तिथि चुनें",
+        "FORM_TO_DATE": "किस तारीख तक",
+        "FORM_TO_DATE_PLACEHOLDER": "अंतिम तिथि चुनें",
+        "FORM_BROADCAST_TEXT":"नया संदेश प्रसारित करने से पिछला प्रसारण अक्षम हो जाएगा"
     }
 }

@@ -1,18 +1,17 @@
-<h1 style="text-align: center;">Broadcast</h1>
+<h1 style="text-align: center;">{{'POPUP.BROADCAST_HEAD'|translate}}</h1>
 <form [formGroup]="broadcastData" (ngSubmit)="broadcastNow()">
     <p>
         <mat-form-field appearance="outline">
-            <mat-label>Message</mat-label>
-            <input matInput placeholder="Please provide message here" formControlName="message" required>
+            <mat-label>{{'POPUP.FORM_BROADCAST'|translate}}</mat-label>
+            <input matInput placeholder="{{'POPUP.FORM_BROADCAST_PLACEHOLDER'|translate}}" formControlName="message" required>
             <mat-icon matSuffix>account_circle</mat-icon>
-            <mat-error *ngIf="f.message.touched && f.message.invalid ">Invalid
-                Message, Please check</mat-error>
-            <mat-hint>Hint : On sunday, Gym will; be closed.</mat-hint>
+            <mat-error *ngIf="f.message.touched && f.message.invalid ">{{'POPUP.FORM_BROADCAST_INVALID'|translate}}</mat-error>
+            <mat-hint>{{'POPUP.FORM_BROADCAST_HINT'|translate}}</mat-hint>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="fill">
-            <mat-label>Type</mat-label>
+            <mat-label>{{'POPUP.FORM_TYPE'|translate}}</mat-label>
             <mat-select formControlName="type">
                 <mat-option [value]="type.value" *ngFor="let type of type">{{ type.name }}</mat-option>
             </mat-select>
@@ -20,25 +19,25 @@
     </p>
     <p>
         <mat-form-field appearance="fill">
-            <mat-label>From Date</mat-label>
-            <input matInput [matDatepicker]="from" formControlName="fromDate" [min]="minDate" (focus)="from.open()"  (click)="from.open()">
+            <mat-label>{{'POPUP.FORM_FROM_DATE'|translate}}</mat-label>
+            <input matInput placeholder="{{'POPUP.FORM_FROM_DATE_PLACEHOLDER'|translate}}" [matDatepicker]="from" formControlName="fromDate" [min]="minDate" (focus)="from.open()"  (click)="from.open()">
             <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
             <mat-datepicker #from></mat-datepicker>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>Till Date</mat-label>
-            <input matInput [matDatepicker]="to" formControlName="toDate" [min]="(broadcastData.value.fromDate)?(broadcastData.value.fromDate): minDate" (focus)="to.open()"  (click)="to.open()">
+            <mat-label>{{'POPUP.FORM_TO_DATE'|translate}}</mat-label>
+            <input matInput placeholder="{{'POPUP.FORM_TO_DATE_PLACEHOLDER'|translate}}"[matDatepicker]="to" formControlName="toDate" [min]="(broadcastData.value.fromDate)?(broadcastData.value.fromDate): minDate" (focus)="to.open()"  (click)="to.open()">
             <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
             <mat-datepicker #to></mat-datepicker>
         </mat-form-field>
     </p>
-    <h4 *ngIf="broadcastData.valid" style="text-align: center;color:red"> Broadcasting new message will disable previous broadcast</h4>
+    <h4 *ngIf="broadcastData.valid" style="text-align: center;color:red"> {{'POPUP.FORM_BROADCAST_TEXT'|translate}}t</h4>
     <div style="display: flex;justify-content: center;padding:5px;">
         <button [disabled]="!broadcastData.valid" mat-button type="submit" color="primary">
-            <mat-icon>check_circle_outline</mat-icon> Broadcast
+            <mat-icon>check_circle_outline</mat-icon> {{'POPUP.BUTTON_BROADCAST'|translate}}
         </button>
         <a mat-button color="warn" (click)="clearForm()">
-            <mat-icon>highlight_off</mat-icon> Cancel
+            <mat-icon>highlight_off</mat-icon> {{'POPUP.BUTTON_CANCEL'|translate}}
         </a>
     </div>
 

@@ -75,6 +75,17 @@
         "FORM_AMOUNT": "كمية",
         "FORM_AMOUNT_PLACEHOLDER": "الرجاء إدخال المبلغ",
         "FORM_AMOUNT_HINT":"تلميح: 1000 2000 ، 5000 ",
-        "FORM_AMOUNT_INVALID":"يرجى إدخال مبلغ صالح."
+        "FORM_AMOUNT_INVALID":"يرجى إدخال مبلغ صالح.",
+        "FORM_BROADCAST":"بث رسالة",
+        "FORM_BROADCAST_PLACEHOLDER": "يرجى تقديم رسالة ليتم بثها",
+        "FORM_BROADCAST_HINT": "تلميح: الصالة الرياضية ستبقى مغلقة يوم الجمعة",
+        "FORM_BROADCAST_INVALID":"رسالة البث غير صالحة",
+        "FORM_TYPE":"نوع البث",
+        "FORM_TYPE_PLACEHOLDER": "يرجى تقديم نوع الرسالة المراد بثها",
+        "FORM_FROM_DATE": "من أي تاريخ",
+        "FORM_FROM_DATE_PLACEHOLDER": "حدد تاريخ البدء",
+        "FORM_TO_DATE": "حتى أي تاريخ",
+        "FORM_TO_DATE_PLACEHOLDER": "حدد تاريخ الانتهاء",
+        "FORM_BROADCAST_TEXT":"سيؤدي بث رسالة جديدة إلى تعطيل البث السابق"
     }
 }

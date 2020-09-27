@@ -45,5 +45,6 @@ function isUserValid(user, password, hashedPassword) {
 module.exports = {
     insert,
     getUserByEmailIdAndPassword,
-    getUserById
+    getUserById,
+    getAllUsers
 };

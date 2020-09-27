@@ -33,7 +33,7 @@ async function getUserByEmailIdAndPassword(req, res, next) {
     next();
 }
 
-async function getAllUsers() {
+async function getAllUsers(req, res, next) {
     const usersList = await userController.getAllUsers();
     res.json(usersList);
     next();

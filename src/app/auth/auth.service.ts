@@ -92,6 +92,9 @@ export class AuthService {
         })
       );
   }
+  getAllUsersList() {
+    return this.http.get(`${this.apiUrl}/getAllUsers`);
+  }
 
   get User() {
     this.user$.asObservable().subscribe(res => {

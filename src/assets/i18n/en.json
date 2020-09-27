@@ -76,6 +76,17 @@
         "FORM_AMOUNT": "Amount",
         "FORM_AMOUNT_PLACEHOLDER": "Please enter the amount",
         "FORM_AMOUNT_HINT": "Hint: 1000m 2000, 5000 ... ",
-        "FORM_AMOUNT_INVALID":"Please enter a valid amount."
+        "FORM_AMOUNT_INVALID":"Please enter a valid amount.",
+        "FORM_BROADCAST":"Broadcast message",
+        "FORM_BROADCAST_PLACEHOLDER": "Please provide message to be broadcasted",
+        "FORM_BROADCAST_HINT": "Hint : Gym will be closed this friday",
+        "FORM_BROADCAST_INVALID":"Invalid broadcast message",
+        "FORM_TYPE":"Type",
+        "FORM_TYPE_PLACEHOLDER": "Please provide message to be broadcasted",
+        "FORM_FROM_DATE": "From Date",
+        "FORM_FROM_DATE_PLACEHOLDER": "Select a start date",
+        "FORM_TO_DATE": "Till Date",
+        "FORM_TO_DATE_PLACEHOLDER": "Select a end date",
+        "FORM_BROADCAST_TEXT":"Broadcasting new message will disable previous broadcast"
     }
 }
