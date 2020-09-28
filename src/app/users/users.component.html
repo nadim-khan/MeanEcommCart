@@ -11,23 +11,17 @@
                 Users : {{currentPage}}
             </div>
             <mat-nav-list>
-                <mat-list-item *ngIf="isExpanded" >
-                    <a [routerLink]="['/users/allUsers']">
+                <mat-list-item *ngIf="isExpanded" [routerLink]="['/users/allUsers']">
                     <mat-icon mat-list-icon>person</mat-icon>
                     <h4 *ngIf="isBiggerScreen()" mat-line >List of all users</h4>
-                    </a>
                 </mat-list-item>
-                <mat-list-item *ngIf="isExpanded" >
-                    <a [routerLink]="['/users/addUser']">
+                <mat-list-item *ngIf="isExpanded" [routerLink]="['/users/addUser']">
                     <mat-icon mat-list-icon>assignment</mat-icon>
                     <h4 *ngIf="isBiggerScreen()" mat-line >Add User</h4>
-                    </a>
                 </mat-list-item>
-                <mat-list-item *ngIf="isExpanded" >
-                    <a [routerLink]="['/users/addPayment']">
+                <mat-list-item *ngIf="isExpanded"  [routerLink]="['/users/addPayment']">
                         <mat-icon mat-list-icon>domain</mat-icon>
                         <h4 mat-line *ngIf="isBiggerScreen()">Add Payment and Dues</h4>
-                    </a>
                     
                 </mat-list-item>
             </mat-nav-list>

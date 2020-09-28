@@ -8,7 +8,7 @@ import { UsersComponent } from './users.component';
 
 const routes: Routes = [
   {
-    path: '', pathMatch: 'full', component: UsersComponent,
+    path: '',  component: UsersComponent,
     children: [
       { path: 'allUsers',  component: AllUsersComponent },
       { path: 'addUser',  component: AddUserComponent },
