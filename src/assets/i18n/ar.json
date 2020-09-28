@@ -40,7 +40,8 @@
             "TABLE_COL3": "وصف",
             "TABLE_COL4": "كمية",
             "TABLE_COL5": "عمل",
-            "VIWE_ONLY_BUTTON": "يمكن أن يرى فقط"
+            "VIWE_ONLY_BUTTON": "يمكن أن يرى فقط",
+            "ADD_NEW_BUTTON": "أضف تفاصيل رسوم جديدة"
         },
         "TAB3": "اتصل بنا",
         "TAB3_VIEW": {
@@ -87,5 +88,19 @@
         "FORM_TO_DATE": "حتى أي تاريخ",
         "FORM_TO_DATE_PLACEHOLDER": "حدد تاريخ الانتهاء",
         "FORM_BROADCAST_TEXT":"سيؤدي بث رسالة جديدة إلى تعطيل البث السابق"
+    },
+    "USERS":{
+        "ALL_USERS":{
+            "HEADING":"جميع المستخدمين",
+            "FILTER_HEAD":"منقي",
+            "FILTER_PLACEHOLDER":"ابحث هنا عن شيء ...",
+            "TABLE_COL2": "اسم المستخدم",
+            "TABLE_COL3": "عنوان الايميل",
+            "TABLE_COL4": "نوع المستخدم",
+            "TABLE_COL5": "تاريخ الالتحاق",
+            "TABLE_COL6": "عمل",
+            "VIWE_ONLY_BUTTON": "يمكن أن يرى فقط",
+            "ADD_NEW_BUTTON": "تسجيل مستخدم جديد"
+        }
     }
 }

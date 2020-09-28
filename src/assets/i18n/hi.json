@@ -40,7 +40,8 @@
             "TABLE_COL3": "विवरण",
             "TABLE_COL4": "रकम",
             "TABLE_COL5": "कार्रवाई करें",
-            "VIWE_ONLY_BUTTON": "केवल देख सकते हैं"
+            "VIWE_ONLY_BUTTON": "केवल देख सकते हैं",
+            "ADD_NEW_BUTTON": "एक नया शुल्क विवरण जोड़ें"
         },
         "TAB3": "संपर्क करें",
         "TAB3_VIEW": {
@@ -87,5 +88,19 @@
         "FORM_TO_DATE": "किस तारीख तक",
         "FORM_TO_DATE_PLACEHOLDER": "अंतिम तिथि चुनें",
         "FORM_BROADCAST_TEXT":"नया संदेश प्रसारित करने से पिछला प्रसारण अक्षम हो जाएगा"
+    },
+    "USERS":{
+        "ALL_USERS":{
+            "HEADING":"सभी उपयोगकर्ता",
+            "FILTER_HEAD":"फ़िल्टर",
+            "FILTER_PLACEHOLDER":"यहां कुछ खोजें ...",
+            "TABLE_COL2": "उपयोगकर्ता का नाम",
+            "TABLE_COL3": "ईमेल आईडी",
+            "TABLE_COL4": "उपयोगकर्ता का प्रकार",
+            "TABLE_COL5": "शामिल होने की तिथि",
+            "TABLE_COL6": "कार्रवाई करें",
+            "VIWE_ONLY_BUTTON": "केवल देख सकते हैं",
+            "ADD_NEW_BUTTON": "एक नया उपयोगकर्ता पंजीकृत करें"
+        }
     }
 }

@@ -10,9 +10,11 @@ const routes: Routes = [
   {
     path: '',  component: UsersComponent,
     children: [
+      { path: '', pathMatch: 'full', redirectTo: 'allUsers' },
       { path: 'allUsers',  component: AllUsersComponent },
       { path: 'addUser',  component: AddUserComponent },
       { path: 'addPayment', component: AddPaymentComponent },
+      { path: '**', component: AddPaymentComponent },
     ]
   },
 

@@ -9,14 +9,9 @@ import { UsersService } from './users.service';
 export class UsersComponent implements OnInit {
   isExpanded = false;
   currentPage = '';
-  usersList: any = [];
   constructor(
     private userService: UsersService
   ) {
-    this.userService.authService.getAllUsersList().subscribe(listData => {
-      this.userService.allUsersList = listData;
-      this.usersList = listData;
-    });
    }
 
   ngOnInit(): void {

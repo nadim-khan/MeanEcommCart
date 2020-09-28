@@ -40,7 +40,8 @@
             "TABLE_COL3": "Description",
             "TABLE_COL4": "Amount",
             "TABLE_COL5": "Action",
-            "VIWE_ONLY_BUTTON": "View Only User"
+            "VIWE_ONLY_BUTTON": "View Only User",
+            "ADD_NEW_BUTTON": "Add a new fee detail"
         },
         "TAB3": "CONTACT US",
         "TAB3_VIEW": {
@@ -88,5 +89,19 @@
         "FORM_TO_DATE": "Till Date",
         "FORM_TO_DATE_PLACEHOLDER": "Select a end date",
         "FORM_BROADCAST_TEXT":"Broadcasting new message will disable previous broadcast"
+    },
+    "USERS":{
+        "ALL_USERS":{
+            "HEADING":"All Users",
+            "FILTER_HEAD":"Filter",
+            "FILTER_PLACEHOLDER":"Search something ...",
+            "TABLE_COL2": "Username",
+            "TABLE_COL3": "Email Id",
+            "TABLE_COL4": "User Type",
+            "TABLE_COL5": "Date of Joining",
+            "TABLE_COL6": "Action",
+            "VIWE_ONLY_BUTTON": "View Only User",
+            "ADD_NEW_BUTTON": "Register a new user"
+        }
     }
 }

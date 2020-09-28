@@ -42,6 +42,6 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <button *ngIf="isAdmin" mat-fab color="primary" id="add-button" matTooltip="Add new Fee detail" (click)="addNew()"><i class="material-icons" >library_add</i></button>
+    <button *ngIf="isAdmin" mat-fab color="primary" id="add-button" matTooltip="{{'HOME.TAB2_VIEW.ADD_NEW_BUTTON'|translate}}" (click)="addNew()"><i class="material-icons" >library_add</i></button>
 </div>
 

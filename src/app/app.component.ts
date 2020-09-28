@@ -179,7 +179,7 @@ export class AppComponent implements OnInit, OnDestroy {
               horizontalPosition: 'center',
               verticalPosition: 'top',
             });
-            this.router.navigateByUrl('/');
+            // this.router.navigateByUrl('/');
             this.refreshAll();
           }
         }, e => {
@@ -211,7 +211,7 @@ export class AppComponent implements OnInit, OnDestroy {
             });
             this.refreshAll();
           }
-          this.router.navigate(['']);
+          // this.router.navigate(['']);
         });
       } else if (result && result.action && result.action === 'invalid') {
         this.snackBar.open('Invalid values! please re-register', 'Close', {
@@ -320,7 +320,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.snackBar.open('Logged out successfully.', 'Close', {
       duration: 4000,
     });
-    this.router.navigate(['']);
+    // this.router.navigate(['']);
   }
 
   // theme check
