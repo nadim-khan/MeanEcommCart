@@ -1,6 +1,6 @@
 <div class="userSideBar">
-    <mat-drawer-container class="example-container mat-typography" autosize>
-        <mat-drawer #drawer mode="side" disableClose="true" opened="true">
+    <mat-drawer-container class="example-container mat-typography"  autosize>
+        <mat-drawer #drawer mode="side" [class.pad-top-30]="hasBroadcast && userAvailable" disableClose="true" opened="true">
             <div class="toggle-button">
                 <button mat-mini-fab class="button-move" [class.move-right]="isExpanded" (click)="isExpanded = !isExpanded"  >
                     <mat-icon  *ngIf=" !isExpanded" class="my-fab" aria-label="Menu" color="default">keyboard_arrow_right</mat-icon>
@@ -27,8 +27,10 @@
             </mat-nav-list>
         </mat-drawer>
 
-        <div class="example-sidenav-content">
+        <mat-card class="example-sidenav-content" [class.pad-top-30]="hasBroadcast && userAvailable">
+            <mat-card-content>
            <router-outlet></router-outlet>
-        </div>
+           </mat-card-content>
+        </mat-card>
     </mat-drawer-container>
 </div>

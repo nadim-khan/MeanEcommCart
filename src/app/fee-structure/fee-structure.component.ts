@@ -1,9 +1,12 @@
 import { isDataSource } from '@angular/cdk/collections';
-import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ignoreElements } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { AuthService } from '../auth/auth.service';
 import { Fees } from '../services/fees';
@@ -15,13 +18,16 @@ import { GeneralService } from '../services/general.service';
   styleUrls: ['./fee-structure.component.scss']
 })
 export class FeeStructureComponent implements OnInit, OnChanges {
-  fieldArray: Fees[] = [];
+  fieldArray: MatTableDataSource<Fees>;
+
   displayedColumns =
-      ['index', 'subscription', 'description', 'amount', 'action'];
+      ['id', 'subscription', 'description', 'amount', 'action'];
   disableAdd = true;
   showSpinner = true;
   isAdmin = false;
   @Input() userInfo;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private general: GeneralService,
@@ -43,8 +49,14 @@ export class FeeStructureComponent implements OnInit, OnChanges {
 
   getFeeStructure() {
     this.general.getFeeStructure().subscribe(data => {
-      this.fieldArray = (data as unknown as Fees[]);
+      for (let i = 0; i < data.length; i ++) {
+        data[i] = Object.assign({}, data[i], {index : i + 1});
+      }
+      // this.fieldArray = (data as unknown as Fees[]);
+      this.fieldArray = new MatTableDataSource(data);
       this.showSpinner = false;
+      this.fieldArray.paginator = this.paginator;
+      this.fieldArray.sort = this.sort;
     });
   }
 

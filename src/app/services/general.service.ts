@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Fees } from './fees';
 import { Broadcast } from './Broadcast';
 import { Mail } from './mail';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class GeneralService {
   ) { }
 
   // calls for fee structure
-  getFeeStructure() {
-    return this.http.get<Fees>(`${this.feeApi}/getFeeStructure`);
+  getFeeStructure(): Observable<Fees[]> {
+    return this.http.get<Fees[]>(`${this.feeApi}/getFeeStructure`);
   }
 
   postNewFeeDetails(details) {

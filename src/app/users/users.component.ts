@@ -9,9 +9,21 @@ import { UsersService } from './users.service';
 export class UsersComponent implements OnInit {
   isExpanded = false;
   currentPage = '';
+  userAvailable = false;
+  hasBroadcast = false;
   constructor(
     private userService: UsersService
   ) {
+    const userData = localStorage.getItem('currentUser');
+    // check if broadcast msg is being shown - Behaviour subject
+    this.userService.authService.broadcastAvailable.subscribe(value => {
+      this.hasBroadcast = value;
+    });
+    if (userData) {
+      this.userAvailable = true;
+    } else {
+      this.userAvailable = false;
+    }
    }
 
   ngOnInit(): void {

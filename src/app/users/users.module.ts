@@ -9,9 +9,11 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { AddPaymentComponent } from './add-payment/add-payment.component';
 import { AllUsersComponent } from './all-users/all-users.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpLoaderFactory } from '../app.module';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [

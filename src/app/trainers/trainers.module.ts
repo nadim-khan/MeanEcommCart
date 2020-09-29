@@ -6,8 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { TrainersComponent } from './trainers.component';
 import { TrainersRoutingModule } from './trainers-routing.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpLoaderFactory } from '../app.module';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [TrainersComponent],

@@ -8,6 +8,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 
 export interface UserData {
   _id: string;
+  index: number;
   username: string;
   email: string;
   colcreatedAt: string;
@@ -31,23 +32,32 @@ export interface UserData {
 })
 
 export class AllUsersComponent {
-  displayedColumns: string[] = ['username', 'email', 'userType', 'registrationDate', 'action'];
+  displayedColumns: string[] = ['id', 'username', 'email', 'action'];
   dataSource: MatTableDataSource<UserData>;
   isAdmin = false;
   expandedElement: UserData | null;
   filterValue;
-
+  currentId;
+  showButton = false;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     public userService: UsersService
   ) {
-    this.isAdmin = this.userService.isAdmin;
+    // check if user is admin - Behaviour subject
+    this.userService.isAdminBS.subscribe(value => {
+      this.isAdmin = value;
+    });
+
     this.userService.authService.getAllUsersList().subscribe(listData => {
       this.userService.allUsersList = listData;
       const users = listData;
       console.log('users', users);
+      for (let i = 0; i < users.length; i ++) {
+        users[i] = Object.assign({}, users[i], {index : i + 1});
+        console.log(' users4', users);
+      }
       // Assign the data to the data source for the table to render
       this.dataSource = new MatTableDataSource(users);
       console.log(' this.dataSource', this.dataSource);
@@ -55,7 +65,6 @@ export class AllUsersComponent {
       this.dataSource.sort = this.sort;
     });
   }
-
 
   applyFilter(event: Event) {
     this.filterValue = (event.target as HTMLInputElement).value;
@@ -74,16 +83,28 @@ export class AllUsersComponent {
   }
   changeUserColor(user) {
   if (user === 'admin') {
-    return '#5BFF33 ';
+    return '#56F70B ';
   } else if (user === 'executive') {
-    return '#FF5733';
+    return '#0BDBF7 ';
   } else if (user === 'general') {
-    return '#33C1FF';
+    return '#F7DE0B ';
+  } else {
+    return '#FF0D0D';
   }
   }
 
   addNew() {
 
+  }
+
+  onExpand(value) {
+    console.log('===>', value);
+    if (value) {
+      this.currentId = value._id;
+      this.showButton = true;
+    } else {
+      this.showButton = false;
+    }
   }
 
 }

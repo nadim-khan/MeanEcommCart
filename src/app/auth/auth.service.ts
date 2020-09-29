@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Subject, of, throwError, Observable, EMPTY } from 'rxjs';
+import { Subject, of, throwError, Observable, EMPTY, BehaviorSubject } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { User } from './user';
+import { User, AllUsers } from './user';
 import { environment } from '../../environments/environment';
 
 
@@ -18,6 +18,7 @@ export class AuthService {
   token;
   userInfo;
   isAdmin = false;
+  broadcastAvailable = new BehaviorSubject(false);
   // URL definition (api- path, auth-feature(user,finace,etc..), register - action)
   private apiUrl = environment.authApi;
   private user$ = new Subject<User>();
@@ -92,8 +93,8 @@ export class AuthService {
         })
       );
   }
-  getAllUsersList() {
-    return this.http.get(`${this.apiUrl}/getAllUsers`);
+  getAllUsersList(): Observable<AllUsers[]> {
+    return this.http.get<AllUsers[]>(`${this.apiUrl}/getAllUsers`);
   }
 
   get User() {

@@ -39,7 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
   role;
   browserLang;
   languageSet = [];
-  broadcatMsgData;
+  broadcastMsgData;
   allBroadcastMsgs: Broadcast[] = [];
   userSubscription: Subscription;
 
@@ -93,6 +93,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (localStorageLang) {
       this.translate.use(localStorageLang);
       this.dateAdapter.setLocale( localStorageLang);
+      this.browserLang = localStorageLang;
     }
   }
 
@@ -120,7 +121,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.general.getAllBroadcast().subscribe(msgs => {
       this.allBroadcastMsgs = (msgs as unknown as Broadcast[]);
       if (this.allBroadcastMsgs && this.allBroadcastMsgs.length > 0) {
-        this.broadcatMsgData = this.allBroadcastMsgs[this.allBroadcastMsgs.length - 1];
+        this.authService.broadcastAvailable.next(true);
+        this.broadcastMsgData = this.allBroadcastMsgs[this.allBroadcastMsgs.length - 1];
+      } else {
+        this.authService.broadcastAvailable.next(false);
       }
     });
   }
@@ -319,7 +323,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.refreshAll();
     this.snackBar.open('Logged out successfully.', 'Close', {
       duration: 4000,
+      horizontalPosition: 'center',
+              verticalPosition: 'top',
     });
+    this.userExist = false;
     // this.router.navigate(['']);
   }
 
