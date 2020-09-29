@@ -1,12 +1,15 @@
-
-<mat-tab-group mat-stretch-tabs color="accent" (selectedIndexChange)="change($event)">
-    <mat-tab label="{{'HOME.TAB1'|translate}}">
-        <app-gym-view></app-gym-view>
-    </mat-tab>
-    <mat-tab label="{{'HOME.TAB2'|translate}}">
-        <app-fee-structure [userInfo]="userInfo"></app-fee-structure>
-    </mat-tab>
-    <mat-tab  label="{{'HOME.TAB3'|translate}}">
-        <app-contact [userInfo]="userInfo"></app-contact>
-    </mat-tab>
-</mat-tab-group>
+<mat-card class="home-main">
+    <mat-card-content>
+        <mat-tab-group mat-stretch-tabs color="accent" (selectedIndexChange)="change($event)">
+            <mat-tab label="{{'HOME.TAB1'|translate}}">
+                <app-gym-view></app-gym-view>
+            </mat-tab>
+            <mat-tab label="{{'HOME.TAB2'|translate}}">
+                <app-fee-structure [userInfo]="userInfo"></app-fee-structure>
+            </mat-tab>
+            <mat-tab label="{{'HOME.TAB3'|translate}}">
+                <app-contact [userInfo]="userInfo"></app-contact>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card-content>
+</mat-card>
