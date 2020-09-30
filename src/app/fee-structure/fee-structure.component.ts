@@ -1,9 +1,7 @@
-import { isDataSource } from '@angular/cdk/collections';
-import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ignoreElements } from 'rxjs/operators';
+import { Component, Input, OnChanges, OnInit, ViewChild, ChangeDetectorRef  } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -25,6 +23,7 @@ export class FeeStructureComponent implements OnInit, OnChanges {
   disableAdd = true;
   showSpinner = true;
   isAdmin = false;
+  isLoader = true;
   @Input() userInfo;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -34,6 +33,7 @@ export class FeeStructureComponent implements OnInit, OnChanges {
     private authService: AuthService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
+    private cdr: ChangeDetectorRef
   ) {
     this.isAdmin = this.authService.isAdmin;
    }
@@ -49,12 +49,14 @@ export class FeeStructureComponent implements OnInit, OnChanges {
 
   getFeeStructure() {
     this.general.getFeeStructure().subscribe(data => {
+      this.isLoader = false;
       for (let i = 0; i < data.length; i ++) {
         data[i] = Object.assign({}, data[i], {index : i + 1});
       }
       // this.fieldArray = (data as unknown as Fees[]);
       this.fieldArray = new MatTableDataSource(data);
       this.showSpinner = false;
+      this.cdr.detectChanges();
       this.fieldArray.paginator = this.paginator;
       this.fieldArray.sort = this.sort;
     });

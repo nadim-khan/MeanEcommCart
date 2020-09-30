@@ -27,7 +27,9 @@
         "BUTTON_SEND": "بند",
         "BUTTON_BROADCAST":"قم ببثها",
         "BUTTON_CANCEL": "ألغها",
-        "BUTTON_LOGOUT": "تسجيل خروج"
+        "BUTTON_LOGOUT": "تسجيل خروج",
+        "BUTTON_UPDATE": "تحديث",
+        "BUTTON_DELETE": "حذف"
     },
     "HOME": {
         "TAB1": "عرض الصالة الرياضية",
@@ -90,6 +92,9 @@
         "FORM_BROADCAST_TEXT":"سيؤدي بث رسالة جديدة إلى تعطيل البث السابق"
     },
     "USERS":{
+        "MENU1":"كل المستخدمين",
+        "MENU2":"إضافة مستخدم",
+        "MENU3":"إضافة الدفع",
         "ALL_USERS":{
             "HEADING":"جميع المستخدمين",
             "FILTER_HEAD":"منقي",
@@ -100,7 +105,8 @@
             "TABLE_COL5": "تاريخ الالتحاق",
             "TABLE_COL6": "عمل",
             "VIWE_ONLY_BUTTON": "يمكن أن يرى فقط",
-            "ADD_NEW_BUTTON": "تسجيل مستخدم جديد"
+            "ADD_NEW_BUTTON": "تسجيل مستخدم جديد",
+            "FORM_PERMISSION":"نوع الإذن للمستخدم"
         }
     }
 }

@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component,  OnDestroy,  OnInit,  ViewChild } from '@angular/core';
 import { UsersService } from '../users.service';
-import { TranslateService } from '@ngx-translate/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,8 +15,6 @@ export interface UserData {
   roles: any;
 }
 
-
-
 @Component({
   selector: 'app-all-users',
   templateUrl: './all-users.component.html',
@@ -31,27 +28,44 @@ export interface UserData {
   ],
 })
 
-export class AllUsersComponent {
+export class AllUsersComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id', 'username', 'email', 'action'];
   dataSource: MatTableDataSource<UserData>;
   isAdmin = false;
   expandedElement: UserData | null;
   filterValue;
   currentId;
+  currentUser;
+  isLoader = true;
   showButton = false;
+  type = [
+    { id: 1, name: 'Admin', value: 'admin' },
+    { id: 2, name: 'Executive', value: 'executive' },
+    { id: 3, name: 'General', value: 'general' }
+  ];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     public userService: UsersService
   ) {
-    // check if user is admin - Behaviour subject
+    this.userService.checkUser();
     this.userService.isAdminBS.subscribe(value => {
       this.isAdmin = value;
+      this.currentUser = this.userService.currentUserData;
+      console.log('this.currentUserthis.currentUserthis.currentUserthis.currentUser: ', this.currentUser);
     });
+    // check if user is admin - Behaviour subject
+    this.checkDetails();
+  }
+  ngOnInit() {
+    this.checkDetails();
+  }
 
+  checkDetails() {
     this.userService.authService.getAllUsersList().subscribe(listData => {
       this.userService.allUsersList = listData;
+      this.isLoader = false;
       const users = listData;
       console.log('users', users);
       for (let i = 0; i < users.length; i ++) {
@@ -64,6 +78,11 @@ export class AllUsersComponent {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+
+  ngOnDestroy() {
+    this.isAdmin = false;
+    this.currentUser = null;
   }
 
   applyFilter(event: Event) {
@@ -81,6 +100,7 @@ export class AllUsersComponent {
       this.dataSource.paginator.firstPage();
     }
   }
+
   changeUserColor(user) {
   if (user === 'admin') {
     return '#56F70B ';
@@ -95,6 +115,14 @@ export class AllUsersComponent {
 
   addNew() {
 
+  }
+
+  updateData(data) {
+    console.log('Updated data : ', data);
+  }
+
+  change(data) {
+    console.log('change data : ', data);
   }
 
   onExpand(value) {

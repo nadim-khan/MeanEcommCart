@@ -22,7 +22,6 @@ async function insertFee(req, res, next) {
 
 async function getFeeStructure(req, res, next) {
     const savedFee = await feesController.getFeeStructure();
-    console.log('All fee Details user after ', savedFee);
     res.json(savedFee);
     next();
 }

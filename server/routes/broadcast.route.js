@@ -22,7 +22,6 @@ async function setBroadcastMessage(req, res, next) {
 
 async function getAllBroadcasts(req, res, next) {
     const savedFee = await broadcastController.getAllBroadcasts();
-    console.log('All broadcastStructure  after ', savedFee);
     res.json(savedFee);
     next();
 }

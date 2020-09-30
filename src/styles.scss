@@ -254,6 +254,17 @@ body .push-right {
     to {transform: scale(1.2, 1.2)}
 }
 
+.mat-progress-spinner {
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    top: 35%;
+    left: 45%;
+  }
+  
+
 @media (max-width: 767px) {
     .searchField {
         margin-top: -25px;

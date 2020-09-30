@@ -327,7 +327,7 @@ export class AppComponent implements OnInit, OnDestroy {
               verticalPosition: 'top',
     });
     this.userExist = false;
-    // this.router.navigate(['']);
+    this.router.navigate(['']);
   }
 
   // theme check

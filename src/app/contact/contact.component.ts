@@ -12,7 +12,7 @@ export class ContactComponent implements OnInit, OnChanges {
   @Input() userInfo;
   currentUserName = '';
   currentUserEmail = '';
-
+  isLoader = false;
   constructor(
     private general: GeneralService,
     private snackBar: MatSnackBar
@@ -40,8 +40,10 @@ export class ContactComponent implements OnInit, OnChanges {
   }
 
   sendQuery() {
+    this.isLoader = true;
     const queryToBeSent = this.queryData.getRawValue();
     this.general.newMail(queryToBeSent).subscribe(response => {
+      this.isLoader = false;
       if (response) {
         this.snackBar.open(`Query has been sent successfully. We'll get back to you`, 'Close', {
           duration: 3000,

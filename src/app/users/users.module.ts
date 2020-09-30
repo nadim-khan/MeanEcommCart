@@ -20,7 +20,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UsersComponent,
     AddUserComponent,
     AddPaymentComponent,
-    AllUsersComponent
+    AllUsersComponent,
   ],
   imports: [
     CommonModule,

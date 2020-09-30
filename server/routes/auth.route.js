@@ -23,8 +23,6 @@ async function insert(req, res, next) {
 
 async function getUserByEmailIdAndPassword(req, res, next) {
     const user = req.body;
-    console.log('Searching user for ', user);
-
     const savedUser = await userController.getUserByEmailIdAndPassword(
         user.email,
         user.password

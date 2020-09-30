@@ -20,6 +20,7 @@ import { TrainersModule } from './trainers/trainers.module';
 import { ContactComponent } from './contact/contact.component';
 import { FeeStructureComponent, AddFeeDialogComponent } from './fee-structure/fee-structure.component';
 import { GymViewComponent } from './gym-view/gym-view.component';
+import { LoaderComponent } from './loader/loader.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BroadcastDialogComponent,
     AddFeeDialogComponent,
     GymViewComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

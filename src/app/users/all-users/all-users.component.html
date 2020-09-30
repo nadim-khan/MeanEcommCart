@@ -1,3 +1,4 @@
+<!-- <app-loader ></app-loader> -->
 <div class="head">
     <h1>{{'USERS.ALL_USERS.HEADING'|translate}}</h1>
     <mat-form-field appearance="standard">
@@ -20,7 +21,10 @@
         <!-- Progress Column -->
         <ng-container matColumnDef="username">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'USERS.ALL_USERS.TABLE_COL2'|translate}} </th>
-            <td mat-cell *matCellDef="let row" class="disableClick"> {{row.username}} </td>
+            <td mat-cell *matCellDef="let row" class="disableClick">
+                <span *ngIf="row.roles.length < 1" matBadge="!" matBadgePosition="after" matBadgeColor="warn">{{row.username}}</span>
+                <span *ngIf="row.roles.length > 0" >{{row.username}}</span>
+            
         </ng-container>
 
         <!-- Name Column -->
@@ -43,7 +47,7 @@
         <!-- Color Column -->
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef></th>
-            <td mat-cell *matCellDef="let row; let j=index" [class.disabled]="true">
+            <td mat-cell *matCellDef="let row; let j=index" [class.disableClick]="!currentUser">
                 <span *ngIf="!showButton || (row._id != currentId)" class="clickable">
                     <mat-icon mat-fab-button color="default">keyboard_arrow_right</mat-icon>
                 </span>
@@ -74,31 +78,36 @@
                                 <span> DOJ : {{row.createdAt|date:'MMM d, y, h:mm:ss a'}}</span>
                             </span>
                         </div>
-                        <form *ngIf="isAdmin">
-                            <p>
-                                <mat-form-field appearance="standard">
+                        <form *ngIf="isAdmin" (change) = "change(row)">
+                            <p> <mat-form-field appearance="standard">
                                     <mat-label>{{'APP.FORM_USERNAME'|translate}}</mat-label>
                                     <input matInput placeholder="{{'APP.FORM_USERNAME_PLACEHOLDER'|translate}}"
                                         [(ngModel)]="row.username" name="username" required>
                                     <mat-icon matSuffix>account_circle</mat-icon>
-                                    <!-- <mat-error *ngIf="f.username.touched && f.username.invalid && f.username.errors.cannotContainSpace">{{'APP.FORM_USERNAME_INVALID'|translate}}</mat-error> -->
-                                    <mat-hint>{{'APP.FORM_USERNAME_HINT'|translate}}</mat-hint>
+                                </mat-form-field>
+                                <mat-form-field appearance="standard">
+                                    <mat-label>{{'USERS.ALL_USERS.FORM_PERMISSION'|translate}}</mat-label>
+                                    <mat-select [(ngModel)]="row.roles[0]" name="data" required>
+                                        <mat-option [value]="type.value" *ngFor="let type of type">{{ type.name }}</mat-option>
+                                    </mat-select>
                                 </mat-form-field>
                                 <mat-form-field appearance="standard">
                                     <mat-label>{{'APP.FORM_EMAIL'|translate}}</mat-label>
                                     <input matInput placeholder="{{'APP.FORM_USERNAME_PLACEHOLDER'|translate}}"
-                                        [(ngModel)]="row.email" name="email" required>
-                                    <mat-icon matSuffix>account_circle</mat-icon>
+                                        [(ngModel)]="row.email" name="email" required readonly>
+                                    <mat-icon matSuffix>alternate_email</mat-icon>
                                     <!-- <mat-error *ngIf="f.username.touched && f.username.invalid && f.username.errors.cannotContainSpace">{{'APP.FORM_USERNAME_INVALID'|translate}}</mat-error> -->
-                                    <mat-hint>{{'APP.FORM_EMAIL_HINT'|translate}}</mat-hint>
+                                    
                                 </mat-form-field>
                             </p>
                         </form>
                     </div>
                     <div class="expRight">
-                    <button *ngIf="showButton && isAdmin && (row._id === currentId)" mat-button color="primary">
-                        Update</button>
-                    <button *ngIf="isAdmin" mat-button color="warn"> Delete </button></div>
+                    <button *ngIf="showButton && (isAdmin || currentUser && currentUser._id == row._id) && (row._id === currentId)"
+                     (click)="updateData(row)" mat-stroked-button color="primary"
+                     [disabled]="row.username == '' ||row.roles.length==0">
+                        <mat-icon>edit</mat-icon> {{'APP.BUTTON_UPDATE'|translate}}</button>
+                    <button *ngIf="showButton && (isAdmin || currentUser && currentUser._id == row._id)  && (row._id === currentId)" mat-stroked-button color="warn"><mat-icon>delete_forever</mat-icon> {{'APP.BUTTON_DELETE'|translate}} </button></div>
                  </div>
 
             </td>

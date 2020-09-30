@@ -111,14 +111,22 @@ cursor: pointer;
   .expLeft{
     float:left;
     width:65%;
-    border:1px solid red;
+    margin:10px;
   }
   .expRight{
     float: right;
     width:20%;
-    border:1px solid blue;
   }
 }
+
+button{
+  margin:5px;
+}
+.mat-form-field{
+  margin-right:5px;
+  width:95%
+}
+
 
 
 @media (max-device-width: 768px) and (min-device-width: 320px) {

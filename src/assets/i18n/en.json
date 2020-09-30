@@ -27,7 +27,9 @@
         "BUTTON_SEND": "Send",
         "BUTTON_BROADCAST":"Broadcast",
         "BUTTON_CANCEL": "Cancel",
-        "BUTTON_LOGOUT": "Logout"
+        "BUTTON_LOGOUT": "Logout",
+        "BUTTON_UPDATE": "Update",
+        "BUTTON_DELETE": "Delete"
     },
     "HOME": {
         "TAB1": "GYM VIEW",
@@ -91,6 +93,9 @@
         "FORM_BROADCAST_TEXT":"Broadcasting new message will disable previous broadcast"
     },
     "USERS":{
+        "MENU1":"All Users",
+        "MENU2":"Add User",
+        "MENU3":"Add Payment",
         "ALL_USERS":{
             "HEADING":"All Users",
             "FILTER_HEAD":"Filter",
@@ -101,7 +106,8 @@
             "TABLE_COL5": "Date of Joining",
             "TABLE_COL6": "Action",
             "VIWE_ONLY_BUTTON": "View Only User",
-            "ADD_NEW_BUTTON": "Register a new user"
+            "ADD_NEW_BUTTON": "Register a new user",
+            "FORM_PERMISSION":"User permission type"
         }
     }
 }

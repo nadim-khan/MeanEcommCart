@@ -14,7 +14,6 @@
         }
         .mat-drawer{
             min-width:1.2%;
-            max-width: 13%;
         }
         .button-move {
             position: fixed;
@@ -27,13 +26,13 @@
         }
         .move-right{
             position: fixed;
-            margin-left: 11%;
+            margin-left: 10.5%;
             z-index: 9;
 
         }
         .my-fab {
-            width: 20px;
-            height: 20px;
+            width: 24.5px;
+            height: 22px;
             line-height: 12px;
         
             .mat-button-wrapper {
@@ -52,6 +51,9 @@
         
     }
 }
+.wd-12{
+    width:12%;
+}
 .example-sidenav-content{
     margin :25px 20px 5px 20px;
     min-height:88%;
@@ -60,6 +62,14 @@
 .example-container{
     margin-top:0;
 }
+mat-spinner{
+    display: flex; 
+  justify-content: center; 
+  align-items: center;
+  height: calc(100vh - 20px);
+  background: red;
+}
+
 
 
 @media (max-device-width: 768px) and (min-device-width: 320px) {
