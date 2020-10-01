@@ -1,0 +1,37 @@
+.selectView{
+    display: flex;
+    justify-content: center;
+}
+.mat-form-field{
+    width:80%;
+}
+
+.myFilterInput {
+    display: inline-block;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 99.2%;
+    height:2rem;
+}
+input {
+    color: -internal-light-dark(white, white);
+}
+.userDisplay{
+    display: flex;
+    width: 100%;
+    height:60%;
+    justify-content: center;
+    .userDisplayLeft{
+        margin:50px;
+        width:100%;
+        float: left;
+        word-wrap: break-word;
+        mat-grid-tile {
+            background: lightblue;
+          }
+        mat-grid-tile:hover{
+            border:1px solid red;
+        }
+    }
+}

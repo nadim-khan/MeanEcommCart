@@ -39,7 +39,6 @@ isAdminBS = new BehaviorSubject(false);
           console.log('Usermodule data : ', data);
           this.adminCheck(this.currentUserData);
         } else {
-          
           this.isAdminBS.next(false);
         }
       });

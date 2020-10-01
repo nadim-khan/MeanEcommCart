@@ -1,1 +1,51 @@
-<p>add-payment works!</p>
+<h1>Add Payment</h1>
+<div class="selectView">
+    <mat-form-field appearance="standard">
+        <mat-label>Select User</mat-label>
+        <mat-select (selectionChange)="selectedUser($event)" name="data" required>
+            <input mat-input placeholder="Search user" focused="'true'" type="text" autocomplete="off"
+                class="myFilterInput" #myFilterInput [(ngModel)]="filterVal" (keyup)="onKey(filterVal)">
+            <mat-option [value]="user.email" *ngFor="let user of details">{{ user.username }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div *ngIf="showForm" class="userDisplay">
+    <div class="userDisplayLeft">
+        <p>
+            <mat-form-field>
+                <mat-select placeholder="Year">
+                    <mat-option *ngFor="let year of yearData; let i =index" [value]="year">
+                        <mat-checkbox [checked]="year === thisYear" (change)="onChange(year);"> {{year}}</mat-checkbox>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Month(s)</mat-label>
+                <mat-select (selectionChange)="selectedMonthsData($event)" multiple>
+                    <mat-option *ngFor="let month of monthData" [value]="month">{{month}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="standard">
+                <mat-label>{{'POPUP.FORM_AMOUNT'|translate}}</mat-label>
+                <input matInput placeholder="{{'POPUP.FORM_AMOUNT_PLACEHOLDER'|translate}}" required>
+                <mat-icon matSuffix>attach_money</mat-icon>
+                <mat-hint>{{'POPUP.FORM_AMOUNT_HINT'|translate}}</mat-hint>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>{{'POPUP.FORM_DESCRIPTION'|translate}}</mat-label>
+                <textarea matInput placeholder="{{'POPUP.FORM_DESCRIPTION_PLACEHOLDER'|translate}}" 
+                    cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+                <mat-icon matSuffix>description</mat-icon>
+                <mat-hint>{{'POPUP.FORM_DESCRIPTION_HINT'|translate}}</mat-hint>
+            </mat-form-field>
+        </p>
+        
+    </div>
+    
+
+    <button mat-stroked-button color="primary" (click)="updatePayment()">Update</button>
+</div>

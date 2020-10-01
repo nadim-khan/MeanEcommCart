@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Fees } from './fees';
+import { Fees, Payment } from './fees';
 import { Broadcast } from './Broadcast';
 import { Mail } from './mail';
 import { Observable } from 'rxjs';
@@ -14,6 +14,7 @@ export class GeneralService {
   feeApi = environment.feeStructureApi;
   broadcastApi = environment.broadcastApi;
   mailApi = environment.mailApi;
+  paymentApi = environment.paymentApi;
   constructor(
     private authService: AuthService,
     private http: HttpClient
@@ -61,4 +62,14 @@ export class GeneralService {
   deleteMail(details) {
     return this.http.post<Mail>(`${this.mailApi}/deleteMail`, details);
   }
+
+  updatePayment(details) {
+    console.log('updatePayment', details);
+    return this.http.post<Payment>(`${this.paymentApi}/paymentUpdate`, details);
+  }
+
+  getUserPaymentDetails(details) {
+    return this.http.get<Payment[]>(`${this.paymentApi}/getUserPayments`);
+  }
+
 }

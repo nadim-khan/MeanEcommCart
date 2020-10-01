@@ -1,10 +1,10 @@
 <div class="userSideBar">
     <mat-drawer-container class="example-container mat-typography"  autosize>
-        <mat-drawer #drawer mode="side"
+        <mat-drawer *ngIf="userAvailable" #drawer mode="side"
          [class.pad-top-30]="hasBroadcast && userAvailable" [class.wd-12]="isExpanded" disableClose="true" opened="true">
             <div class="toggle-button">
-                <button mat-mini-fab class="button-move" [class.move-right]="isExpanded" (click)="isExpanded = !isExpanded"  >
-                    <mat-icon  *ngIf=" !isExpanded" class="my-fab" aria-label="Menu" color="default">keyboard_arrow_right</mat-icon>
+                <button mat-mini-fab class="button-move"  [class.move-right]="isExpanded" (click)="isExpanded = !isExpanded"  >
+                    <mat-icon  *ngIf=" !isExpanded"  class="my-fab" aria-label="Menu" color="default">keyboard_arrow_right</mat-icon>
                     <mat-icon *ngIf=" isExpanded" class="my-fab" aria-label="close" color="warn">close</mat-icon>
                 </button>
             </div>
@@ -16,11 +16,11 @@
                     <mat-icon mat-list-icon>person</mat-icon>
                     <h4 *ngIf="isBiggerScreen()" mat-line >{{'USERS.MENU1'|translate}}</h4>
                 </mat-list-item>
-                <mat-list-item *ngIf="isExpanded" matTooltip="{{'USERS.MENU2'|translate}}" matTooltipPosition="right" [routerLink]="['/users/addUser']">
+                <mat-list-item *ngIf="isExpanded && userAvailable" matTooltip="{{'USERS.MENU2'|translate}}" matTooltipPosition="right" [routerLink]="['/users/addUser']">
                     <mat-icon mat-list-icon>assignment</mat-icon>
                     <h4 *ngIf="isBiggerScreen()" mat-line >{{'USERS.MENU2'|translate}}</h4>
                 </mat-list-item>
-                <mat-list-item *ngIf="isExpanded" matTooltip="{{'USERS.MENU3'|translate}}" matTooltipPosition="right" [routerLink]="['/users/addPayment']">
+                <mat-list-item *ngIf="isExpanded && userAvailable" matTooltip="{{'USERS.MENU3'|translate}}" matTooltipPosition="right" [routerLink]="['/users/addPayment']">
                         <mat-icon mat-list-icon>domain</mat-icon>
                         <h4 mat-line *ngIf="isBiggerScreen()">{{'USERS.MENU3'|translate}}</h4>
                 </mat-list-item>

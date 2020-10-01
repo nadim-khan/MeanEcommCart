@@ -5,4 +5,5 @@ export const environment = {
   feeStructureApi: '/api/fees',
   broadcastApi: '/api/broadcast',
   mailApi: '/api/mail',
+  paymentApi : 'api/fees'
 };

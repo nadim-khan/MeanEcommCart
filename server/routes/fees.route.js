@@ -9,6 +9,8 @@ const router = express.Router();
 router.post('/feeUpdate', asyncHandler(insertFee));
 router.get('/getFeeStructure', asyncHandler(getFeeStructure));
 router.post('/feeDelete', asyncHandler(deleteFeeStructure));
+router.post('/paymentUpdate', asyncHandler(insertUserPayment));
+router.get('/getUserPayments', asyncHandler(getUserPayments));
 
 async function insertFee(req, res, next) {
     const feeStructure = req.body;
@@ -19,6 +21,21 @@ async function insertFee(req, res, next) {
     next();
 }
 
+async function insertUserPayment(req, res, next) {
+    const paymentStructure = req.body;
+    console.log('Updating payment Structure', paymentStructure);
+   const updated = await feesController.insertPaymentDetails(paymentStructure);
+   req.user = updated;
+    res.json(updated);
+    next();
+}
+
+
+async function getUserPayments(req, res, next) {
+    const savedFee = await feesController.getUserPaymentDetails();
+    res.json(savedFee);
+    next();
+}
 
 async function getFeeStructure(req, res, next) {
     const savedFee = await feesController.getFeeStructure();
