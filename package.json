@@ -4,7 +4,7 @@
     "scripts": {
         "ng": "ng",
         "serve": "ng serve",
-        "start": "concurrently \"npm run startBackend\" \"ng serve \"",
+        "start": "ng serve",
         "startBackend": "nodemon server/index.js",
         "startbuiltApp": "concurrently \"npm run prodbuild \" \"npm run startBackend\" \"npm run start \"",
         "build": "ng build",
@@ -16,6 +16,13 @@
     },
     "private": true,
     "dependencies": {
+        "@angular-devkit/build-angular": "~0.900.7",
+        "@angular/cli": "~9.0.7",
+        "@angular/compiler-cli": "~9.0.7",
+        "@angular/language-service": "~9.0.7",
+        "@types/jasmine": "~3.5.0",
+        "@types/jasminewd2": "~2.0.3",
+        "@types/node": "^12.11.1",
         "@angular/animations": "~9.0.7",
         "@angular/cdk": "^9.2.3",
         "@angular/common": "~9.0.7",
