@@ -4,7 +4,7 @@
     "scripts": {
         "ng": "ng",
         "serve": "ng serve",
-        "start": "ng serve",
+        "start": "concurrently \"npm run startBackend\" \"ng serve \"",
         "startBackend": "nodemon server/index.js",
         "startbuiltApp": "concurrently \"npm run prodbuild \" \"npm run startBackend\" \"npm run start \"",
         "build": "ng build",
