@@ -3,7 +3,7 @@ import { AuthService } from '../auth/auth.service';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Fees, Payment } from './fees';
-import { Broadcast } from './Broadcast';
+import { Broadcast } from './broadcast';
 import { Mail } from './mail';
 import { Observable } from 'rxjs';
 

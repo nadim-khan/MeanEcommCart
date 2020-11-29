@@ -12,7 +12,7 @@ import { User } from './auth/user';
 import { AuthService } from './auth/auth.service';
 import { GeneralService } from './services/general.service';
 import * as moment from 'moment';
-import { Broadcast } from './services/Broadcast';
+import { Broadcast } from './services/broadcast';
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpRequest } from '@angular/common/http';
 import { catchError, last, map, tap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
