@@ -7,7 +7,7 @@ import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
   styleUrls: ['./gym-view.component.scss']
 })
 export class GymViewComponent implements OnInit {
-  heightProportion = 160;
+  heightProportion = 30;
   image;
   slides = [
      {image: 'https://source.unsplash.com/Frx8qskriDI/1600x900'},

@@ -74,7 +74,7 @@ export class AuthService {
   logout() {
     // remove user from Subject
     localStorage.removeItem('currentUser');
-    this.setUser(null);
+    this.setUser(false);
     this.checkLoginStatus();
     console.log('User has been logged out');
   }

@@ -29,7 +29,8 @@
         "BUTTON_CANCEL": "इसे रद्द करें",
         "BUTTON_LOGOUT": "लॉग आउट",
         "BUTTON_UPDATE": "अपडेट करें",
-        "BUTTON_DELETE": "हटाएं"
+        "BUTTON_DELETE": "हटाएं",
+        "NOTIFICATION": "सूचनाएं"
     },
     "HOME": {
         "TAB1": "व्यायामशाला का दृश्य",

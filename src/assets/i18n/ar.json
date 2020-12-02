@@ -29,7 +29,8 @@
         "BUTTON_CANCEL": "ألغها",
         "BUTTON_LOGOUT": "تسجيل خروج",
         "BUTTON_UPDATE": "تحديث",
-        "BUTTON_DELETE": "حذف"
+        "BUTTON_DELETE": "حذف",
+        "NOTIFICATION": "إشعارات"
     },
     "HOME": {
         "TAB1": "عرض الصالة الرياضية",

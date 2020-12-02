@@ -46,11 +46,18 @@ async function sendEmailToAddress() {
             user: 'brigitte16@ethereal.email',
             pass: 'YTkQXUNnMB9Eyh2CvJ'
         }
+        // service: "Gmail",
+        // host: 'smtp.gmail.com',
+        // port: 587,
+        // auth: {
+        //     user: "gymnasim491338@gmail.com",
+        //     pass: "m76kur3av5"
+        // }
     });
 
       let info = await transporter.sendMail({
         from: `"${userName}" <${emailId}>`, // sender address
-        to: "gymnasium@getnada.com", // list of receivers
+        to: "brigitte16@ethereal.email", // list of receivers
         subject: `Contact Us : Query by ${userName} - ${emailId}`, // Subject line
         text: `${queryDetails}`, // plain text body
       });

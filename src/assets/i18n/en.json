@@ -29,7 +29,8 @@
         "BUTTON_CANCEL": "Cancel",
         "BUTTON_LOGOUT": "Logout",
         "BUTTON_UPDATE": "Update",
-        "BUTTON_DELETE": "Delete"
+        "BUTTON_DELETE": "Delete",
+        "NOTIFICATION": "Notifications"
     },
     "HOME": {
         "TAB1": "GYM VIEW",

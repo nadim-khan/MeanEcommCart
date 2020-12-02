@@ -11,7 +11,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent , LoginDialogComponent, RegisterDialogComponent, BroadcastDialogComponent} from './app.component';
+import { AppComponent , LoginDialogComponent, RegisterDialogComponent,
+   BroadcastDialogComponent, ShowNotificationComponent} from './app.component';
 import { MaterialModule } from './material/material/material.module';
 import { HomeComponent } from './home/home.component';
 import { ProductsModule } from './products/products.module';
@@ -36,6 +37,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FeeStructureComponent,
     BroadcastDialogComponent,
     AddFeeDialogComponent,
+    ShowNotificationComponent,
     GymViewComponent,
     LoaderComponent,
   ],

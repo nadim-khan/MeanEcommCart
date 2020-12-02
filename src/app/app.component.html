@@ -1,5 +1,5 @@
 <header class="header mat-elevation-z3" [class.alternative]="otherTheme">
-    <div *ngIf="broadcastMsgData && username" [class.broadcastAlert]="broadcastMsgData && username" [ngClass]="getAlertClass(broadcastMsgData.type)">
+    <div *ngIf="broadcastMsgData && username && userExist" [class.broadcastAlert]="broadcastMsgData && username" [ngClass]="getAlertClass(broadcastMsgData.type)">
         <span>{{broadcastMsgData.message}}</span>
     </div>
     <mat-toolbar color="primary">
@@ -26,14 +26,25 @@
                         </mat-list>
                     </mat-radio-group>
                 </mat-menu>
+                <mat-menu #notificationList="matMenu" xPosition="before" tyle="width:70%">
+                    <button mat-menu-item *ngFor="let item of notification" (click)="showNotification(item.id)">
+                        {{item.title}}
+                        <p style="float:right;color:greenyellow;font-size: 10px;">{{item.createdOn|date:'MMM d,yyyy'}}</p>
+                        
+                    </button>
+                </mat-menu>
                 <!-- <label *ngIf="!userExist" for=""> 
                     {{'HOME.SELECT'|translate}}
                     <select #languageSelect (change)="translate.use(languageSelect.value)">
                         <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang}}</option>
                         </select>
                 </label> -->
-                <button mat-button *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details">
-                    <mat-icon>account_circle</mat-icon> {{username}}
+                
+                <button *ngIf="userExist"  mat-icon-button  [matMenuTriggerFor]="notificationList"  matBadge="8" matBadgePosition="before" color="transparent" matBadgeColor="warn" matTooltip="{{'APP.NOTIFICATION' |translate}}" >
+                    <mat-icon > notification_important </mat-icon>
+                </button>
+                <button mat-button *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details" >
+                    <mat-icon>account_circle</mat-icon>
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </button>
 
@@ -41,10 +52,12 @@
                     <div mat-menu-item>
                         <mat-icon> email </mat-icon> {{email}}
                     </div>
+                    <button mat-menu-item [matMenuTriggerFor]="notificationList" >
+                        <mat-icon>notification_important</mat-icon> {{'APP.NOTIFICATION' |translate}}
+                    </button>
                     <button mat-menu-item [matMenuTriggerFor]="languageMenu" >
                         <mat-icon>language</mat-icon> {{'APP.SELECT' |translate}}
                     </button>
-                    <button *ngIf="!isAdmin" mat-menu-item class="theme" (click)="showNotification()"><mat-icon> notification_important </mat-icon> Notification</button>
                     <button *ngIf="isAdmin" mat-menu-item class="theme" (click)="broadcast()"><mat-icon> speaker_phone</mat-icon> {{'APP.BUTTON_BROADCAST'|translate}}</button>
                     <button mat-menu-item class="logout" (click)="logout()"><mat-icon> power_settings_new </mat-icon> {{'APP.BUTTON_LOGOUT'|translate}}</button>
                 </mat-menu>
