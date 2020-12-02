@@ -27,9 +27,9 @@
                     </mat-radio-group>
                 </mat-menu>
                 <mat-menu #notificationList="matMenu" xPosition="before" tyle="width:70%">
-                    <button mat-menu-item *ngFor="let item of notification" (click)="showNotification(item.id)">
-                        {{item.title}}
-                        <p style="float:right;color:greenyellow;font-size: 10px;">{{item.createdOn|date:'MMM d,yyyy'}}</p>
+                    <button mat-menu-item *ngFor="let item of notification" (click)="showNotification(item._id)">
+                        {{item.email}}
+                        <p style="float:right;color:greenyellow;font-size: 10px;">{{item.createdAt|date:'MMM d,yyyy'}}</p>
                         
                     </button>
                 </mat-menu>
@@ -40,7 +40,7 @@
                         </select>
                 </label> -->
                 
-                <button *ngIf="userExist"  mat-icon-button  [matMenuTriggerFor]="notificationList"  matBadge="8" matBadgePosition="before" color="transparent" matBadgeColor="warn" matTooltip="{{'APP.NOTIFICATION' |translate}}" >
+                <button *ngIf="userExist"  mat-icon-button  [matMenuTriggerFor]="notificationList"  matBadge="notification.length" matBadgePosition="before" color="transparent" matBadgeColor="warn" matTooltip="{{'APP.NOTIFICATION' |translate}}" >
                     <mat-icon > notification_important </mat-icon>
                 </button>
                 <button mat-button *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details" >

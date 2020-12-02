@@ -1,4 +1,4 @@
-import { Component, ViewChild, HostListener, OnInit, OnDestroy, HostBinding } from '@angular/core';
+import { Component, ViewChild, HostListener, OnInit, OnDestroy, HostBinding, Inject } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { of, Subscription } from 'rxjs';
@@ -42,58 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
   broadcastMsgData;
   allBroadcastMsgs: Broadcast[] = [];
   userSubscription: Subscription;
-  notification = [
-    {
-      icon: '/cms/assets/imgs/bids.svg',
-      title: 'New Bid',
-      content: 'Fuller Warren Buliding AHU thing',
-      createdOn: '2020-12-01T06:43:00.000Z',
-      checked: 'false'
-    },
-    {
-      icon: '/cms/assets/imgs/certifications.svg',
-      title: 'CBE Certification Rejected',
-      content: 'CBE Certification has been rejected',
-      createdOn: '2020-11-27T07:43:00.000Z',
-      checked: 'false'
-    },
-    {
-      icon: '/cms/assets/imgs/report.svg',
-      title: 'Missing Report',
-      content: 'A report is found missing',
-      createdOn: '2020-12-01T08:45:00.000Z',
-      checked: 'false'
-    },
-    {
-      icon: '/cms/assets/imgs/payment.svg',
-      title: 'Overdue Payment',
-      content: 'You payment is overdue.Please take',
-      createdOn: '2020-11-30T15:43:00.000Z',
-      checked: 'false'
-    },
-    {
-      icon: '/cms/assets/imgs/w9.svg',
-      title: 'Invalid W9',
-      content: 'Form W9 is invalid',
-      createdOn: '2020-11-30T02:43:00.000Z',
-      checked: 'false'
-    },
-    {
-      icon: '/cms/assets/imgs/certifications.svg',
-      title: 'CBE Certification Rejected',
-      content:
-        'CBE Certification has been rejected and will be sent you an email',
-      createdOn: '2020-11-30T07:43:00.000Z',
-      checked: 'false'
-    },
-    {
-      icon: '/cms/assets/imgs/report.svg',
-      title: 'Missing Report',
-      content: 'A report is found missing will get back to you within 24 hours',
-      createdOn: '2020-11-29T08:45:00.000Z',
-      checked: 'false'
-    }
-  ];
+  notification;
 
   @HostBinding('class')
   get themeMode() {
@@ -255,6 +204,9 @@ export class AppComponent implements OnInit, OnDestroy {
             });
             // this.router.navigateByUrl('/');
             this.refreshAll();
+            this.general.getAllMails().subscribe(mails => {
+              this.notification =  mails;
+            });
           }
         }, e => {
           this.error = e;
@@ -363,7 +315,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Show notification
   showNotification(id) {
-    const dialogRef = this.dialog.open(ShowNotificationComponent, { panelClass: 'custom-dialog-container' });
+    const dialogRef = this.dialog.open(ShowNotificationComponent, { panelClass: 'custom-dialog-container',
+    data: {mailid: id}
+   });
   }
 
   // Check screen width and size
@@ -603,8 +557,13 @@ export class ShowNotificationComponent {
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
-    public dialogRef: MatDialogRef<BroadcastDialogComponent>
+    private general: GeneralService,
+    public dialogRef: MatDialogRef<BroadcastDialogComponent>, @Inject(MAT_DIALOG_DATA) public data
   ) {
+    console.log(data)
+    // this.general.checkMail(data.mailid).subscribe(res => {
+    //   console.log('mail checked : ', res);
+    // });
     this.dialogRef.disableClose = false;
    }
 

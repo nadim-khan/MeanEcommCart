@@ -7,6 +7,7 @@ const router = express.Router();
 
 //localhost:4050/api/mail/sendNewMail, getAllMails  and deleteMail call
 router.post('/sendNewMail', asyncHandler(sendNewMail));
+router.post('/checkMail', asyncHandler(checkThisMail));
 router.get('/getAllMails', asyncHandler(getAllMails));
 router.post('/deleteMail', asyncHandler(deleteMail));
 
@@ -20,11 +21,18 @@ async function sendNewMail(req, res, next) {
 }
 
 
+async function checkThisMail(req, res, next) {
+    const mailId = req.body;
+    const checkTheMail = await mailController.updateCheckMail(mailId);
+    console.log('mail Checked', checkTheMail);
+    res.json({ msg: 'Mail Checked Successfully', status: 200 });
+}
+
 async function getAllMails(req, res, next) {
     const allMails = await mailController.getAllMails();
     console.log('All mailStructure  after ', allMails);
     res.json(allMails);
-    next();
+    //next();
 }
 
 async function deleteMail(req, res, next) {

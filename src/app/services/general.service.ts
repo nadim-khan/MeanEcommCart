@@ -59,6 +59,10 @@ export class GeneralService {
     return this.http.post<Mail>(`${this.mailApi}/sendNewMail`, details);
   }
 
+  checkMail(id) {
+    return this.http.post<Mail>(`${this.mailApi}/checkMail`, id);
+  }
+
   deleteMail(details) {
     return this.http.post<Mail>(`${this.mailApi}/deleteMail`, details);
   }

@@ -20,6 +20,10 @@ const MailSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    checked: {
+        type: Boolean,
+        default: false
+    },
 }, {
     versionKey: false
 });

@@ -19,6 +19,18 @@ async function getAllMails() {
         return mailDetail;
 }
 
+async function updateCheckMail(mailId) {
+    var myquery = { _id: mailId};
+    var newvalues = { $set: {checked: true,  } };
+ let mailDetail = await Mail.findByIdAndUpdate(myquery, newvalues,(err,res)=> {
+    if (err) {
+        throw err;
+    } else {
+        return mailDetail;
+    }
+ });
+}
+
 async function deleteMail(mailId) {
     let mailDetail = await Mail.findByIdAndDelete(mailId,(err,obj)=>{
         if (err) {
@@ -73,5 +85,6 @@ async function sendEmailToAddress() {
 module.exports = {
     insertQueryMail,
     getAllMails,
+    updateCheckMail,
     deleteMail
 };
