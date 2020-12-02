@@ -43,6 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
   allBroadcastMsgs: Broadcast[] = [];
   userSubscription: Subscription;
   notification;
+  pendingNoti = 0;
 
   @HostBinding('class')
   get themeMode() {
@@ -77,6 +78,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.notification = this.notification.map(val => {
       if (val.checked === 'true') {
         val.checked = 'false';
+
+
       } else {
         val.checked = 'true';
       }
@@ -206,6 +209,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.refreshAll();
             this.general.getAllMails().subscribe(mails => {
               this.notification =  mails;
+              this.pendingNoti = this.notification.length;
             });
           }
         }, e => {
@@ -560,7 +564,7 @@ export class ShowNotificationComponent {
     private general: GeneralService,
     public dialogRef: MatDialogRef<BroadcastDialogComponent>, @Inject(MAT_DIALOG_DATA) public data
   ) {
-    console.log(data)
+    console.log(data);
     // this.general.checkMail(data.mailid).subscribe(res => {
     //   console.log('mail checked : ', res);
     // });

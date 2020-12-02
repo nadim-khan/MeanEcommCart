@@ -40,7 +40,7 @@
                         </select>
                 </label> -->
                 
-                <button *ngIf="userExist"  mat-icon-button  [matMenuTriggerFor]="notificationList"  matBadge="notification.length" matBadgePosition="before" color="transparent" matBadgeColor="warn" matTooltip="{{'APP.NOTIFICATION' |translate}}" >
+                <button *ngIf="userExist"  mat-icon-button  [matMenuTriggerFor]="notificationList"  matBadge="{{pendingNoti}}" matBadgePosition="before" color="transparent" matBadgeColor="warn" matTooltip="{{'APP.NOTIFICATION' |translate}}" >
                     <mat-icon > notification_important </mat-icon>
                 </button>
                 <button mat-button *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details" >
