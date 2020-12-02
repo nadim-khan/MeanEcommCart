@@ -1,5 +1,6 @@
 
   .header {
+      height:auto;
     .active {
         -webkit-box-shadow: 0px 0px 14px -7px rgba(0, 0, 0, 1);
         -moz-box-shadow: 0px 0px 14px -7px rgba(0, 0, 0, 1);
@@ -8,7 +9,7 @@
     }
     a,
     
-    .Broadcast-alert{
+    .broadcastAlert{
         height: 15px;
         font-size:12px;
         font-weight: 600;
@@ -75,6 +76,9 @@
         right: 5px;
         margin-right: auto;
     }
+}
+.smallTitle{
+    font-size: 15px;
 }
 
 .logout {

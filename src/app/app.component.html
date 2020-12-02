@@ -1,12 +1,12 @@
 <header class="header mat-elevation-z3" [class.alternative]="otherTheme">
-    <div *ngIf="broadcastMsgData && username" class="Broadcast-alert" [ngClass]="getAlertClass(broadcastMsgData.type)">
+    <div *ngIf="broadcastMsgData && username" [class.broadcastAlert]="broadcastMsgData && username" [ngClass]="getAlertClass(broadcastMsgData.type)">
         <span>{{broadcastMsgData.message}}</span>
     </div>
     <mat-toolbar color="primary">
         <mat-toolbar-row>
             <mat-icon *ngIf="isBiggerScreen()" (click)="sidenav.toggle()" class="hamburger" matTooltip="Show/Hide links">menu</mat-icon>
             <span routerLink="/" class="logo" ></span>
-            <span  routerLink="/" >{{'APP.TITLE' | translate}}</span>
+            <span  [class.smallTitle]="isBiggerScreen()" routerLink="/" >{{'APP.TITLE' | translate}}</span>
             <div class="profile">
                 
                 <button mat-button *ngIf="!userExist" [matMenuTriggerFor]="languageMenu" matTooltip="{{'APP.SELECT' |translate}}">

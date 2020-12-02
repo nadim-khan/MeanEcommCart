@@ -73,6 +73,15 @@ mat-spinner{
 
 
 @media (max-device-width: 768px) and (min-device-width: 320px) {
+    .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 6px;
+        position: relative;
+        height: inherit;
+    }
     .userSideBar{
         height:100%;
         .example-container{
@@ -83,12 +92,22 @@ mat-spinner{
                 .mat-list-item{
                     height: 40px;
                     line-height: 40px;
+                    .mat-list-base .mat-list-item .mat-list-item-content{
+                        padding: 0 5px;
+                    }
                 }
             }
             .mat-drawer{
                 min-width:4.5%;
-                max-width: 15.5%;
+                max-width: 35.5%;
             }
+            .move-right{
+                position: fixed;
+                margin-left: 7.5%;
+                z-index: 9;
+    
+            }
+            
 
         }
     }

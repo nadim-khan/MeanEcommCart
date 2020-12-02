@@ -5,6 +5,7 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 
 import { AuthService } from '../auth/auth.service';
 import { Fees } from '../services/fees';
@@ -33,9 +34,15 @@ export class FeeStructureComponent implements OnInit, OnChanges {
     private authService: AuthService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private breakpointObserver: BreakpointObserver
   ) {
     this.isAdmin = this.authService.isAdmin;
+    breakpointObserver.observe(['(max-width: 420px)']).subscribe(result => {
+      this.displayedColumns = result.matches ?
+          ['subscription', 'amount'] :
+          ['id', 'subscription', 'description', 'amount', 'action'];
+    });
    }
 
   ngOnChanges() {

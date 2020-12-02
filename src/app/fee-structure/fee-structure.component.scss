@@ -33,6 +33,9 @@
     text-align: center;
     justify-content:center;
   }
+  .mat-column-select {
+    overflow: initial;
+  }
   
   :host ::ng-deep .mat-sort-header-container {
     font-weight: 500;
