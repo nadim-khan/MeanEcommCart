@@ -237,6 +237,31 @@ body .push-right {
         width:100%;
     }
 }
+.custom-dialog-container-notification .mat-dialog-container {
+    width:50em;
+    height:42em;
+    .mailMainView {
+        height: 18em;
+        overflow: hidden;
+        border: 1px solid gray;
+        border-radius: 3px;
+        background-color: lightgray;
+        color:black;
+    }
+    .mailActionView {
+        margin-top:10px;
+        
+    }
+    .mailListView {
+        height: 15em;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    .mailSelectView{
+        height:30em;
+        overflow-y: scroll;
+    }
+}
 
 .avatar svg{
     animation: 3s ease 0s normal none infinite running zoomEffect;
@@ -286,6 +311,10 @@ body .push-right {
         z-index: 1000;
         position: fixed;
     }
+    .custom-dialog-container-notification .mat-dialog-container {
+        width:50em;
+        max-height:50em;
+    }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -296,6 +325,10 @@ body .push-right {
         z-index: 1000;
         position: fixed;
     }
+    .custom-dialog-container-notification .mat-dialog-container {
+        width:50em;
+        max-height:50em;
+    }
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
@@ -305,6 +338,10 @@ body .push-right {
         width: 75%;
         z-index: 1000;
         position: fixed;
+    }
+    .custom-dialog-container-notification .mat-dialog-container {
+        width:50em;
+        max-height:50em;
     }
 }
 
@@ -333,6 +370,10 @@ body .push-right {
         z-index: 1000;
         position: fixed;
     }
+    .custom-dialog-container-notification .mat-dialog-container {
+        width:50em;
+        max-height:50em;
+    }
 }
 
 @media (max-width: 767px) {
@@ -341,5 +382,9 @@ body .push-right {
     }
     .hamburger {
         visibility: visible !important;
+    }
+    .custom-dialog-container-notification .mat-dialog-container {
+        width:50em;
+        max-height:50em;
     }
 }

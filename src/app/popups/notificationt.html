@@ -1,1 +1,34 @@
-{{data|json}}
+<div *ngIf="!isChecked" class="mailMainView">
+    <h3>From : {{currentMailDetails.email}}</h3>
+    <h4>Time : {{currentMailDetails.createdAt|date:'MMM d,yyyy'}}</h4>
+    <p> Query : {{currentMailDetails.queryDetail}}</p>
+</div>
+<h2 align="center">All Notifications</h2>
+<div *ngIf="isChecked" class="mailActionView" >
+    <input type="checkbox" [checked]="allSelected" value="{{allSelected}}" (change)="selectAll($event.target.checked)" /> Select All
+    <a style="float:right;color:rgb(97, 97, 245); padding-right:10px" (click)="markAll(allSelected)">
+        <span *ngIf="!allSelected">Mark all Read</span>
+        <span *ngIf="allSelected">unread All</span>
+    </a >
+</div>
+<div *ngIf="!isChecked" class="mailListView">
+      <mat-selection-list #current [multiple]="false">
+        <mat-list-option *ngFor="let mail of notification" [value]="mail" (click)="currentMail(mail)">
+            <mat-icon mat-list-icon>note</mat-icon> {{mail.username}} - {{mail.createdAt|date:'MMM d,yyyy'}}
+        </mat-list-option>
+      </mat-selection-list>
+     
+</div>
+<div *ngIf="isChecked" class="mailSelectView">
+    <mat-selection-list  >
+        <mat-list-option checkboxPosition="before" *ngFor="let mail of notification" [selected]="mail.checked">
+            <mat-icon *ngIf="!showSelect" mat-list-icon>note</mat-icon> {{mail.username}} - {{mail.createdAt|date:'MMM d,yyyy'}}
+        </mat-list-option>
+      </mat-selection-list>
+</div>
+<mat-slide-toggle [(ngModel)]="isChecked">
+    <span *ngIf="isChecked">Switch to reading mode</span>
+    <span *ngIf="!isChecked">Switch to select mode</span>
+</mat-slide-toggle>
+<button *ngIf="isChecked" color="primary" mat-button> Done</button>
+<button mat-button color="warn"> Cancel</button>

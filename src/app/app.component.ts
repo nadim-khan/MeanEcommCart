@@ -127,10 +127,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.sidenav.fixedTopGap = 55;
       this.opened = true;
     }
-    this.notification = this.notification.map(val => {
-      const x = Object.assign({}, val, { checked: false });
-      return x;
-    });
   }
 
   ngOnDestroy(): void {
@@ -185,9 +181,17 @@ export class AppComponent implements OnInit, OnDestroy {
       } else {
         this.userExist = false;
       }
+      this.general.getAllMails().subscribe(mails => {
+        this.notification =  mails;
+        this.notification = this.notification.sort((a, b) => {
+          return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf();
+        });
+        this.pendingNoti = this.notification.length;
+      });
     } else {
       this.userExist = false;
       this.isAdmin = false;
+      this.notification = [];
     }
   }
 
@@ -207,10 +211,6 @@ export class AppComponent implements OnInit, OnDestroy {
             });
             // this.router.navigateByUrl('/');
             this.refreshAll();
-            this.general.getAllMails().subscribe(mails => {
-              this.notification =  mails;
-              this.pendingNoti = this.notification.length;
-            });
           }
         }, e => {
           this.error = e;
@@ -319,8 +319,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Show notification
   showNotification(id) {
-    const dialogRef = this.dialog.open(ShowNotificationComponent, { panelClass: 'custom-dialog-container',
-    data: {mailid: id}
+    const dialogRef = this.dialog.open(ShowNotificationComponent,  { panelClass: 'custom-dialog-container-notification',
+    data: {mailid: id, allMails: this.notification}
    });
   }
 
@@ -557,6 +557,11 @@ export class BroadcastDialogComponent {
   templateUrl: './popups/notificationt.html',
 })
 export class ShowNotificationComponent {
+  notification;
+  allSelected = false;
+  showSelect = false;
+  isChecked = false;
+  currentMailDetails;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -565,11 +570,42 @@ export class ShowNotificationComponent {
     public dialogRef: MatDialogRef<BroadcastDialogComponent>, @Inject(MAT_DIALOG_DATA) public data
   ) {
     console.log(data);
+    data.allMails.filter(val => {
+      if (val._id === data.mailid) {
+        this.currentMailDetails = val;
+      }
+    });
+    console.log(this.currentMailDetails);
+
     // this.general.checkMail(data.mailid).subscribe(res => {
     //   console.log('mail checked : ', res);
     // });
+    this.notification = this.data.allMails;
     this.dialogRef.disableClose = false;
    }
+   markAll(val) {
+    this.allSelected = !val;
+    this.selectAll(this.allSelected);
+   }
+
+   currentMail(val) {
+     console.log(val);
+     this.currentMailDetails = val;
+   }
+
+   selectAll(value: any) {
+    console.log(value);
+    this.notification = this.data.allMails.map(val => {
+        if (value) {
+          val.checked = true;
+        } else {
+          val.checked = false;
+        }
+        this.allSelected = value;
+        return val;
+    });
+  }
+
 
 }
 

@@ -27,7 +27,7 @@
                     </mat-radio-group>
                 </mat-menu>
                 <mat-menu #notificationList="matMenu" xPosition="before" tyle="width:70%">
-                    <button mat-menu-item *ngFor="let item of notification" (click)="showNotification(item._id)">
+                    <button mat-menu-item *ngFor="let item of notification|slice:0:9" (click)="showNotification(item._id)">
                         {{item.email}}
                         <p style="float:right;color:greenyellow;font-size: 10px;">{{item.createdAt|date:'MMM d,yyyy'}}</p>
                         
