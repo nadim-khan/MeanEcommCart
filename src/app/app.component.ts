@@ -418,6 +418,8 @@ export class RegisterDialogComponent {
   hide = true;
   rehide = true;
   files = [];
+  selectedFile;
+  imageSrc: string;
 
   constructor(
     private router: Router,
@@ -431,6 +433,7 @@ export class RegisterDialogComponent {
 
   registrationData = new FormGroup({
     profilePic: new FormControl(''),
+    fileSource: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required, Validators.minLength(3), this.cannotContainSpace]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
@@ -458,7 +461,8 @@ export class RegisterDialogComponent {
   }
 
   onUploadClick() {
-    const fileUpload = document.getElementById('fileUpload') as HTMLInputElement;
+    const fileUpload = document.querySelector('fileUpload') as HTMLInputElement;
+    console.log(fileUpload);
     fileUpload.onchange = () => {
       // tslint:disable-next-line:prefer-for-of
       for (let index = 0; index < fileUpload.files.length; index++) {
@@ -469,6 +473,23 @@ export class RegisterDialogComponent {
         });
       }
     };
+  }
+
+  onFileChanged(event) {
+    console.log(event);
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        console.log(event);
+        this.imageSrc = reader.result as string;
+        console.log(this.imageSrc);
+        this.registrationData.patchValue({
+          fileSource: reader.result
+        });
+      };
+    }
   }
 
 

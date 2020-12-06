@@ -1,7 +1,7 @@
 <h1 style="text-align: center;">{{'POPUP.REGISTER_HEAD'|translate}}</h1>
 <form [formGroup]="registrationData" (ngSubmit)="register()">
-    <div class="avatar" style="display: flex;justify-content: center;" matTooltip="Upload profile pic" (click)="onUploadClick()">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1"
+    <div class="avatar" style="display: flex;justify-content: center;" matTooltip="Upload profile pic" (click)="fileUpload.click()">
+        <svg *ngIf="!imageSrc" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1"
             x="0px" y="0px" viewBox="0 0 512 512"
             style="enable-background:new 0 0 512 512;height:75px;width:75px;display: flex;justify-content: center;"
             xml:space="preserve">
@@ -156,8 +156,16 @@
             <g>
             </g>
         </svg>
+        <img *ngIf="imageSrc" [src]="imageSrc" style="height: 100px; width:100px;border-radius:50%">
     </div>
-    <input type="file" id="fileUpload" name="fileUpload" accept='image/*'  style="display:none;"/>
+    
+    
+    <input type="file" #fileUpload  formControlName="profilePic" id="fileUpload" name="fileUpload" accept='image/*'  (change)="onFileChanged($event)" style="display:none;"/>
+    <div *ngIf="f.profilePic.touched && f.profilePic.invalid" class="alert alert-danger">
+        <div *ngIf="f.profilePic.errors.required">File is required.</div>
+    </div>
+    
+    <span *ngIf="imageSrc" mat-button (click)="fileUpload.click()">change image</span>
     <p>
         <mat-form-field appearance="standard">
             <mat-label>{{'APP.FORM_USERNAME'|translate}}</mat-label>
