@@ -1,23 +1,18 @@
 <header class="header mat-elevation-z3" [class.alternative]="otherTheme">
-    <div *ngIf="broadcastMsgData && username && userExist" [class.broadcastAlert]="broadcastMsgData && username" [ngClass]="getAlertClass(broadcastMsgData.type)">
-        <span>{{broadcastMsgData.message}}</span>
-    </div>
     <mat-toolbar color="primary">
+        <mat-toolbar-row *ngIf="broadcastMsgData && username && userExist" [class.broadcastAlert]="broadcastMsgData && username" [ngClass]="getAlertClass(broadcastMsgData.type)">
+            {{broadcastMsgData.message}}
+        </mat-toolbar-row>
         <mat-toolbar-row>
             <mat-icon *ngIf="isBiggerScreen()" (click)="sidenav.toggle()" class="hamburger" matTooltip="Show/Hide links">menu</mat-icon>
-            <span routerLink="/" class="logo" ></span>
-            <span  [class.smallTitle]="isBiggerScreen()" routerLink="/" >{{'APP.TITLE' | translate}}</span>
+            <!-- <span routerLink="/" class="logo" ></span> -->
+            <span  [class.title]="!isBiggerScreen()" [class.smallTitle]="isBiggerScreen()" routerLink="/" >{{'APP.TITLE' | translate}}</span>
             <div class="profile">
-                
                 <button mat-button *ngIf="!userExist" [matMenuTriggerFor]="languageMenu" matTooltip="{{'APP.SELECT' |translate}}">
                     <mat-icon>language</mat-icon> {{browserLang}}
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </button>
-                <!-- <button *ngIf="!userExist" mat-icon-button [matMenuTriggerFor]="languageMenu" matTooltip="{{'APP.SELECT' |translate}}" matTooltipPosition="right">
-                    <mat-icon>language</mat-icon> 
-                </button> -->
                 <mat-menu #languageMenu="matMenu" xPosition="before">
-
                     <mat-radio-group (change)="translate.use($event.value); browserLang = $event.value; setLanguage($event.value)">
                         <mat-list>
                             <mat-list-item *ngFor="let lang of languageSet">
@@ -33,21 +28,13 @@
                         
                     </button>
                 </mat-menu>
-                <!-- <label *ngIf="!userExist" for=""> 
-                    {{'HOME.SELECT'|translate}}
-                    <select #languageSelect (change)="translate.use(languageSelect.value)">
-                        <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{lang}}</option>
-                        </select>
-                </label> -->
-                
                 <button *ngIf="userExist"  mat-icon-button  [matMenuTriggerFor]="notificationList"  matBadge="{{pendingNoti}}" matBadgePosition="before" color="transparent" matBadgeColor="warn" matTooltip="{{'APP.NOTIFICATION' |translate}}" >
                     <mat-icon > notification_important </mat-icon>
                 </button>
-                <button mat-button *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details" >
-                    <mat-icon>account_circle</mat-icon>
+                <button mat-button [class.profileButton]="!isBiggerScreen()" *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details" >
+                   <span class="shortName">{{shortName(this.username)}}</span>
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </button>
-
                 <mat-menu class="profileView" #profileMenu="matMenu" xPosition="before">
                     <div mat-menu-item>
                         <mat-icon> email </mat-icon> {{email}}
@@ -61,14 +48,12 @@
                     <button *ngIf="isAdmin" mat-menu-item class="theme" (click)="broadcast()"><mat-icon> speaker_phone</mat-icon> {{'APP.BUTTON_BROADCAST'|translate}}</button>
                     <button mat-menu-item class="logout" (click)="logout()"><mat-icon> power_settings_new </mat-icon> {{'APP.BUTTON_LOGOUT'|translate}}</button>
                 </mat-menu>
-
                 <button *ngIf="!userExist" mat-icon-button (click)="onLogin()" matTooltip="{{'APP.BUTTON_LOGIN'|translate}}">
                     <mat-icon>person</mat-icon>
                 </button>
             </div>
         </mat-toolbar-row>
     </mat-toolbar>
-
 </header>
 
 <mat-sidenav-container >

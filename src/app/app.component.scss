@@ -10,8 +10,8 @@
     a,
     
     .broadcastAlert{
-        height: 15px;
-        font-size:12px;
+        height: 20px;
+        font-size:15px;
         font-weight: 600;
         text-align: center;
         line-height: 17px;
@@ -79,6 +79,13 @@
 }
 .smallTitle{
     font-size: 15px;
+    margin-left: 2%;
+    
+}
+.title {
+    margin-left:20px;
+    margin-left: 5%;
+    font-size: 24px;
 }
 
 .logout {
@@ -87,6 +94,19 @@
 
 .profileView {
  width:400px;
+}
+.profileButton {
+    width: 13.7em;
+}
+.shortName{
+    height: 25px;
+    width:25px;
+    border-radius: 50%;
+    padding:5px;
+    background-color: rgb(131, 180, 245);
+    color: white;
+    border:1px solid white;
+    letter-spacing: 1px;
 }
 
 .mat-nav-list {

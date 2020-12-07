@@ -6,7 +6,7 @@
     "serve": "ng serve",
     "start": "ng serve",
     "startBackend": "nodemon server/index.js",
-    "startbuiltApp": "concurrently \"npm run prodbuild \" \"npm run startBackend\" \"npm run start \"",
+    "startApp": "concurrently \"npm run prodbuild \" \"npm run startBackend\" \"npm run start \"",
     "build": "ng build",
     "prodbuild": "npm run build -- --prod",
     "test": "ng test",
