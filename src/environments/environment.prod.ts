@@ -1,4 +1,4 @@
-console.log = () => {};
+console.log = function() {}
 export const environment = {
   production: true,
   authApi: '/api/auth',
