@@ -34,6 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
   hide = true;
   mode = 'dark';
   username;
+  userProfilePic;
   email;
   error;
   role;
@@ -166,6 +167,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.userValues && this.userValues.user) {
       this.username = this.userValues.user.username;
       this.email = this.userValues.user.email;
+      this.userProfilePic = this.userValues.user.fileSource;
       if (this.userValues.user.roles.length > 0) {
         this.role = this.userValues.user.roles[0];
         if (this.role === 'admin') {
@@ -442,6 +444,7 @@ export class RegisterDialogComponent {
   registrationData = new FormGroup({
     profilePic: new FormControl(''),
     fileSource: new FormControl('', [Validators.required]),
+    file: new FormControl('', [Validators.required]),
     username: new FormControl('', [Validators.required, Validators.minLength(3), this.cannotContainSpace]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
@@ -485,6 +488,10 @@ export class RegisterDialogComponent {
 
   onFileChanged(event) {
     console.log(event);
+    console.log(event.target.files[0])
+    this.registrationData.patchValue({
+      file: event.target.files[0]
+    });
     const reader = new FileReader();
     if (event.target.files && event.target.files.length) {
       const [file] = event.target.files;

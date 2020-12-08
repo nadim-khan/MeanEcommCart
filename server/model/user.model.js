@@ -5,6 +5,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    fileSource: {
+        type: String, 
+    },
     email: {
         type: String,
         required: true,

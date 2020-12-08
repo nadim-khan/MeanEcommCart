@@ -29,7 +29,8 @@ export interface UserData {
 })
 
 export class AllUsersComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['id', 'username', 'email', 'action'];
+  displayedColumns: string[] = ['profile','username', 'email', 'action'];
+  profilepic;
   dataSource: MatTableDataSource<UserData>;
   isAdmin = false;
   expandedElement: UserData | null;
@@ -115,6 +116,17 @@ export class AllUsersComponent implements OnInit, OnDestroy {
 
   addNew() {
 
+  }
+  shortName(name){
+    let newName;
+    if(name.split(' ').length>1) {
+      newName = name.split(' ')[0].substring(0,1) + name.split(' ')[1].substring(0,1);
+      return newName.toUpperCase();
+    } else if(name.length > 2) {
+      newName = name.substring(0, 2);
+      console.log(name,newName)
+      return newName.toUpperCase();
+    }
   }
 
   updateData(data) {

@@ -5,7 +5,7 @@
         </mat-toolbar-row>
         <mat-toolbar-row>
             <mat-icon *ngIf="isBiggerScreen()" (click)="sidenav.toggle()" class="hamburger" matTooltip="Show/Hide links">menu</mat-icon>
-            <!-- <span routerLink="/" class="logo" ></span> -->
+            <span *ngIf="!isBiggerScreen()" routerLink="/" class="logo" ></span>
             <span  [class.title]="!isBiggerScreen()" [class.smallTitle]="isBiggerScreen()" routerLink="/" >{{'APP.TITLE' | translate}}</span>
             <div class="profile">
                 <button mat-button *ngIf="!userExist" [matMenuTriggerFor]="languageMenu" matTooltip="{{'APP.SELECT' |translate}}">
@@ -32,7 +32,8 @@
                     <mat-icon > notification_important </mat-icon>
                 </button>
                 <button mat-button [class.profileButton]="!isBiggerScreen()" *ngIf="userExist" [matMenuTriggerFor]="profileMenu" matTooltip="User Details" >
-                   <span class="shortName">{{shortName(this.username)}}</span>
+                   <span *ngIf="!userProfilePic" class="shortName">{{shortName(this.username)}}</span>
+                   <img *ngIf="userProfilePic" class="shortProfileImage" [src]="userProfilePic">
                     <mat-icon>keyboard_arrow_down</mat-icon>
                 </button>
                 <mat-menu class="profileView" #profileMenu="matMenu" xPosition="before">

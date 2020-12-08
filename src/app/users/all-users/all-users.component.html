@@ -13,17 +13,20 @@
     <table mat-table [dataSource]="dataSource"  matSort multiTemplateDataRows>
 
         <!-- Progress Column -->
-        <ng-container matColumnDef="id" class="centre">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header [style.font]="50"> # </th>
-            <td mat-cell *matCellDef="let row" class="disableClick"> {{row.index}} </td>
+        <ng-container matColumnDef="profile" class="centre">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header [style.font]="50"> </th>
+            <td mat-cell *matCellDef="let row" class="disableClick"> 
+                <span *ngIf="row.roles.length < 1 && !row.fileSource" matBadge="!" matBadgePosition="after" matBadgeColor="warn" class="shortName">{{shortName(row.username)}}</span>
+                <span *ngIf="row.roles.length > 0 && !row.fileSource"  class="shortName">{{shortName(row.username)}}</span>
+                <img *ngIf="row.fileSource" class="shortNameImage" [src]='row.fileSource'>
+            </td>
         </ng-container>
 
         <!-- Progress Column -->
         <ng-container matColumnDef="username">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'USERS.ALL_USERS.TABLE_COL2'|translate}} </th>
             <td mat-cell *matCellDef="let row" class="disableClick">
-                <span *ngIf="row.roles.length < 1" matBadge="!" matBadgePosition="after" matBadgeColor="warn">{{row.username}}</span>
-                <span *ngIf="row.roles.length > 0" >{{row.username}}</span>
+                <span >{{row.username}}</span>
             
         </ng-container>
 
@@ -66,7 +69,7 @@
             <td mat-cell *matCellDef="let row" [attr.colspan]="displayedColumns.length">
 
                 <div class="expMain" [@detailExpand]="row == expandedElement ? 'expanded' : 'collapsed'">
-                    <div class="expLeft">
+                    <div >
                         <div *ngIf="!isAdmin" class="example-element-description">
                             <div class="example-element-symbol"> {{row.username}} </div>
                             <div class="example-element-position">

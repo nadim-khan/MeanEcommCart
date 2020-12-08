@@ -20,6 +20,7 @@
         background-image: url('../assets/gymnasium.png');
         height: 40px;
         width: 45px;
+        margin-left: 3%;
         background-size: contain;
         background-repeat: no-repeat;
         // &:hover {
@@ -83,8 +84,6 @@
     
 }
 .title {
-    margin-left:20px;
-    margin-left: 5%;
     font-size: 24px;
 }
 
@@ -107,6 +106,13 @@
     color: white;
     border:1px solid white;
     letter-spacing: 1px;
+}
+.shortProfileImage {
+    height: 30px;
+    width:30px;
+    padding:2px;
+    border-radius: 50%;
+    border:1px solid white;
 }
 
 .mat-nav-list {
