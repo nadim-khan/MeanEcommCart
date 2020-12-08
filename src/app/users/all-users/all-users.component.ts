@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { AuthService } from '../../auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface UserData {
   _id: string;
@@ -43,8 +44,8 @@ export class AllUsersComponent implements OnInit, OnDestroy {
   showButton = false;
   type = [
     { id: 1, name: 'Admin', value: 'admin' },
-    { id: 2, name: 'Executive', value: 'executive' },
-    { id: 3, name: 'General', value: 'general' }
+    { id: 2, name: 'Trainer', value: 'trainer' },
+    { id: 3, name: 'General', value: 'general' },
   ];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -53,6 +54,7 @@ export class AllUsersComponent implements OnInit, OnDestroy {
     public userService: UsersService,
     public authService: AuthService,
     public snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {
     this.userService.checkUser();
     this.userService.isAdminBS.subscribe(value => {
@@ -119,8 +121,9 @@ export class AllUsersComponent implements OnInit, OnDestroy {
   }
 
   addNew() {
-
+    // const dialogRef = this.dialog.open(RegisterDialogComponent, { panelClass: 'custom-dialog-container' });
   }
+
   shortName(name){
     let newName;
     if(name.split(' ').length>1) {

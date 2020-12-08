@@ -1,1 +1,12 @@
-<p>trainers works!</p>
+<mat-card>
+    <mat-grid-list cols="4" rowHeight="200px" [gutterSize]="'10px'">
+    <mat-grid-tile
+        *ngFor="let trainer of allTrainers; let i=index;"
+        [colspan]="4"
+        [rowspan]="1">
+        <img [src]="trainer.fileSource" width="100px" height="100px">
+        {{trainer.username}}
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
