@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { AuthService } from '../../auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface UserData {
   _id: string;
@@ -48,7 +50,9 @@ export class AllUsersComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
-    public userService: UsersService
+    public userService: UsersService,
+    public authService: AuthService,
+    public snackBar: MatSnackBar,
   ) {
     this.userService.checkUser();
     this.userService.isAdminBS.subscribe(value => {
@@ -131,6 +135,16 @@ export class AllUsersComponent implements OnInit, OnDestroy {
 
   updateData(data) {
     console.log('Updated data : ', data);
+    //this.userService.updateUser(data);
+    this.authService.updateUserDetails(data).subscribe(details=>{
+      if(details.status === 200) {
+        this.snackBar.open('User Details updated for '+ data.username, 'Close', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+        });
+      }
+    })
   }
 
   change(data) {

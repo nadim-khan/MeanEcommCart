@@ -121,4 +121,8 @@ export class AuthService {
     }
   }
 
+  updateUserDetails(updates) {
+    return this.http.post<User>(`${this.apiUrl}/updateUser`, updates);
+  }
+
 }

@@ -20,6 +20,25 @@ async function getUserByEmailIdAndPassword(email, password) {
     }
 }
 
+async function updateUserData(user) {
+    let currentUser = await User.findOne({ email: user.email });
+    let updateUser= await User.updateOne(
+        {_id:user._id},
+        {$set: {
+            username:user.username,
+            roles:user.roles,
+            email:user.email,
+            fileSource:user.fileSource,
+            updatedAt: Date.now(),
+        }
+    });
+    if(updateUser) {
+        return {message: 'User details updated ', status: 200};
+    } else {
+        return updateUser;
+    }
+}
+
 async function getUserById(id) {
     let user = await User.findById(id);
     if (user) {
@@ -46,5 +65,6 @@ module.exports = {
     insert,
     getUserByEmailIdAndPassword,
     getUserById,
-    getAllUsers
+    getAllUsers,
+    updateUserData
 };

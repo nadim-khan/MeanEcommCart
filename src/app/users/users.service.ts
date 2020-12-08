@@ -25,6 +25,12 @@ isAdminBS = new BehaviorSubject(false);
    });
   }
 
+  updateUser(details) {
+    this.authService.updateUserDetails(details).subscribe(details => {
+      console.log('User Updated : ',details);
+    })
+  }
+
   checkUser() {
     this.authService.checkLoginStatus();
     const token = localStorage.getItem('currentUser');

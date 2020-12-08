@@ -13,6 +13,8 @@ const router = express.Router();
 router.post('/register', asyncHandler(insert), login);
 router.post('/login', asyncHandler(getUserByEmailIdAndPassword), login);
 router.get('/getAllUsers', asyncHandler(getAllUsers));
+router.post('/updateUser', asyncHandler(updateUserDetails));
+
 
 async function insert(req, res, next) {
     const user = req.body;
@@ -64,6 +66,14 @@ async function getUserByEmailIdAndPassword(req, res, next) {
         user.password
     );
     req.user = savedUser;
+    next();
+}
+
+async function updateUserDetails(req, res, next) {
+    const user = req.body;
+    console.log('User to be updated'+user);
+    updateUser= await userController.updateUserData(user);
+    res.json(updateUser);
     next();
 }
 

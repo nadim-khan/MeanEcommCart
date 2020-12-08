@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterState } from '@angular/router';
 import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 
 @Component({
@@ -16,9 +17,19 @@ export class GymViewComponent implements OnInit {
      {image: 'https://source.unsplash.com/AB7TcT_GVU0/1600x900'},
      {image: 'https://source.unsplash.com/gEbn_y-2RSM/1600x900'}];
 
-  constructor() { }
+  constructor( private router : Router) { 
+    const state: RouterState = router.routerState;
+    const root: ActivatedRoute = state.root;
+    root.url.subscribe(data => {
+      console.log('urldata : ',data,state)
+    });
+    root.params.subscribe( data=> {
+      console.log('paramData : ',data)
+    })
+  }
 
   ngOnInit(): void {
+    
   }
 
   // Check screen width and size
