@@ -443,8 +443,8 @@ export class RegisterDialogComponent {
 
   registrationData = new FormGroup({
     profilePic: new FormControl(''),
-    fileSource: new FormControl('', [Validators.required]),
-    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl(''),
+    file: new FormControl(''),
     username: new FormControl('', [Validators.required, Validators.minLength(3), this.cannotContainSpace]),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),

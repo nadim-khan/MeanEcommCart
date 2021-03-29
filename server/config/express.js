@@ -20,7 +20,6 @@ if (config.NODE_ENV === 'development') {
 
 //get dist folder
 const distDir = path.join(__dirname, '../../dist');
-console.log(distDir);
 
 //Use dist folder as hosting folder by express
 app.use(express.static(distDir));
