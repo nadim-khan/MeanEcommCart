@@ -198,11 +198,14 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   shortName(name){
-    if(name.split(' ').length>1) {
-      return (name.split(' ')[0].substring(0,1)+name.split(' ')[1].substring(0,1)).toUpperCase();
-    } else if(name.length > 2) {
-      return name.substring(0, 2).toUppercase();
-    }
+    console.log('shortname : ',name)
+    // if(name.split(' ').length>1) {
+    //   return (name.split(' ')[0].substring(0,1)+name.split(' ')[1].substring(0,1)).toUpperCase();
+    // } else if(name.length > 2) {
+    //   return name.substring(0, 2).toUppercase();
+    // } else {
+      return (name.charAt(0)+name.charAt(1)).toUpperCase();
+    // }
   }
 
   // Login to Users account
